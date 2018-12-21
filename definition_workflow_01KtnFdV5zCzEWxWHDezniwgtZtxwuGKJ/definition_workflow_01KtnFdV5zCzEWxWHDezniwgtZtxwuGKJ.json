@@ -1,0 +1,115 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01KtnFdV5zCzEWxWHDezniwgtZtxwuGKJ",
+    "name": "Azure New Subscription",
+    "title": "Azure New Subscription",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "access_token",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01Ktna3KUfglIUAQzqZAyHUlErZvzpxty",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "enrollment_account",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01Kto8PIqVChGf1HVEFEPTkJdqcINBSHZ",
+        "object_type": ""
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Azure New Subscription",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_1DXAPwtBFRwquxZATsGMgUSSude",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01KtnRTr7ncwjyZcmQSW83UjDmOmIa36D",
+        "name": "HTTP Request",
+        "title": "HTTP Request",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "{\n  \"displayName\": \"AO TEST SUB MB1\",\n  \"offerType\": \"MS-AZR-0017P\"\n}",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "$workflow.definition_workflow_01KtnFdV5zCzEWxWHDezniwgtZtxwuGKJ.input.variable_workflow_01Ktna3KUfglIUAQzqZAyHUlErZvzpxty$"
+            }
+          ],
+          "display_name": "HTTP Request",
+          "method": "POST",
+          "relative_url": "providers/Microsoft.Billing/enrollmentAccounts/$workflow.definition_workflow_01KtnFdV5zCzEWxWHDezniwgtZtxwuGKJ.input.variable_workflow_01Kto8PIqVChGf1HVEFEPTkJdqcINBSHZ$/providers/Microsoft.Subscription/createSubscription?api-version=2018-03-01-preview",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1Da6ynlVMOWEavCUrIu1bFYscr7"
+    ]
+  },
+  "categories": {
+    "category_1Da6ynlVMOWEavCUrIu1bFYscr7": {
+      "unique_name": "category_1Da6ynlVMOWEavCUrIu1bFYscr7",
+      "name": "MS Azure Cloud",
+      "title": "MS Azure Cloud",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  },
+  "targets": {
+    "definition_target_1DXAPwtBFRwquxZATsGMgUSSude": {
+      "unique_name": "definition_target_1DXAPwtBFRwquxZATsGMgUSSude",
+      "name": "Azure Management",
+      "title": "Azure Management",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": false,
+        "display_name": "Azure Management",
+        "host": "management.azure.com",
+        "ignore_certificate_errors": true,
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
+    }
+  }
+}

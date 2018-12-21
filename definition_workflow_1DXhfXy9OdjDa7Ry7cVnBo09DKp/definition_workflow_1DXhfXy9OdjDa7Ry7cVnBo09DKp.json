@@ -1,0 +1,334 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp",
+    "name": "Azure Create/Update Virtual Network",
+    "title": "Azure Create/Update Virtual Network",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "1Ctpj7Q3oY0el2Zr0jWng3N8ZpZ",
+        "properties": {
+          "value": false,
+          "scope": "input",
+          "name": "properties.enableVmProtection",
+          "type": "datatype.boolean"
+        },
+        "unique_name": "variable_workflow_01L17oRgfeXwx3gsfm7dwIeT79h0yfFPO",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "properties.ddosProtectionPlan",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRggNs8XG6Tl8vZZIjrjqecoL6Q5",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "etag",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRgfnOkMhliQQ2DKIWpwV7H5Ue25",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "properties.dhcpOptions",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRgg5s7UMwvL6PDF1govm37fPXjb",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1Ctpj7Q3oY0el2Zr0jWng3N8ZpZ",
+        "properties": {
+          "value": false,
+          "scope": "input",
+          "name": "properties.enableDdosProtection",
+          "type": "datatype.boolean"
+        },
+        "unique_name": "variable_workflow_01L17oRgf3ts3jLyyIFmvVBwsbgCbfUSv",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "properties.virtualNetworkPeerings",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRgeulv2hqhzC85UFDK63YIPy5qk",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "properties.subnets",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRggfVHvjWFnvkTNUR0VpJzUmnSh",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "virtualNetworkName",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRgeloX51QHWrhqduFljO0uyHfeU",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "resourceGroupName",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRgeKD47FxGokfTyxDPBddUL9m1c",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "access_token",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRgfwXwsrDRHQ0RqmAvEmuaKWj5m",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "tags",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRggEyJ9vVP79AN2H241HkbT6LAO",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "properties.provisioningState",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRgfD3aACSJuzc1ivDu4xQxgD8tP",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1Ctpj87G6lxsZ8f0f3tS6vjbe3P",
+        "properties": {
+          "scope": "output",
+          "name": "response_code",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_01L17oRgecYoi5ne5UgqfhDUozI3zxX4A",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "properties.addressSpace",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRgdmUePreJ2RQWtoL3kIeN2vclW",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "response_body",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRgeTE8AIx6YZeSaU2xz33KFYwks",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "id",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRgfM3nvpTJf4dQfUNyW5NPpd1Ma",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "subscriptionId",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRgfV9OzMjyDMArVwbfDisA7IySI",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "properties.resourceGuid",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRggWjiNcw4aw62a2zBiHQvVgwm7",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "location",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17oRgeAY32BAvQHcBdR3jr9nMOgAQm",
+        "object_type": ""
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "description": "https://docs.microsoft.com/en-us/rest/api/virtualnetwork/virtualnetworks/createorupdate#examples",
+      "display_name": "Azure Create/Update Virtual Network",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_1DXmKQEcHKAZELOa6ukSQKkH3ip",
+        "name": "Execute Python Script",
+        "title": "Execute Python Script",
+        "type": "python.script",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "display_name": "Execute Python Script",
+          "script": "import sys\nimport json\n\n\nargs = [None if x == 'null' else x for x in sys.argv[1:]]\nproperties = {}\nrequest_obj = {'properties':properties}\nproperties['addressSpace'] = {}\nproperties['dhcpOptions'] = {}\n\n\n(request_obj['etag'], \nrequest_obj['id'], \nrequest_obj['location'], \nproperties['addressSpace']['addressPrefixes'],\nproperties['ddosProtectionPlan'],\nproperties['dhcpOptions']['dnsServers'],\nproperties['enableDdosProtection'],\nproperties['enableVmProtection'],\nproperties['provisioningState'],\nproperties['resourceGuid'],\nproperties['subnets'],\nproperties['virtualNetworkPeerings']) = args\n\n\nproperties['addressSpace']['addressPrefixes'] = properties['addressSpace']['addressPrefixes'].split(',') if properties['addressSpace']['addressPrefixes'] else None\nproperties['dhcpOptions']['dnsServers'] = properties['dhcpOptions']['dnsServers'].split(',') if properties['dhcpOptions']['dnsServers'] else None\nproperties['subnets'] = json.loads(properties['subnets']) if properties['subnets'] else None\nproperties['virtualNetworkPeerings'] = json.loads(properties['virtualNetworkPeerings']) if properties['virtualNetworkPeerings'] else None\n\n\nj = json.dumps(request_obj)\n\n",
+          "script_arguments": [
+            "$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRgfnOkMhliQQ2DKIWpwV7H5Ue25$",
+            "$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRgfM3nvpTJf4dQfUNyW5NPpd1Ma$",
+            "$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRgeAY32BAvQHcBdR3jr9nMOgAQm$",
+            "$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRgdmUePreJ2RQWtoL3kIeN2vclW$",
+            "$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRggNs8XG6Tl8vZZIjrjqecoL6Q5$",
+            "$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRgg5s7UMwvL6PDF1govm37fPXjb$",
+            "$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRgf3ts3jLyyIFmvVBwsbgCbfUSv$",
+            "$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRgfeXwx3gsfm7dwIeT79h0yfFPO$",
+            "$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRgfD3aACSJuzc1ivDu4xQxgD8tP$",
+            "$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRggWjiNcw4aw62a2zBiHQvVgwm7$",
+            "$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRggfVHvjWFnvkTNUR0VpJzUmnSh$",
+            "$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRgeulv2hqhzC85UFDK63YIPy5qk$"
+          ],
+          "script_queries": [
+            {
+              "script_query": "j",
+              "script_query_name": "j",
+              "script_query_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1DXi6Gzbm3iw3EXen4ET0898VkP",
+        "name": "HTTP Request",
+        "title": "HTTP Request",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "$activity.definition_activity_1DXmKQEcHKAZELOa6ukSQKkH3ip.output.script_queries.j$",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRgfwXwsrDRHQ0RqmAvEmuaKWj5m$"
+            }
+          ],
+          "display_name": "HTTP Request",
+          "method": "PUT",
+          "relative_url": "subscriptions/$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRgfV9OzMjyDMArVwbfDisA7IySI$/resourceGroups/$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRgeKD47FxGokfTyxDPBddUL9m1c$/providers/Microsoft.Network/virtualNetworks/$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.input.variable_workflow_01L17oRgeloX51QHWrhqduFljO0uyHfeU$?api-version=2018-08-01",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1DXxlnTcdh8nC9C5GHZBsC9zW17",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.output.variable_workflow_01L17oRgeTE8AIx6YZeSaU2xz33KFYwks$",
+              "variable_value_new": "$activity.definition_activity_1DXi6Gzbm3iw3EXen4ET0898VkP.output.response_body$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_1DXhfXy9OdjDa7Ry7cVnBo09DKp.output.variable_workflow_01L17oRgecYoi5ne5UgqfhDUozI3zxX4A$",
+              "variable_value_new": "$activity.definition_activity_1DXi6Gzbm3iw3EXen4ET0898VkP.output.status_code$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1Da6ynlVMOWEavCUrIu1bFYscr7"
+    ]
+  },
+  "categories": {
+    "category_1Da6ynlVMOWEavCUrIu1bFYscr7": {
+      "unique_name": "category_1Da6ynlVMOWEavCUrIu1bFYscr7",
+      "name": "MS Azure Cloud",
+      "title": "MS Azure Cloud",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  }
+}

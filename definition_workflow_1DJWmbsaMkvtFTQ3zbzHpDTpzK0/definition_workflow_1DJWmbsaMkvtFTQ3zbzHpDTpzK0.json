@@ -1,0 +1,169 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_1DJWmbsaMkvtFTQ3zbzHpDTpzK0",
+    "name": "Azure Create Token",
+    "title": "Azure Create Token",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "tenantid",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KtmjQtJJy5ZEZIZMbRVAOa31TeywpkN",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "access_token",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KtmjQtJTKefsGqhJYMlpRahseshFQan",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "clientid",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KtmjQtIlPZcDmEGhW4BQSScxkJlOB5F",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjF0wGZxmvKSEBCmsD9qnB8n",
+        "properties": {
+          "scope": "input",
+          "name": "secret",
+          "type": "datatype.secure_string"
+        },
+        "unique_name": "variable_workflow_01KtmjQtJAEMOlh0PudhLVpzc5FWyYhkP",
+        "object_type": ""
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "description": "Instructions on how to create the credentials here:\n\nhttps://medium.com/@mauridb/calling-azure-rest-api-via-curl-eb10a06127",
+      "display_name": "Azure Create Token",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_1DJWurOJquSaWL1jaMIzPlFYZQU",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_1DJWon8nxMcqPC5qpowSlbgkGJW",
+        "name": "HTTP Request",
+        "title": "Token Request",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "grant_type=client_credentials\u0026client_id=$workflow.definition_workflow_1DJWmbsaMkvtFTQ3zbzHpDTpzK0.input.variable_workflow_01KtmjQtIlPZcDmEGhW4BQSScxkJlOB5F$\u0026client_secret=$workflow.definition_workflow_1DJWmbsaMkvtFTQ3zbzHpDTpzK0.input.variable_workflow_01KtmjQtJAEMOlh0PudhLVpzc5FWyYhkP$\u0026resource=https%3A%2F%2Fmanagement.azure.com%2F",
+          "continue_on_error_status_code": false,
+          "custom_headers": [
+            {
+              "name": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ],
+          "display_name": "Token Request",
+          "method": "POST",
+          "relative_url": "$workflow.definition_workflow_1DJWmbsaMkvtFTQ3zbzHpDTpzK0.input.variable_workflow_01KtmjQtJJy5ZEZIZMbRVAOa31TeywpkN$/oauth2/token",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1DXHKMPT0MAAvTd9vfHSS1Ju0If",
+        "name": "JSONPath Query",
+        "title": "JSONPath Query",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "display_name": "JSONPath Query",
+          "input_json": "$activity.definition_activity_1DJWon8nxMcqPC5qpowSlbgkGJW.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.access_token",
+              "jsonpath_query_name": "access_token",
+              "jsonpath_query_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1DXDELVk44S5vKfSFEIng9KOGdc",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_1DJWmbsaMkvtFTQ3zbzHpDTpzK0.output.variable_workflow_01KtmjQtJTKefsGqhJYMlpRahseshFQan$",
+              "variable_value_new": "Bearer $activity.definition_activity_1DXHKMPT0MAAvTd9vfHSS1Ju0If.output.jsonpath_queries.access_token$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1Da6ynlVMOWEavCUrIu1bFYscr7"
+    ]
+  },
+  "categories": {
+    "category_1Da6ynlVMOWEavCUrIu1bFYscr7": {
+      "unique_name": "category_1Da6ynlVMOWEavCUrIu1bFYscr7",
+      "name": "MS Azure Cloud",
+      "title": "MS Azure Cloud",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  },
+  "targets": {
+    "definition_target_1DJWurOJquSaWL1jaMIzPlFYZQU": {
+      "unique_name": "definition_target_1DJWurOJquSaWL1jaMIzPlFYZQU",
+      "name": "Azure Login",
+      "title": "Azure Login",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": false,
+        "display_name": "Azure Login",
+        "host": "login.microsoftonline.com",
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
+    }
+  }
+}

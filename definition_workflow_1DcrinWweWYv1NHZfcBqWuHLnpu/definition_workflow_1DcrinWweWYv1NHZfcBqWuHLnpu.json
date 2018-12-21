@@ -1,0 +1,201 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_1DcrinWweWYv1NHZfcBqWuHLnpu",
+    "name": "Azure Admin Token Request",
+    "title": "Azure Admin Token Request",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "9df72bb7-0bd0-4a2c-aac2-11814c92b23d",
+          "scope": "input",
+          "name": "clientid",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KtQqo69i4XjCNXGLeqdKQwVl0llwAEF",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjF0wGZxmvKSEBCmsD9qnB8n",
+        "properties": {
+          "scope": "input",
+          "name": "secret",
+          "type": "datatype.secure_string"
+        },
+        "unique_name": "variable_workflow_01KtQqo69s8iERunX54qWX82fUrjrC33o",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "redirect_uri",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KtQqo6A9euBhnBlc9rZKFD2JNxAmIST",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "access_token",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KtQqo6AIVJbQ3iduJvBnWo5DWcr0tRJ",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "resource",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KtQqo6B0aiONfdRnzJ94OcjgbX0hUlg",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "AQABAAIAAAC5una0EUFgTIF8ElaxtWjTZk9Knxaw_h3w6SfVLSboFkpoqu8MzyV8usSmOp6M3NDLtrnK6COpOElWQ8tq_Jl6CBM-OOkG2tS2nZSSsht0p95waX5UdG0lSYXsZNUD0XvTUj8VKRWmO0P-QOPI2p2ZxuDoEt0xFslJJ1P3SXix-7Fyhif6a7CEsWM-HvQluTqI2mwic2TZKrLDrdbkJ2FzGn9jXCKu-FsMaiRhyH5fsgCmUg2s6oI-ItH1OZXDBTSlwwP502epUwpnLaU8HGtfZs8aW_8WKnRQpyhQmyfusxyU1K4BAaJBKnEoW1I2LHd_wnYkI7RY9sl8xXaU_FjsJX3Rheo8ENKYyuFuJMD5NRy-nXWTV8rJSmuKIfhllOjqyv2d1qFVQRicaUd_OyD1nZZrS8CWgmzKeJzu0KAfG2rl14mS0lKpPmhR90lRC5hxAdTHQ6ZY6uJY6ij-hBZJ5JMvYJlrj2iVG1r8aKBpN-TMqjWZIQaB8bYeurFfgja6t1i6MEdslUkpokVeRO_-EY6NPd-LFv7LuGtroaHGZVXnV1Stypqg03oadPlAQoL_NEmeerYBSN45BK-lBkItZ9qUaHfs9TNH-HzVbUNkrkV3DSFRh28Uo58ZzP8qsmr9pZrB9GMjBtuDyZrDhKMoUKKxikqBb_XKuf95x6wJoSAA",
+          "scope": "input",
+          "name": "auth_code",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KtleROnjleltqn439a7n2axj5PVTipO",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "db676b07-4b8f-4183-9401-b2fc63004ee6",
+          "scope": "input",
+          "name": "tenantid",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KtQqo69K1FKZ7D5lXJdNY69FlV2G8Lh",
+        "object_type": ""
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Azure Admin Token Request",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_1DJWurOJquSaWL1jaMIzPlFYZQU",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_1DcvOpqdPrG8MKLR8OOc9UY8JEY",
+        "name": "HTTP Request",
+        "title": "HTTP Request",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "grant_type=client_credentials\u0026client_id=$workflow.definition_workflow_1DcrinWweWYv1NHZfcBqWuHLnpu.input.variable_workflow_01KtQqo69i4XjCNXGLeqdKQwVl0llwAEF$\u0026client_secret=$workflow.definition_workflow_1DcrinWweWYv1NHZfcBqWuHLnpu.input.variable_workflow_01KtQqo69s8iERunX54qWX82fUrjrC33o$\u0026resource=https%3A%2F%2Fmanagement.azure.com%2F",
+          "continue_on_error_status_code": false,
+          "custom_headers": [
+            {
+              "name": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ],
+          "display_name": "HTTP Request",
+          "method": "POST",
+          "relative_url": "/$workflow.definition_workflow_1DcrinWweWYv1NHZfcBqWuHLnpu.input.variable_workflow_01KtQqo69K1FKZ7D5lXJdNY69FlV2G8Lh$/oauth2/token",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1DcwDM8J91XaL63CfSaHSspaZ2X",
+        "name": "JSONPath Query",
+        "title": "JSONPath Query",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "display_name": "JSONPath Query",
+          "input_json": "$activity.definition_activity_1DcvOpqdPrG8MKLR8OOc9UY8JEY.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.access_token",
+              "jsonpath_query_name": "access_token",
+              "jsonpath_query_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1DcwCUeLwxV7rqlSqTk9mOJsbgp",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_1DcrinWweWYv1NHZfcBqWuHLnpu.output.variable_workflow_01KtQqo6AIVJbQ3iduJvBnWo5DWcr0tRJ$",
+              "variable_value_new": "Bearer $activity.definition_activity_1DcwDM8J91XaL63CfSaHSspaZ2X.output.jsonpath_queries.access_token$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1Da6ynlVMOWEavCUrIu1bFYscr7"
+    ]
+  },
+  "categories": {
+    "category_1Da6ynlVMOWEavCUrIu1bFYscr7": {
+      "unique_name": "category_1Da6ynlVMOWEavCUrIu1bFYscr7",
+      "name": "MS Azure Cloud",
+      "title": "MS Azure Cloud",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  },
+  "targets": {
+    "definition_target_1DJWurOJquSaWL1jaMIzPlFYZQU": {
+      "unique_name": "definition_target_1DJWurOJquSaWL1jaMIzPlFYZQU",
+      "name": "Azure Login",
+      "title": "Azure Login",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": false,
+        "display_name": "Azure Login",
+        "host": "login.microsoftonline.com",
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
+    }
+  }
+}

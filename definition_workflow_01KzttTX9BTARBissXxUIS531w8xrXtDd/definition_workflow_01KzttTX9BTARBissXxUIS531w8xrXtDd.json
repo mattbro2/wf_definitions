@@ -1,0 +1,401 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01KzttTX9BTARBissXxUIS531w8xrXtDd",
+    "name": "Setup VPC on AWS",
+    "title": "Setup VPC on AWS",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "network-state",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01Kzttdpi2dKOesLuvxwjo8oOD3RSCGld",
+        "object_type": ""
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "description": "This workflow will setup VPC and subnets on AWS Cloud",
+      "display_name": "Setup VPC on AWS",
+      "favorite": true,
+      "target": {
+        "target_type": "aws.endpoint",
+        "target_id": "definition_target_1Cuuvx5BAKfZSCZltxaXlGFe3h2",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01KzttlfRzJ3U8lKsFZBqZ0dxRgpyECx6",
+        "name": "Create VPC",
+        "title": "Create VPC",
+        "type": "aws.create_vpc",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "amazon_provided_ipv6_cidr_block": false,
+          "cidr_block": "10.0.0.0/16",
+          "display_name": "Create VPC",
+          "instance_tenancy": "default",
+          "name_tag": "ao-demo-vpc",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01Kztttpr6fGhYyU32Hsbx9cJLQvdniX1",
+        "name": "Create Subnet in a VPC",
+        "title": "Create Subnet in a VPC",
+        "type": "aws.create_subnet_vpc",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "availability_zone": "us-east-1a",
+          "cidr_block": "10.0.11.0/24",
+          "display_name": "Create Subnet in a VPC",
+          "name_tag": "ao-demosubnet1",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "use_workflow_target": true
+          },
+          "vpc_id": "$activity.definition_activity_01KzttlfRzJ3U8lKsFZBqZ0dxRgpyECx6.output.vpc_id$"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01Kztu3SzlYQy6wFlSig4pCTKmU5xOL1s",
+        "name": "Create Subnet in a VPC",
+        "title": "Create Subnet in a VPC",
+        "type": "aws.create_subnet_vpc",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "availability_zone": "us-east-1b",
+          "cidr_block": "10.0.12.0/24",
+          "display_name": "Create Subnet in a VPC",
+          "name_tag": "ao-demo-subnet2",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "use_workflow_target": true
+          },
+          "vpc_id": "$activity.definition_activity_01KzttlfRzJ3U8lKsFZBqZ0dxRgpyECx6.output.vpc_id$"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01KztuEpmpvrdDOYlbgpnBuQjcBEmTZoY",
+        "name": "Create Internet Gateway",
+        "title": "Create Internet Gateway",
+        "type": "aws.create_internet_gateway",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "display_name": "Create Internet Gateway",
+          "name_tag": "ao-demo-ig",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01KztuNwrPR6O7UyG40hrLtoRaON4KncU",
+        "name": "Attach Internet Gateway",
+        "title": "Attach Internet Gateway",
+        "type": "aws.attach_internet_gateway",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "display_name": "Attach Internet Gateway",
+          "internet_gateway_id": "$activity.definition_activity_01KztuEpmpvrdDOYlbgpnBuQjcBEmTZoY.output.internet_gateway_id$",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "use_workflow_target": true
+          },
+          "vpc_id": "$activity.definition_activity_01KzttlfRzJ3U8lKsFZBqZ0dxRgpyECx6.output.vpc_id$"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01KztuYVemEsy6iLrmgxNH6DWo6bBgbTK",
+        "name": "Create Route Table",
+        "title": "Create Route Table",
+        "type": "aws.create_route_table",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "display_name": "Create Route Table",
+          "name_tag": "ao-demo-routeTable",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "use_workflow_target": true
+          },
+          "vpc_id": "$activity.definition_activity_01KzttlfRzJ3U8lKsFZBqZ0dxRgpyECx6.output.vpc_id$"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01KztuimSyre9DP6fO8a50vXkF14K54rS",
+        "name": "Create Route",
+        "title": "Create Route",
+        "type": "aws.create_route",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "destination_cidr_block": "0.0.0.0/0",
+          "display_name": "Create Route",
+          "gateway_id": "$activity.definition_activity_01KztuEpmpvrdDOYlbgpnBuQjcBEmTZoY.output.internet_gateway_id$",
+          "route_table_id": "$activity.definition_activity_01KztuYVemEsy6iLrmgxNH6DWo6bBgbTK.output.route_table_id$",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01KztuxaERjYj6BTeLraqL3kZJLebho6t",
+        "name": "Describe Subnets",
+        "title": "List Subnets",
+        "type": "aws.describe_subnets",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "display_name": "List Subnets",
+          "filters": [
+            {
+              "name": "vpc-id",
+              "value": "$activity.definition_activity_01KzttlfRzJ3U8lKsFZBqZ0dxRgpyECx6.output.vpc_id$"
+            }
+          ],
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01KztvCBt77WtbVN7slWSpuEAEZzpg5K3",
+        "name": "For Each",
+        "title": "For Each",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "display_name": "For Each",
+          "source_array": "$activity.definition_activity_01KztuxaERjYj6BTeLraqL3kZJLebho6t.output.subnets$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01KztvPGkWJcw4TILJ7qov1XrokNXlsDd",
+            "name": "Condition Block",
+            "title": "Condition Block",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "display_name": "Condition Block"
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_01KztvbLdeSbhEDRjHxmgu9tcOHyBe4zA",
+                "name": "Condition Branch",
+                "title": "Condition Branch",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01KztvCBt77WtbVN7slWSpuEAEZzpg5K3.input.source_array[@].state$",
+                    "operator": "eq",
+                    "right_operand": "available"
+                  },
+                  "display_name": "Condition Branch"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01Kztvo1iimTo4gVsEiiV6B1KSeDRRagq",
+                    "name": "Associate Subnet with Route Table",
+                    "title": "Associate Subnet",
+                    "type": "aws.associate_subnet_with_route_table",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "display_name": "Associate Subnet",
+                      "route_table_id": "$activity.definition_activity_01KztuYVemEsy6iLrmgxNH6DWo6bBgbTK.output.route_table_id$",
+                      "runtime_user": {
+                        "target_default": true
+                      },
+                      "subnet_id": "$activity.definition_activity_01KztvCBt77WtbVN7slWSpuEAEZzpg5K3.input.source_array[@].subnet_id$",
+                      "target": {
+                        "use_workflow_target": true
+                      }
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_01Kztw1MsYOywj4jXx9u12kOKdJqU7eiQ",
+                "name": "Condition Branch",
+                "title": "Condition Branch",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01KztvCBt77WtbVN7slWSpuEAEZzpg5K3.input.source_array[@].state$",
+                    "operator": "ne",
+                    "right_operand": "available"
+                  },
+                  "display_name": "Condition Branch"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01KztwBcrkG19q7BkVElXwGNbL88zGVR7",
+                    "name": "Set Variables",
+                    "title": "Set State",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "display_name": "Set State",
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01KzttTX9BTARBissXxUIS531w8xrXtDd.output.variable_workflow_01Kzttdpi2dKOesLuvxwjo8oOD3RSCGld$",
+                          "variable_value_new": "$activity.definition_activity_01KztvCBt77WtbVN7slWSpuEAEZzpg5K3.input.source_array[@].state$"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01KztwPrM5wn7kFoqtQ1Exhx5PeB53flf",
+        "name": "Create Security Group",
+        "title": "Create Security Group",
+        "type": "aws.create_security_group",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "display_name": "Create Security Group",
+          "runtime_user": {
+            "target_default": true
+          },
+          "security_group_description": "AO demo SG",
+          "security_group_name": "ao-demo-sg",
+          "target": {
+            "use_workflow_target": true
+          },
+          "vpc_id": "$activity.definition_activity_01KzttlfRzJ3U8lKsFZBqZ0dxRgpyECx6.output.vpc_id$"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01KztwdFvpyrBm8t8zMZlvW1wqse4yw73",
+        "name": "Create Security Group Rule",
+        "title": "Create Security Group Rule",
+        "type": "aws.authorize_security_group",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "display_name": "Create Security Group Rule",
+          "ip_permissions_ingress": [
+            {
+              "cidr_block_ip_v4": "0.0.0.0/0",
+              "from_port": 22,
+              "ip_protocol": "tcp",
+              "to_port": 22
+            }
+          ],
+          "runtime_user": {
+            "target_default": true
+          },
+          "security_group_id": "$activity.definition_activity_01KztwPrM5wn7kFoqtQ1Exhx5PeB53flf.output.security_group_id$",
+          "target": {
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1Cuv0ORm51CCSpHTTdHhMSzqHvu"
+    ]
+  },
+  "categories": {
+    "category_1Cuv0ORm51CCSpHTTdHhMSzqHvu": {
+      "unique_name": "category_1Cuv0ORm51CCSpHTTdHhMSzqHvu",
+      "name": "AO Demo",
+      "title": "AO Demo",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  },
+  "targets": {
+    "definition_target_1Cuuvx5BAKfZSCZltxaXlGFe3h2": {
+      "unique_name": "definition_target_1Cuuvx5BAKfZSCZltxaXlGFe3h2",
+      "name": "AWS-Murali-Target",
+      "title": "AWS-Murali-Target",
+      "type": "aws.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_1CuuuMVawHgQ7OCpHG3wYOsOrLH",
+        "description": "Only for AO demo",
+        "display_name": "AWS-Murali-Target",
+        "ignore_certificate_errors": true,
+        "region": "us-east-1"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_1CuuuMVawHgQ7OCpHG3wYOsOrLH": {
+      "unique_name": "definition_runtime_user_1CuuuMVawHgQ7OCpHG3wYOsOrLH",
+      "name": "aws-murali-key",
+      "title": "aws-murali-key",
+      "type": "runtime_user.aws_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "aws-murali-key"
+      }
+    }
+  }
+}

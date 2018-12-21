@@ -1,0 +1,1003 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_1DaNKsuKYO8KLKiXGAUriSEtSGa",
+    "name": "Azure Test Flow - Create Security Rule",
+    "title": "Azure Test Flow - Create Security Rule",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "1b850642-89a7-41f7-9174-794187145585",
+          "scope": "local",
+          "name": "app_id",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KuCKOAziE8nerCC6n6L4QN5unlpnupg",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "5ba9d10a-7bfd-466c-a1c8-a83603b6cfc7",
+          "scope": "local",
+          "name": "subscription_id",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KuCKOB09jhWKR75wsyqaZcxTtKZ21hL",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "09f99b0d-3c9f-4db0-97fa-dffe18ab784c",
+          "scope": "local",
+          "name": "tenant",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KuCKOB0JqbJyTztBLEXzAcS988qeDY2",
+        "object_type": ""
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Azure Test Flow - Create Security Rule",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_1DXAPwtBFRwquxZATsGMgUSSude",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_1DaNdfNCHEpY3XdmdyTgiAPjDgR",
+        "name": "Azure Create Token",
+        "title": "Azure Create Token",
+        "type": "workflow.sub_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "display_name": "Azure Create Token",
+          "input": {
+            "variable_workflow_01KtmjQtIlPZcDmEGhW4BQSScxkJlOB5F": "$workflow.definition_workflow_1DaNKsuKYO8KLKiXGAUriSEtSGa.local.variable_workflow_01KuCKOAziE8nerCC6n6L4QN5unlpnupg$",
+            "variable_workflow_01KtmjQtJAEMOlh0PudhLVpzc5FWyYhkP": "c1366556-53ba-42f7-85cd-41b02d9fa1d4",
+            "variable_workflow_01KtmjQtJJy5ZEZIZMbRVAOa31TeywpkN": "$workflow.definition_workflow_1DaNKsuKYO8KLKiXGAUriSEtSGa.local.variable_workflow_01KuCKOB0JqbJyTztBLEXzAcS988qeDY2$"
+          },
+          "target": {
+            "execute_on_this_target": true,
+            "no_target": false,
+            "target_id": "definition_target_1DJWurOJquSaWL1jaMIzPlFYZQU",
+            "target_type": "web-service.endpoint",
+            "use_workflow_target": false
+          },
+          "workflow_id": "definition_workflow_1DJWmbsaMkvtFTQ3zbzHpDTpzK0"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1DaSMi3NkbNAVHvLNonODDJzn6o",
+        "name": "Azure Create/Update Network Security Group",
+        "title": "Azure Create/Update Network Security Group",
+        "type": "workflow.sub_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "display_name": "Azure Create/Update Network Security Group",
+          "input": {
+            "variable_workflow_01LCDSvIt4RNV4oyjBVtyszHiB1byfwhq": "myTestGroup1",
+            "variable_workflow_01LCDSvItQRrfBLDKtUkui9SUisXtLzxk": "$activity.definition_activity_1DaNdfNCHEpY3XdmdyTgiAPjDgR.output.variable_workflow_01KtmjQtJTKefsGqhJYMlpRahseshFQan$",
+            "variable_workflow_01LCDSvItk67wXvyrkomkHMcNlA0remTu": "null",
+            "variable_workflow_01LCDSvIttH8U43CuZollqxzN5fxsIdhg": "East US",
+            "variable_workflow_01LCDSvIu2R7P45zLAwZg8mWVO8Ftj8pq": "$workflow.definition_workflow_1DaNKsuKYO8KLKiXGAUriSEtSGa.local.variable_workflow_01KuCKOB09jhWKR75wsyqaZcxTtKZ21hL$",
+            "variable_workflow_01LCDSvIuD7IMSk9E5sPVJkgM9Po0dVMk": "null",
+            "variable_workflow_01LCDSvIuVTG9fD5uKlnOl8cjE0SNDuin": "null",
+            "variable_workflow_01LCDSvIueZJHfE8i8tP86Azi4WvFNdmh": "null",
+            "variable_workflow_01LCDSvIuna4ifPcw2HTRL65iWmqbuNAk": "null",
+            "variable_workflow_01LCDSvIuwsZayP2Lda41I3NCR1VpVfzy": "myTestSG1",
+            "variable_workflow_01LCDSvIv5v4tsngP765ibdyYGIKO042f": "null"
+          },
+          "target": {
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1DaNliz9S1KnqchklbiXvzcMDft",
+        "name": "Azure Create/Update Security Rules",
+        "title": "Azure Create/Update Security Rules",
+        "type": "workflow.sub_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "display_name": "Azure Create/Update Security Rules",
+          "input": {
+            "variable_workflow_01KtoZKDpsxm95Gj8PpMNybZhYL1F0Qqq": 100,
+            "variable_workflow_01KtoZKDqRH25YjFGCPpVVGYKC2SSKPK7": "null",
+            "variable_workflow_01KtoZKDqamnp0e3dQR0UJiMu73d2sS30": "null",
+            "variable_workflow_01KtoZKDqjtgvypSm3wgtmoTaUOdVWdeD": "null",
+            "variable_workflow_01KtoZKDwQ3RxktEkkrAxnl2vEYw1hVQE": "Allow",
+            "variable_workflow_01KtoZKDwc6LMFMGxyg4eswqgwOUcaju0": "*",
+            "variable_workflow_01KtoZKDwlF2dxJ1aEpxJOoCsb9lCrqsn": "null",
+            "variable_workflow_01KtoZKDwuOkMRNenKaO5PRNUzjuBULrz": "*",
+            "variable_workflow_01KtoZKDx3F1QA0vbWLO3XJLTjJFseX2N": "*",
+            "variable_workflow_01KtoZKDxvO2b6hZEmeedK0eYaPW2fd6a": "null",
+            "variable_workflow_01KtoZKDy69zA965Ac9nAwgGdBni4Gu04": "null",
+            "variable_workflow_01KtoZKDyF6eH839Wx0XIb6J48ZkfkfQL": "*",
+            "variable_workflow_01KtoZKDyNsbfQ0E9AQi4EDvUokpzP77D": "myTestGroup1",
+            "variable_workflow_01KtoZKDyWorybBdyyZYrnCZ6rU8skvyc": "myTestSG1",
+            "variable_workflow_01KtoZKDyfnXBO03VwPCFlAJLfNpxdu0n": "*",
+            "variable_workflow_01KtoZKDyxY6cALehmSpPspSRPKkyB3PX": "null",
+            "variable_workflow_01KtoZKDz6Wq3WrxIFmO58EdRJ4kIEFy9": "null",
+            "variable_workflow_01KtoZKDzFSt8QRCEqlKjmMqZhQwyWf0d": "MyTestSN1",
+            "variable_workflow_01KtoZKDzOS1gRRjwsjT5GvDTMwvaQdwb": "$activity.definition_activity_1DaNdfNCHEpY3XdmdyTgiAPjDgR.output.variable_workflow_01KtmjQtJTKefsGqhJYMlpRahseshFQan$",
+            "variable_workflow_01KtoZKDzXT7eTDdy1WxobgzdYHvZRfB5": "Inbound",
+            "variable_workflow_01KtoZKDzgUu0ir6qnW77qEeTyF4OzRa0": "$workflow.definition_workflow_1DaNKsuKYO8KLKiXGAUriSEtSGa.local.variable_workflow_01KuCKOB09jhWKR75wsyqaZcxTtKZ21hL$",
+            "variable_workflow_01KtoZKDzp3neQZc5UA9vhO48bWfOUTd6": "null",
+            "variable_workflow_01KtoZKDzxiWIRVsZaffj4k87MROj7ywp": "null"
+          },
+          "target": {
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "categories": {
+    "category_1Da6ynlVMOWEavCUrIu1bFYscr7": {
+      "unique_name": "category_1Da6ynlVMOWEavCUrIu1bFYscr7",
+      "name": "MS Azure Cloud",
+      "title": "MS Azure Cloud",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  },
+  "targets": {
+    "definition_target_1DJWurOJquSaWL1jaMIzPlFYZQU": {
+      "unique_name": "definition_target_1DJWurOJquSaWL1jaMIzPlFYZQU",
+      "name": "Azure Login",
+      "title": "Azure Login",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": false,
+        "display_name": "Azure Login",
+        "host": "login.microsoftonline.com",
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
+    },
+    "definition_target_1DXAPwtBFRwquxZATsGMgUSSude": {
+      "unique_name": "definition_target_1DXAPwtBFRwquxZATsGMgUSSude",
+      "name": "Azure Management",
+      "title": "Azure Management",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": false,
+        "display_name": "Azure Management",
+        "host": "management.azure.com",
+        "ignore_certificate_errors": true,
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
+    }
+  },
+  "subworkflows": [
+    {
+      "workflow": {
+        "unique_name": "definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ",
+        "name": "Azure Create/Update Network Security Group",
+        "title": "Azure Create/Update Network Security Group",
+        "type": "generic.workflow",
+        "base_type": "workflow",
+        "variables": [
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "networkSecurityGroupName",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01LCDSvIuwsZayP2Lda41I3NCR1VpVfzy",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "location",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01LCDSvIttH8U43CuZollqxzN5fxsIdhg",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "etag",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01LCDSvIuna4ifPcw2HTRL65iWmqbuNAk",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "access_token",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01LCDSvItQRrfBLDKtUkui9SUisXtLzxk",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "resourceGroupName",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01LCDSvIt4RNV4oyjBVtyszHiB1byfwhq",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "output",
+              "name": "response_body",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01LCDSvIuMGMsXJaRQFPQErSPcR84mENM",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "properties.defaultSecurityRules",
+              "type": "datatype.string",
+              "description": "The default security rules of network security group.\n\nhttps://docs.microsoft.com/en-us/rest/api/virtualnetwork/networksecuritygroups/createorupdate#securityrule"
+            },
+            "unique_name": "variable_workflow_01LCDSvIuD7IMSk9E5sPVJkgM9Po0dVMk",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1Ctpj87G6lxsZ8f0f3tS6vjbe3P",
+            "properties": {
+              "scope": "output",
+              "name": "response_code",
+              "type": "datatype.integer"
+            },
+            "unique_name": "variable_workflow_01LCDSvItablLMopTgiw41SvV0YBVXYdm",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "id",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01LCDSvItk67wXvyrkomkHMcNlA0remTu",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "properties.resourceGuid",
+              "type": "datatype.string",
+              "description": "The resource GUID property of the network security group resource."
+            },
+            "unique_name": "variable_workflow_01LCDSvIv5v4tsngP765ibdyYGIKO042f",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "tags",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01LCDSvIuVTG9fD5uKlnOl8cjE0SNDuin",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "properties.securityRules",
+              "type": "datatype.string",
+              "description": "A collection of security rules of the network security group.\n\nhttps://docs.microsoft.com/en-us/rest/api/virtualnetwork/networksecuritygroups/createorupdate#securityrule"
+            },
+            "unique_name": "variable_workflow_01LCDSvIueZJHfE8i8tP86Azi4WvFNdmh",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "subscriptionId",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01LCDSvIu2R7P45zLAwZg8mWVO8Ftj8pq",
+            "object_type": ""
+          }
+        ],
+        "properties": {
+          "atomic": {
+            "is_atomic": false
+          },
+          "delete_workflow_instance": false,
+          "display_name": "Azure Create/Update Network Security Group",
+          "favorite": false,
+          "target": {
+            "target_type": "web-service.endpoint",
+            "specify_on_workflow_start": true
+          }
+        },
+        "object_type": "definition_workflow",
+        "actions": [
+          {
+            "unique_name": "definition_activity_1DaPMfJw49tZXOAGrsLmdfo3Lm5",
+            "name": "Execute Python Script",
+            "title": "Execute Python Script",
+            "type": "python.script",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "display_name": "Execute Python Script",
+              "script": "import sys\nimport json\n\ndef fmt(src,fmt):\n    if not src:\n        return src\n    if fmt == \"json\":\n        src = json.loads(src)\n    if fmt == \"list\":\n        src = src.split(',')\n    return src\n\nargs = [None if x == 'null' else x for x in sys.argv[1:]]\nproperties = {}\nrequest_obj = {'properties':properties}\n\n(request_obj['etag'],\nrequest_obj['id'],\nrequest_obj['location'],\nproperties['defaultSecurityRules'],\nproperties['resourceGuid'],\nproperties['securityRules'],\nrequest_obj['tags']) = args\n\nrequest_obj['tags'] = fmt(request_obj['tags'],\"list\")\nproperties['securityRules'] = fmt(properties['securityRules'],\"json\")\nproperties['defaultSecurityRules'] = fmt(properties['defaultSecurityRules'],\"json\")\n\nj = json.dumps(request_obj)",
+              "script_arguments": [
+                "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIuna4ifPcw2HTRL65iWmqbuNAk$",
+                "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvItk67wXvyrkomkHMcNlA0remTu$",
+                "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIttH8U43CuZollqxzN5fxsIdhg$",
+                "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIuD7IMSk9E5sPVJkgM9Po0dVMk$",
+                "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIv5v4tsngP765ibdyYGIKO042f$",
+                "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIueZJHfE8i8tP86Azi4WvFNdmh$",
+                "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIuVTG9fD5uKlnOl8cjE0SNDuin$"
+              ],
+              "script_queries": [
+                {
+                  "script_query": "j",
+                  "script_query_name": "j",
+                  "script_query_type": "string"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_1DaPYmmU8APDO7l4099FhG6gIZ6",
+            "name": "HTTP Request",
+            "title": "HTTP Request",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "body": "$activity.definition_activity_1DaPMfJw49tZXOAGrsLmdfo3Lm5.output.script_queries.j$",
+              "content_type": "application/json",
+              "continue_on_error_status_code": false,
+              "custom_headers": [
+                {
+                  "name": "Authorization",
+                  "value": "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvItQRrfBLDKtUkui9SUisXtLzxk$"
+                }
+              ],
+              "display_name": "HTTP Request",
+              "method": "PUT",
+              "relative_url": "subscriptions/$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIu2R7P45zLAwZg8mWVO8Ftj8pq$/resourceGroups/$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIt4RNV4oyjBVtyszHiB1byfwhq$/providers/Microsoft.Network/networkSecurityGroups/$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIuwsZayP2Lda41I3NCR1VpVfzy$?api-version=2018-08-01",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "target": {
+                "override_workflow_target": false,
+                "use_workflow_target": true
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_1DaQU6BFItdP7ibVRp3LlMADKPE",
+            "name": "Set Variables",
+            "title": "Set Variables",
+            "type": "core.set_multiple_variables",
+            "base_type": "activity",
+            "properties": {
+              "display_name": "Set Variables",
+              "variables_to_update": [
+                {
+                  "variable_to_update": "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.output.variable_workflow_01LCDSvIuMGMsXJaRQFPQErSPcR84mENM$",
+                  "variable_value_new": "$activity.definition_activity_1DaPYmmU8APDO7l4099FhG6gIZ6.output.response_body$"
+                },
+                {
+                  "variable_to_update": "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.output.variable_workflow_01LCDSvItablLMopTgiw41SvV0YBVXYdm$",
+                  "variable_value_new": "$activity.definition_activity_1DaPYmmU8APDO7l4099FhG6gIZ6.output.status_code$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          }
+        ],
+        "categories": [
+          "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+        ]
+      }
+    },
+    {
+      "workflow": {
+        "unique_name": "definition_workflow_1DJWmbsaMkvtFTQ3zbzHpDTpzK0",
+        "name": "Azure Create Token",
+        "title": "Azure Create Token",
+        "type": "generic.workflow",
+        "base_type": "workflow",
+        "variables": [
+          {
+            "schema_id": "1CtpjF0wGZxmvKSEBCmsD9qnB8n",
+            "properties": {
+              "scope": "input",
+              "name": "secret",
+              "type": "datatype.secure_string"
+            },
+            "unique_name": "variable_workflow_01KtmjQtJAEMOlh0PudhLVpzc5FWyYhkP",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "tenantid",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtmjQtJJy5ZEZIZMbRVAOa31TeywpkN",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "output",
+              "name": "access_token",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtmjQtJTKefsGqhJYMlpRahseshFQan",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "clientid",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtmjQtIlPZcDmEGhW4BQSScxkJlOB5F",
+            "object_type": ""
+          }
+        ],
+        "properties": {
+          "atomic": {
+            "is_atomic": false
+          },
+          "delete_workflow_instance": false,
+          "description": "Instructions on how to create the credentials here:\n\nhttps://medium.com/@mauridb/calling-azure-rest-api-via-curl-eb10a06127",
+          "display_name": "Azure Create Token",
+          "favorite": false,
+          "target": {
+            "target_type": "web-service.endpoint",
+            "target_id": "definition_target_1DJWurOJquSaWL1jaMIzPlFYZQU",
+            "execute_on_workflow_target": true
+          }
+        },
+        "object_type": "definition_workflow",
+        "actions": [
+          {
+            "unique_name": "definition_activity_1DJWon8nxMcqPC5qpowSlbgkGJW",
+            "name": "HTTP Request",
+            "title": "Token Request",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "body": "grant_type=client_credentials\u0026client_id=$workflow.definition_workflow_1DJWmbsaMkvtFTQ3zbzHpDTpzK0.input.variable_workflow_01KtmjQtIlPZcDmEGhW4BQSScxkJlOB5F$\u0026client_secret=$workflow.definition_workflow_1DJWmbsaMkvtFTQ3zbzHpDTpzK0.input.variable_workflow_01KtmjQtJAEMOlh0PudhLVpzc5FWyYhkP$\u0026resource=https%3A%2F%2Fmanagement.azure.com%2F",
+              "continue_on_error_status_code": false,
+              "custom_headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/x-www-form-urlencoded"
+                }
+              ],
+              "display_name": "Token Request",
+              "method": "POST",
+              "relative_url": "$workflow.definition_workflow_1DJWmbsaMkvtFTQ3zbzHpDTpzK0.input.variable_workflow_01KtmjQtJJy5ZEZIZMbRVAOa31TeywpkN$/oauth2/token",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "target": {
+                "override_workflow_target": false,
+                "use_workflow_target": true
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_1DXHKMPT0MAAvTd9vfHSS1Ju0If",
+            "name": "JSONPath Query",
+            "title": "JSONPath Query",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "display_name": "JSONPath Query",
+              "input_json": "$activity.definition_activity_1DJWon8nxMcqPC5qpowSlbgkGJW.output.response_body$",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$.access_token",
+                  "jsonpath_query_name": "access_token",
+                  "jsonpath_query_type": "string"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_1DXDELVk44S5vKfSFEIng9KOGdc",
+            "name": "Set Variables",
+            "title": "Set Variables",
+            "type": "core.set_multiple_variables",
+            "base_type": "activity",
+            "properties": {
+              "display_name": "Set Variables",
+              "variables_to_update": [
+                {
+                  "variable_to_update": "$workflow.definition_workflow_1DJWmbsaMkvtFTQ3zbzHpDTpzK0.output.variable_workflow_01KtmjQtJTKefsGqhJYMlpRahseshFQan$",
+                  "variable_value_new": "Bearer $activity.definition_activity_1DXHKMPT0MAAvTd9vfHSS1Ju0If.output.jsonpath_queries.access_token$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          }
+        ],
+        "categories": [
+          "category_1Da6ynlVMOWEavCUrIu1bFYscr7"
+        ]
+      }
+    },
+    {
+      "workflow": {
+        "unique_name": "definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe",
+        "name": "Azure Create/Update Security Rules",
+        "title": "Azure Create/Update Security Rules",
+        "type": "generic.workflow",
+        "base_type": "workflow",
+        "variables": [
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "properties.destinationApplicationSecurityGroups",
+              "type": "datatype.string",
+              "description": "https://docs.microsoft.com/en-us/rest/api/virtualnetwork/securityrules/createorupdate#applicationsecuritygroup"
+            },
+            "unique_name": "variable_workflow_01KtoZKDzp3neQZc5UA9vhO48bWfOUTd6",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "properties.destinationAddressPrefixes",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtoZKDqRH25YjFGCPpVVGYKC2SSKPK7",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1Ctpj87G6lxsZ8f0f3tS6vjbe3P",
+            "properties": {
+              "scope": "output",
+              "name": "response_code",
+              "type": "datatype.integer"
+            },
+            "unique_name": "variable_workflow_01KtoZKDyoSLWkXIX9jBdswvwEYM8fwcT",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "properties.sourcePortRanges",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtoZKDy69zA965Ac9nAwgGdBni4Gu04",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "name",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtoZKDyxY6cALehmSpPspSRPKkyB3PX",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "properties.sourceApplicationSecurityGroups",
+              "type": "datatype.string",
+              "description": "The application security group specified as source.\n\nhttps://docs.microsoft.com/en-us/rest/api/virtualnetwork/securityrules/createorupdate#applicationsecuritygroup"
+            },
+            "unique_name": "variable_workflow_01KtoZKDzxiWIRVsZaffj4k87MROj7ywp",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "properties.direction",
+              "type": "datatype.string",
+              "description": "required \"Inbound\" or \"Outbound\""
+            },
+            "unique_name": "variable_workflow_01KtoZKDzXT7eTDdy1WxobgzdYHvZRfB5",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "etag",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtoZKDwlF2dxJ1aEpxJOoCsb9lCrqsn",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "securityRuleName",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtoZKDzFSt8QRCEqlKjmMqZhQwyWf0d",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "properties.sourceAddressPrefixes",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtoZKDz6Wq3WrxIFmO58EdRJ4kIEFy9",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "*",
+              "scope": "input",
+              "name": "properties.protocol",
+              "type": "datatype.string",
+              "description": "Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.\n\n"
+            },
+            "unique_name": "variable_workflow_01KtoZKDwuOkMRNenKaO5PRNUzjuBULrz",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "networkSecurityGroupName",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtoZKDyWorybBdyyZYrnCZ6rU8skvyc",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "properties.access",
+              "type": "datatype.string",
+              "description": "Required \"Allow\" or \"Deny\""
+            },
+            "unique_name": "variable_workflow_01KtoZKDwQ3RxktEkkrAxnl2vEYw1hVQE",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "id",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtoZKDqamnp0e3dQR0UJiMu73d2sS30",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "properties.description",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtoZKDxvO2b6hZEmeedK0eYaPW2fd6a",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "subscriptionId",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtoZKDzgUu0ir6qnW77qEeTyF4OzRa0",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "access_token",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtoZKDzOS1gRRjwsjT5GvDTMwvaQdwb",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "properties.destinationAddressPrefix",
+              "type": "datatype.string",
+              "description": "The destination address prefix. CIDR or destination IP range. Asterix '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used."
+            },
+            "unique_name": "variable_workflow_01KtoZKDyfnXBO03VwPCFlAJLfNpxdu0n",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "properties.destinationPortRange",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtoZKDyF6eH839Wx0XIb6J48ZkfkfQL",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "resourceGroupName",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtoZKDyNsbfQ0E9AQi4EDvUokpzP77D",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "properties.sourceAddressPrefix",
+              "type": "datatype.string",
+              "description": "The CIDR or source IP range. Asterix '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from."
+            },
+            "unique_name": "variable_workflow_01KtoZKDx3F1QA0vbWLO3XJLTjJFseX2N",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "properties.sourcePortRange",
+              "type": "datatype.string",
+              "description": "The source port or range. Integer or range between 0 and 65535. Asterix '*' can also be used to match all ports."
+            },
+            "unique_name": "variable_workflow_01KtoZKDwc6LMFMGxyg4eswqgwOUcaju0",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "null",
+              "scope": "input",
+              "name": "properties.destinationPortRanges",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtoZKDqjtgvypSm3wgtmoTaUOdVWdeD",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+            "properties": {
+              "value": "",
+              "scope": "output",
+              "name": "response_body",
+              "type": "datatype.string"
+            },
+            "unique_name": "variable_workflow_01KtoZKDqHRZKf97nk62Uk0lxhFMa0YsE",
+            "object_type": ""
+          },
+          {
+            "schema_id": "1Ctpj87G6lxsZ8f0f3tS6vjbe3P",
+            "properties": {
+              "scope": "input",
+              "name": "properties.priority",
+              "type": "datatype.integer",
+              "description": "The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule."
+            },
+            "unique_name": "variable_workflow_01KtoZKDpsxm95Gj8PpMNybZhYL1F0Qqq",
+            "object_type": ""
+          }
+        ],
+        "properties": {
+          "atomic": {
+            "is_atomic": false
+          },
+          "delete_workflow_instance": false,
+          "description": "https://docs.microsoft.com/en-us/rest/api/virtualnetwork/securityrules/createorupdate",
+          "display_name": "Azure Create/Update Security Rules",
+          "favorite": false,
+          "target": {
+            "target_type": "web-service.endpoint",
+            "specify_on_workflow_start": true
+          }
+        },
+        "object_type": "definition_workflow",
+        "actions": [
+          {
+            "unique_name": "definition_activity_1DaE8pTND6GSdt2OlM1LqQDqPg3",
+            "name": "Execute Python Script",
+            "title": "Execute Python Script",
+            "type": "python.script",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "display_name": "Execute Python Script",
+              "script": "import sys\nimport json\n\n\ndef fmt(src,fmt):\n    if not src:\n        return src\n    if fmt == \"json\":\n        src = json.loads(src)\n    if fmt == \"list\":\n        src = src.split(',')\n    return src\n\n\nargs = [None if x == 'null' else x for x in sys.argv[1:]]\nproperties = {}\nrequest_obj = {'properties':properties}\n\n\n(request_obj['etag'],\nrequest_obj['id'],\nrequest_obj['name'],\nproperties['access'],\nproperties['description'],\nproperties['destinationAddressPrefix'],\nproperties['destinationAddressPrefixes'],\nproperties['destinationApplicationSecurityGroups'],\nproperties['destinationPortRange'],\nproperties['destinationPortRanges'],\nproperties['direction'],\nproperties['priority'],\nproperties['protocol'],\nproperties['sourceAddressPrefix'],\nproperties['sourceAddressPrefixes'],\nproperties['sourceApplicationSecurityGroups'],\nproperties['sourcePortRange'],\nproperties['sourcePortRanges']) = args\n\n\nproperties['destinationAddressPrefixes'] = fmt(properties['destinationAddressPrefixes'],\"list\")\nproperties['destinationApplicationSecurityGroups'] = fmt(properties['destinationApplicationSecurityGroups'],\"json\")\nproperties['destinationPortRanges'] = fmt(properties['destinationPortRanges'],\"list\")\nproperties['sourceAddressPrefixes'] = fmt(properties['sourceAddressPrefixes'],\"list\")\nproperties['sourceApplicationSecurityGroups'] = fmt(properties['sourceApplicationSecurityGroups'],\"json\")\nproperties['sourcePortRanges'] = fmt(properties['sourcePortRanges'],\"list\")\n\n\nj = json.dumps(request_obj)",
+              "script_arguments": [
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDwlF2dxJ1aEpxJOoCsb9lCrqsn$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDqamnp0e3dQR0UJiMu73d2sS30$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDyxY6cALehmSpPspSRPKkyB3PX$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDwQ3RxktEkkrAxnl2vEYw1hVQE$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDxvO2b6hZEmeedK0eYaPW2fd6a$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDyfnXBO03VwPCFlAJLfNpxdu0n$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDqRH25YjFGCPpVVGYKC2SSKPK7$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDzxiWIRVsZaffj4k87MROj7ywp$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDyF6eH839Wx0XIb6J48ZkfkfQL$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDqjtgvypSm3wgtmoTaUOdVWdeD$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDzXT7eTDdy1WxobgzdYHvZRfB5$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDpsxm95Gj8PpMNybZhYL1F0Qqq$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDwuOkMRNenKaO5PRNUzjuBULrz$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDx3F1QA0vbWLO3XJLTjJFseX2N$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDz6Wq3WrxIFmO58EdRJ4kIEFy9$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDzxiWIRVsZaffj4k87MROj7ywp$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDwc6LMFMGxyg4eswqgwOUcaju0$",
+                "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDy69zA965Ac9nAwgGdBni4Gu04$"
+              ],
+              "script_queries": [
+                {
+                  "script_query": "j",
+                  "script_query_name": "j",
+                  "script_query_type": "string"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_1Da7M3JEjWshHbUNKmJmWBROatM",
+            "name": "HTTP Request",
+            "title": "HTTP Request",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "body": "$activity.definition_activity_1DaE8pTND6GSdt2OlM1LqQDqPg3.output.script_queries.j$",
+              "content_type": "application/json",
+              "continue_on_error_status_code": false,
+              "custom_headers": [
+                {
+                  "name": "Authorization",
+                  "value": "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDzOS1gRRjwsjT5GvDTMwvaQdwb$"
+                }
+              ],
+              "display_name": "HTTP Request",
+              "method": "PUT",
+              "relative_url": "subscriptions/$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDzgUu0ir6qnW77qEeTyF4OzRa0$/resourceGroups/$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDyNsbfQ0E9AQi4EDvUokpzP77D$/providers/Microsoft.Network/networkSecurityGroups/$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDyWorybBdyyZYrnCZ6rU8skvyc$/securityRules/$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.input.variable_workflow_01KtoZKDzFSt8QRCEqlKjmMqZhQwyWf0d$?api-version=2018-08-01",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "target": {
+                "override_workflow_target": false,
+                "use_workflow_target": true
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_1DaEoPKE8dS3UYput4oHcKXfHr0",
+            "name": "Set Variables",
+            "title": "Set Variables",
+            "type": "core.set_multiple_variables",
+            "base_type": "activity",
+            "properties": {
+              "display_name": "Set Variables",
+              "variables_to_update": [
+                {
+                  "variable_to_update": "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.output.variable_workflow_01KtoZKDqHRZKf97nk62Uk0lxhFMa0YsE$",
+                  "variable_value_new": "$activity.definition_activity_1Da7M3JEjWshHbUNKmJmWBROatM.output.response_body$"
+                },
+                {
+                  "variable_to_update": "$workflow.definition_workflow_1Da7EHaDuDBlcKHGHEO5u7JQcDe.output.variable_workflow_01KtoZKDyoSLWkXIX9jBdswvwEYM8fwcT$",
+                  "variable_value_new": "$activity.definition_activity_1Da7M3JEjWshHbUNKmJmWBROatM.output.status_code$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          }
+        ],
+        "categories": [
+          "category_1Da6ynlVMOWEavCUrIu1bFYscr7"
+        ]
+      }
+    }
+  ]
+}

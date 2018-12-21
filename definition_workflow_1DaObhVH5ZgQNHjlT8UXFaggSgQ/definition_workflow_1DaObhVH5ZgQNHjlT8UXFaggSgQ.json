@@ -1,0 +1,254 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ",
+    "name": "Azure Create/Update Network Security Group",
+    "title": "Azure Create/Update Network Security Group",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "properties.defaultSecurityRules",
+          "type": "datatype.string",
+          "description": "The default security rules of network security group.\n\nhttps://docs.microsoft.com/en-us/rest/api/virtualnetwork/networksecuritygroups/createorupdate#securityrule"
+        },
+        "unique_name": "variable_workflow_01LCDSvIuD7IMSk9E5sPVJkgM9Po0dVMk",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "properties.securityRules",
+          "type": "datatype.string",
+          "description": "A collection of security rules of the network security group.\n\nhttps://docs.microsoft.com/en-us/rest/api/virtualnetwork/networksecuritygroups/createorupdate#securityrule"
+        },
+        "unique_name": "variable_workflow_01LCDSvIueZJHfE8i8tP86Azi4WvFNdmh",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "etag",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LCDSvIuna4ifPcw2HTRL65iWmqbuNAk",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "response_body",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LCDSvIuMGMsXJaRQFPQErSPcR84mENM",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "id",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LCDSvItk67wXvyrkomkHMcNlA0remTu",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "access_token",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LCDSvItQRrfBLDKtUkui9SUisXtLzxk",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1Ctpj87G6lxsZ8f0f3tS6vjbe3P",
+        "properties": {
+          "scope": "output",
+          "name": "response_code",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_01LCDSvItablLMopTgiw41SvV0YBVXYdm",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "networkSecurityGroupName",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LCDSvIuwsZayP2Lda41I3NCR1VpVfzy",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "location",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LCDSvIttH8U43CuZollqxzN5fxsIdhg",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "properties.resourceGuid",
+          "type": "datatype.string",
+          "description": "The resource GUID property of the network security group resource."
+        },
+        "unique_name": "variable_workflow_01LCDSvIv5v4tsngP765ibdyYGIKO042f",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "resourceGroupName",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LCDSvIt4RNV4oyjBVtyszHiB1byfwhq",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "subscriptionId",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LCDSvIu2R7P45zLAwZg8mWVO8Ftj8pq",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "tags",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LCDSvIuVTG9fD5uKlnOl8cjE0SNDuin",
+        "object_type": ""
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Azure Create/Update Network Security Group",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_1DaPMfJw49tZXOAGrsLmdfo3Lm5",
+        "name": "Execute Python Script",
+        "title": "Execute Python Script",
+        "type": "python.script",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "display_name": "Execute Python Script",
+          "script": "import sys\nimport json\n\ndef fmt(src,fmt):\n    if not src:\n        return src\n    if fmt == \"json\":\n        src = json.loads(src)\n    if fmt == \"list\":\n        src = src.split(',')\n    return src\n\nargs = [None if x == 'null' else x for x in sys.argv[1:]]\nproperties = {}\nrequest_obj = {'properties':properties}\n\n(request_obj['etag'],\nrequest_obj['id'],\nrequest_obj['location'],\nproperties['defaultSecurityRules'],\nproperties['resourceGuid'],\nproperties['securityRules'],\nrequest_obj['tags']) = args\n\nrequest_obj['tags'] = fmt(request_obj['tags'],\"list\")\nproperties['securityRules'] = fmt(properties['securityRules'],\"json\")\nproperties['defaultSecurityRules'] = fmt(properties['defaultSecurityRules'],\"json\")\n\nj = json.dumps(request_obj)",
+          "script_arguments": [
+            "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIuna4ifPcw2HTRL65iWmqbuNAk$",
+            "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvItk67wXvyrkomkHMcNlA0remTu$",
+            "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIttH8U43CuZollqxzN5fxsIdhg$",
+            "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIuD7IMSk9E5sPVJkgM9Po0dVMk$",
+            "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIv5v4tsngP765ibdyYGIKO042f$",
+            "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIueZJHfE8i8tP86Azi4WvFNdmh$",
+            "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIuVTG9fD5uKlnOl8cjE0SNDuin$"
+          ],
+          "script_queries": [
+            {
+              "script_query": "j",
+              "script_query_name": "j",
+              "script_query_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1DaPYmmU8APDO7l4099FhG6gIZ6",
+        "name": "HTTP Request",
+        "title": "HTTP Request",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "$activity.definition_activity_1DaPMfJw49tZXOAGrsLmdfo3Lm5.output.script_queries.j$",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvItQRrfBLDKtUkui9SUisXtLzxk$"
+            }
+          ],
+          "display_name": "HTTP Request",
+          "method": "PUT",
+          "relative_url": "subscriptions/$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIu2R7P45zLAwZg8mWVO8Ftj8pq$/resourceGroups/$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIt4RNV4oyjBVtyszHiB1byfwhq$/providers/Microsoft.Network/networkSecurityGroups/$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.input.variable_workflow_01LCDSvIuwsZayP2Lda41I3NCR1VpVfzy$?api-version=2018-08-01",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1DaQU6BFItdP7ibVRp3LlMADKPE",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.output.variable_workflow_01LCDSvIuMGMsXJaRQFPQErSPcR84mENM$",
+              "variable_value_new": "$activity.definition_activity_1DaPYmmU8APDO7l4099FhG6gIZ6.output.response_body$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_1DaObhVH5ZgQNHjlT8UXFaggSgQ.output.variable_workflow_01LCDSvItablLMopTgiw41SvV0YBVXYdm$",
+              "variable_value_new": "$activity.definition_activity_1DaPYmmU8APDO7l4099FhG6gIZ6.output.status_code$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}

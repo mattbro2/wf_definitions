@@ -1,0 +1,227 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_1DXcOI3WDCTvQjhxK7GVfb5tRn1",
+    "name": "Azure - Create/Update Resource Group",
+    "title": "Azure - Create/Update Resource Group",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "resourceGroupName",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LF1DbWaHKxdKRZmtQYL3aAzKPZVqRrf",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "response_body",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LF1DbWZZBFQU3x3z3rhps0nqphVi4CG",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "tags",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LF1DbWbcmcgsDbAJdVmsmlMZXFoeH7i",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "subscriptionId",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LF1DbWbSVKADBXRcLDhuhH0YNAnPawP",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "location",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LF1DbWaieTT6i43BBKIq9x9Sq63BXWj",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "request_body",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LF1DbWaZgIvoPIv3KhSj2I7Q6KF9wKb",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "properties",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LF1DbWa82EadduhaDTD1T1yQAxDKagQ",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1Ctpj87G6lxsZ8f0f3tS6vjbe3P",
+        "properties": {
+          "scope": "output",
+          "name": "response_code",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_01LF1DbWZyGjyifb2Bm9jr5RP4w2sNPKZ",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "access_token",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LF1DbWaQGiByRxdZg41CHoaDqUx40Ul",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "managedBy",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01LF1DbWbm37nNwRAV0k17ewl431mLoT1",
+        "object_type": ""
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "description": "https://docs.microsoft.com/en-us/rest/api/resources/resourcegroups/createorupdate",
+      "display_name": "Azure - Create/Update Resource Group",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_1DXeq89lC2XUNy3smcXwjJvYBsN",
+        "name": "Execute Python Script",
+        "title": "Execute Python Script",
+        "type": "python.script",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "display_name": "Execute Python Script",
+          "script": "import sys\nimport json\n\nmyobj = {'location':sys.argv[1]}\nif sys.argv[2] != 'null':\n    myobj['managedBy'] = sys.argv[2]\nif sys.argv[3] != 'null':\n    myobj['properties'] = sys.argv[3]\nif sys.argv[4] != 'null':\n    myobj['tags'] = sys.argv[4]\n\nj = json.dumps(myobj)",
+          "script_arguments": [
+            "$workflow.definition_workflow_1DXcOI3WDCTvQjhxK7GVfb5tRn1.input.variable_workflow_01LF1DbWaieTT6i43BBKIq9x9Sq63BXWj$",
+            "$workflow.definition_workflow_1DXcOI3WDCTvQjhxK7GVfb5tRn1.input.variable_workflow_01LF1DbWbm37nNwRAV0k17ewl431mLoT1$",
+            "$workflow.definition_workflow_1DXcOI3WDCTvQjhxK7GVfb5tRn1.input.variable_workflow_01LF1DbWa82EadduhaDTD1T1yQAxDKagQ$",
+            "$workflow.definition_workflow_1DXcOI3WDCTvQjhxK7GVfb5tRn1.input.variable_workflow_01LF1DbWbcmcgsDbAJdVmsmlMZXFoeH7i$"
+          ],
+          "script_queries": [
+            {
+              "script_query": "j",
+              "script_query_name": "j",
+              "script_query_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1DXdB2nr0FdANb2Q9IoesjwPUXI",
+        "name": "HTTP Request",
+        "title": "HTTP Request",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "$activity.definition_activity_1DXeq89lC2XUNy3smcXwjJvYBsN.output.script_queries.j$",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "$workflow.definition_workflow_1DXcOI3WDCTvQjhxK7GVfb5tRn1.input.variable_workflow_01LF1DbWaQGiByRxdZg41CHoaDqUx40Ul$"
+            }
+          ],
+          "display_name": "HTTP Request",
+          "method": "PUT",
+          "relative_url": "subscriptions/$workflow.definition_workflow_1DXcOI3WDCTvQjhxK7GVfb5tRn1.input.variable_workflow_01LF1DbWbSVKADBXRcLDhuhH0YNAnPawP$/resourcegroups/$workflow.definition_workflow_1DXcOI3WDCTvQjhxK7GVfb5tRn1.input.variable_workflow_01LF1DbWaHKxdKRZmtQYL3aAzKPZVqRrf$?api-version=2018-05-01",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1DXdbbnlRSbHp4V6i4HyU8Rp1L4",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_1DXcOI3WDCTvQjhxK7GVfb5tRn1.output.variable_workflow_01LF1DbWZZBFQU3x3z3rhps0nqphVi4CG$",
+              "variable_value_new": "$activity.definition_activity_1DXdB2nr0FdANb2Q9IoesjwPUXI.output.response_body$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_1DXcOI3WDCTvQjhxK7GVfb5tRn1.output.variable_workflow_01LF1DbWZyGjyifb2Bm9jr5RP4w2sNPKZ$",
+              "variable_value_new": "$activity.definition_activity_1DXdB2nr0FdANb2Q9IoesjwPUXI.output.status_code$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1Da6ynlVMOWEavCUrIu1bFYscr7"
+    ]
+  },
+  "categories": {
+    "category_1Da6ynlVMOWEavCUrIu1bFYscr7": {
+      "unique_name": "category_1Da6ynlVMOWEavCUrIu1bFYscr7",
+      "name": "MS Azure Cloud",
+      "title": "MS Azure Cloud",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  }
+}

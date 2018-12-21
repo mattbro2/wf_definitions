@@ -1,0 +1,150 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_1Cuz6J3CYpDf5mUf7CnqHVKqnX2",
+    "name": "POST Message to Slack Room",
+    "title": "POST Message to Slack Room",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "message",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KtSVIkkMZRYWS8zQMBbGTYYOQeewjaX",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "CC2GWFARX",
+          "scope": "input",
+          "name": "channel-name",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KtSVIkjq0hHRPVRw4y67yAyeFQJLDUV",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "xoxp-411267659813-412446262838-411268706613-cb381f7a7862f6ffb7445af75ddf0008",
+          "scope": "local",
+          "name": "slack-token",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KtSVIkkCqRePef3Z17izavEWniBfg7M",
+        "object_type": ""
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "description": "Test123",
+      "display_name": "POST Message to Slack Room",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_1Cuz5CUzHOgjo5zTtGxPwWPtXAk",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_1Cuz9f1AQwTYWXxT0fWEf1yCPk0",
+        "name": "HTTP Request",
+        "title": "Get All Channels",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "display_name": "Get All Channels",
+          "method": "GET",
+          "relative_url": "/channels.list?token=$workflow.definition_workflow_1Cuz6J3CYpDf5mUf7CnqHVKqnX2.local.variable_workflow_01KtSVIkkCqRePef3Z17izavEWniBfg7M$",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1CuzbiI2D3CXiAMhQz1oIQ4aBSE",
+        "name": "HTTP Request",
+        "title": "Post Message to SlackRoom",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "application/json",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "{\n  \"channel\":\"$workflow.definition_workflow_1Cuz6J3CYpDf5mUf7CnqHVKqnX2.input.variable_workflow_01KtSVIkjq0hHRPVRw4y67yAyeFQJLDUV$\",\n  \"text\":\"$workflow.definition_workflow_1Cuz6J3CYpDf5mUf7CnqHVKqnX2.input.variable_workflow_01KtSVIkkMZRYWS8zQMBbGTYYOQeewjaX$\",\n  \"as_user\":true\n}",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $workflow.definition_workflow_1Cuz6J3CYpDf5mUf7CnqHVKqnX2.local.variable_workflow_01KtSVIkkCqRePef3Z17izavEWniBfg7M$"
+            }
+          ],
+          "display_name": "Post Message to SlackRoom",
+          "method": "POST",
+          "relative_url": "/chat.postMessage",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1Cuv0ORm51CCSpHTTdHhMSzqHvu"
+    ]
+  },
+  "categories": {
+    "category_1Cuv0ORm51CCSpHTTdHhMSzqHvu": {
+      "unique_name": "category_1Cuv0ORm51CCSpHTTdHhMSzqHvu",
+      "name": "AO Demo",
+      "title": "AO Demo",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  },
+  "targets": {
+    "definition_target_1Cuz5CUzHOgjo5zTtGxPwWPtXAk": {
+      "unique_name": "definition_target_1Cuz5CUzHOgjo5zTtGxPwWPtXAk",
+      "name": "Slack-Room-Murali",
+      "title": "Slack-Room-Murali",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": false,
+        "display_name": "Slack-Room-Murali",
+        "host": "slack.com",
+        "ignore_certificate_errors": true,
+        "no_runtime_user": true,
+        "path": "/api",
+        "protocol": "https"
+      }
+    }
+  }
+}

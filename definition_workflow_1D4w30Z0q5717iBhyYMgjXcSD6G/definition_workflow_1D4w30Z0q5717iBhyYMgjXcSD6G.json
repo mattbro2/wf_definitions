@@ -1,0 +1,669 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G",
+    "name": "DNA Center Webex Teams Demo",
+    "title": "DNA Center Webex Teams Demo",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Success String",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17PCewfy2VBlIAJnIWVZdImVu0hVBE",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjF0wGZxmvKSEBCmsD9qnB8n",
+        "properties": {
+          "scope": "local",
+          "name": "DNAC Token",
+          "type": "datatype.secure_string"
+        },
+        "unique_name": "variable_workflow_01L17PCewpQGvGTLZx1MCbz6CubMwZBdU",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjF0wGZxmvKSEBCmsD9qnB8n",
+        "properties": {
+          "scope": "local",
+          "name": "Webex Teams Auth Key",
+          "type": "datatype.secure_string"
+        },
+        "unique_name": "variable_workflow_01L17PCevplDxBB6C2F2jhBSuHFrXQBi4",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Webex Teams Room Title",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17PCewDZpgjRRuxSOlkLZweAoDa4DU",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Emails To Invite To Room",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17PCewNQx4IsS4Ly5P4O3cAcErJ3Iv",
+        "object_type": ""
+      },
+      {
+        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "properties": {
+          "value": "null",
+          "scope": "local",
+          "name": "Webex Teams RoomID",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01L17PCewWl4hvVCDSPGqdxkjswjlHmNa",
+        "object_type": ""
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "DNA Center Webex Teams Demo",
+      "favorite": false,
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_1D4w5yaamfM0CYaADNj7fxfhKwj",
+        "name": "HTTP Request",
+        "title": "DNAC Login",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.local.variable_workflow_01L17PCewpQGvGTLZx1MCbz6CubMwZBdU$"
+            }
+          ],
+          "display_name": "DNAC Login",
+          "method": "POST",
+          "relative_url": "/system/v1/auth/token",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_1Cu0RFe3P3gbhDtGMa1y0ctMw8z"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1D4wZqPaIE876cAhKgrSpgd6Xn2",
+        "name": "JSONPath Query",
+        "title": "Get Auth Token",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "display_name": "Get Auth Token",
+          "input_json": "$activity.definition_activity_1D4w5yaamfM0CYaADNj7fxfhKwj.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.Token",
+              "jsonpath_query_name": "token",
+              "jsonpath_query_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1D4wh4TrUFlMF9Vw1z4cXIy930X",
+        "name": "HTTP Request",
+        "title": "DNAC Get Network Device",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "custom_headers": [
+            {
+              "name": "X-Auth-Token",
+              "value": "$activity.definition_activity_1D4wZqPaIE876cAhKgrSpgd6Xn2.output.jsonpath_queries.token$"
+            }
+          ],
+          "display_name": "DNAC Get Network Device",
+          "method": "GET",
+          "relative_url": "/v1/discovery/6/network-device",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_1Cu0RFe3P3gbhDtGMa1y0ctMw8z"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1D4wp1ozYslScFg6UDN3BMn36eu",
+        "name": "Read Table from JSON",
+        "title": "Read Table from JSON",
+        "type": "corejava.read_table_from_json",
+        "base_type": "activity",
+        "properties": {
+          "display_name": "Read Table from JSON",
+          "input_json": "$activity.definition_activity_1D4wh4TrUFlMF9Vw1z4cXIy930X.output.response_body$",
+          "jsonpath_query": "$.response",
+          "populate_columns": false,
+          "table_columns": [
+            {
+              "column_name": "reachabilityFailureReason",
+              "column_type": "string"
+            },
+            {
+              "column_name": "reachabilityStatus",
+              "column_type": "string"
+            },
+            {
+              "column_name": "managementIpAddress",
+              "column_type": "string"
+            },
+            {
+              "column_name": "id",
+              "column_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1D4x2dX7RYPyiWjjSmvcwHsMVI2",
+        "name": "HTTP Request",
+        "title": "Webex Teams Get Rooms",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.local.variable_workflow_01L17PCevplDxBB6C2F2jhBSuHFrXQBi4$"
+            }
+          ],
+          "display_name": "Webex Teams Get Rooms",
+          "method": "GET",
+          "relative_url": "rooms?sortBy=created",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_1D4xAzou3DugrWeHCi8BCcLquRk"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1D4xRPvqZtj4eQ5rvAKCVGELjy6",
+        "name": "Read Table from JSON",
+        "title": "Read Rooms Into Table",
+        "type": "corejava.read_table_from_json",
+        "base_type": "activity",
+        "properties": {
+          "display_name": "Read Rooms Into Table",
+          "input_json": "$activity.definition_activity_1D4x2dX7RYPyiWjjSmvcwHsMVI2.output.response_body$",
+          "jsonpath_query": "$.items[*]",
+          "populate_columns": false,
+          "table_columns": [
+            {
+              "column_name": "title",
+              "column_type": "string"
+            },
+            {
+              "column_name": "id",
+              "column_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1D4xWy1MC8WPE6Mfr1RPCRE8rvS",
+        "name": "For Each",
+        "title": "For Each",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "display_name": "For Each",
+          "source_array": "$activity.definition_activity_1D4xRPvqZtj4eQ5rvAKCVGELjy6.output.read_table_from_json$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_1D4xYhiwNB9I2ro6qxO9x9hgqRe",
+            "name": "Condition Block",
+            "title": "Condition Block",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "display_name": "Condition Block"
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_1D4xYpTOXCulg74fNBbX6l4V5EV",
+                "name": "Condition Branch",
+                "title": "Condition Branch",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_1D4xWy1MC8WPE6Mfr1RPCRE8rvS.input.source_array[@].title$",
+                    "operator": "eq",
+                    "right_operand": "$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.input.variable_workflow_01L17PCewDZpgjRRuxSOlkLZweAoDa4DU$"
+                  },
+                  "display_name": "Condition Branch"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_1D4yIPlOFUSBCtYDNdXBe8wBrkq",
+                    "name": "Set Variables",
+                    "title": "Set Variables",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "display_name": "Set Variables",
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.local.variable_workflow_01L17PCewWl4hvVCDSPGqdxkjswjlHmNa$",
+                          "variable_value_new": "$activity.definition_activity_1D4xWy1MC8WPE6Mfr1RPCRE8rvS.input.source_array[@].id$"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_1D4yRBVfvrXrp2m1g9wGUx6Cuh5",
+                    "name": "Break",
+                    "title": "Break",
+                    "type": "logic.break",
+                    "base_type": "activity",
+                    "properties": {
+                      "display_name": "Break"
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_1D4ySYjJ7TGp1gbPHPoQJkikYhY",
+        "name": "Condition Block",
+        "title": "Condition Block",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "display_name": "Condition Block"
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_1D4ySkQIYjCT8iOwazd6vCfoZP2",
+            "name": "Condition Branch",
+            "title": "Condition Branch",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.local.variable_workflow_01L17PCewWl4hvVCDSPGqdxkjswjlHmNa$",
+                "operator": "eq",
+                "right_operand": "null"
+              },
+              "display_name": "Condition Branch"
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_1D4yWXeNd05FgOpT5cwfNQeCDz3",
+                "name": "HTTP Request",
+                "title": "Webex Teams Create Room",
+                "type": "web-service.http_request",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "allow_auto_redirect": true,
+                  "body": "{\n  \"title\":\"$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.input.variable_workflow_01L17PCewDZpgjRRuxSOlkLZweAoDa4DU$\"\n}",
+                  "content_type": "application/json",
+                  "continue_on_error_status_code": false,
+                  "custom_headers": [
+                    {
+                      "name": "Authorization",
+                      "value": "$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.local.variable_workflow_01L17PCevplDxBB6C2F2jhBSuHFrXQBi4$"
+                    }
+                  ],
+                  "display_name": "Webex Teams Create Room",
+                  "method": "POST",
+                  "relative_url": "rooms",
+                  "runtime_user": {
+                    "target_default": true
+                  },
+                  "target": {
+                    "override_workflow_target": true,
+                    "target_id": "definition_target_1D4xAzou3DugrWeHCi8BCcLquRk"
+                  }
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_1D4yl1mBqe0U11X53H0PDz2XjAg",
+                "name": "JSONPath Query",
+                "title": "Get Room ID",
+                "type": "corejava.jsonpathquery",
+                "base_type": "activity",
+                "properties": {
+                  "display_name": "Get Room ID",
+                  "input_json": "$activity.definition_activity_1D4yWXeNd05FgOpT5cwfNQeCDz3.output.response_body$",
+                  "jsonpath_queries": [
+                    {
+                      "jsonpath_query": "$.id",
+                      "jsonpath_query_name": "room_id",
+                      "jsonpath_query_type": "string"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_1D4ysqgZu6n4FyFlUtOi7jOVbuw",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "display_name": "Set Variables",
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.local.variable_workflow_01L17PCewWl4hvVCDSPGqdxkjswjlHmNa$",
+                      "variable_value_new": "$activity.definition_activity_1D4yl1mBqe0U11X53H0PDz2XjAg.output.jsonpath_queries.room_id$"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_1D4z0RXAXt3VW6yvJxRxJTo7SUj",
+        "name": "Split String",
+        "title": "Parse List Of Users",
+        "type": "core.splitstring",
+        "base_type": "activity",
+        "properties": {
+          "boundaries": [
+            {
+              "boundary": ","
+            }
+          ],
+          "display_name": "Parse List Of Users",
+          "input_string": "$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.input.variable_workflow_01L17PCewNQx4IsS4Ly5P4O3cAcErJ3Iv$"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_1D4z3Mw22b98vCS0wXxRmmFju11",
+        "name": "For Each",
+        "title": "For Each",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "display_name": "For Each",
+          "source_array": "$activity.definition_activity_1D4z0RXAXt3VW6yvJxRxJTo7SUj.output.parts$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_1D4z5by6e59exxe0sfoWrl5OK49",
+            "name": "HTTP Request",
+            "title": "Webex Teams Invite User To Room",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "body": "{\n  \"roomId\":\"$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.local.variable_workflow_01L17PCewWl4hvVCDSPGqdxkjswjlHmNa$\",\n  \"personEmail\":\"$activity.definition_activity_1D4z3Mw22b98vCS0wXxRmmFju11.input.source_array[@]$\"\n}",
+              "continue_on_error_status_code": true,
+              "custom_headers": [
+                {
+                  "name": "Authorization",
+                  "value": "$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.local.variable_workflow_01L17PCevplDxBB6C2F2jhBSuHFrXQBi4$"
+                }
+              ],
+              "display_name": "Webex Teams Invite User To Room",
+              "method": "POST",
+              "relative_url": "memberships",
+              "runtime_user": {
+                "target_default": true
+              },
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_1D4xAzou3DugrWeHCi8BCcLquRk"
+              }
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_1D4zfJ8zd8gYCZbuG6WFS3zdmop",
+        "name": "For Each",
+        "title": "For Each - DNAC Discovery Record",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "display_name": "For Each - DNAC Discovery Record",
+          "source_array": "$activity.definition_activity_1D4wp1ozYslScFg6UDN3BMn36eu.output.read_table_from_json$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_1D4zmRTaVHtveolshKSqxLeBXRx",
+            "name": "Condition Block",
+            "title": "Condition Block",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "display_name": "Condition Block"
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_1D4zmaygbmDbsiYeA29PZoZ004D",
+                "name": "Condition Branch",
+                "title": "Condition Branch",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_1D4zfJ8zd8gYCZbuG6WFS3zdmop.input.source_array[@].reachabilityStatus$",
+                    "operator": "ne",
+                    "right_operand": "Success"
+                  },
+                  "display_name": "Condition Branch"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_1D4zth5QXONGON9iLypyrxkHpee",
+                    "name": "HTTP Request",
+                    "title": "Webex Teams - Notify Room of Unreachable Server",
+                    "type": "web-service.http_request",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "allow_auto_redirect": true,
+                      "body": "{\n  \"roomId\":\"$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.local.variable_workflow_01L17PCewWl4hvVCDSPGqdxkjswjlHmNa$\",\n  \"text\":\"ALERT - DNAC detected issues with Server: $activity.definition_activity_1D4zfJ8zd8gYCZbuG6WFS3zdmop.input.source_array[@].reachabilityFailureReason$\"\n}",
+                      "content_type": "application/json",
+                      "continue_on_error_status_code": false,
+                      "custom_headers": [
+                        {
+                          "name": "Authorization",
+                          "value": "$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.local.variable_workflow_01L17PCevplDxBB6C2F2jhBSuHFrXQBi4$"
+                        }
+                      ],
+                      "display_name": "Webex Teams - Notify Room of Unreachable Server",
+                      "method": "POST",
+                      "relative_url": "messages",
+                      "runtime_user": {
+                        "target_default": true
+                      },
+                      "target": {
+                        "override_workflow_target": true,
+                        "target_id": "definition_target_1D4xAzou3DugrWeHCi8BCcLquRk"
+                      }
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_1D4zmaHBA1D6EB9MCVk7Gg2HjeF",
+                "name": "Condition Branch",
+                "title": "Condition Branch",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_1D4zfJ8zd8gYCZbuG6WFS3zdmop.input.source_array[@].reachabilityStatus$",
+                    "operator": "eq",
+                    "right_operand": "Success"
+                  },
+                  "display_name": "Condition Branch"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_1D50SeRuQ4d5tnmR7hlC9Lcg7gm",
+                    "name": "Set Variables",
+                    "title": "Set Variables",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "display_name": "Set Variables",
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.local.variable_workflow_01L17PCewfy2VBlIAJnIWVZdImVu0hVBE$",
+                          "variable_value_new": "$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.local.variable_workflow_01L17PCewfy2VBlIAJnIWVZdImVu0hVBE$\\nIP: $activity.definition_activity_1D4zfJ8zd8gYCZbuG6WFS3zdmop.input.source_array[@].managementIpAddress$  STATUS: $activity.definition_activity_1D4zfJ8zd8gYCZbuG6WFS3zdmop.input.source_array[@].reachabilityStatus$\\n"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_1D509v89msGmwd1NExOGzDa46lm",
+        "name": "HTTP Request",
+        "title": "Webex Teams - Notify ",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "{\n  \"roomId\":\"$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.local.variable_workflow_01L17PCewWl4hvVCDSPGqdxkjswjlHmNa$\",\n  \"markdown\":\"The following discovered network devices are reachable:\\n\\n$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.local.variable_workflow_01L17PCewfy2VBlIAJnIWVZdImVu0hVBE$\\n\"\n}",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "$workflow.definition_workflow_1D4w30Z0q5717iBhyYMgjXcSD6G.local.variable_workflow_01L17PCevplDxBB6C2F2jhBSuHFrXQBi4$"
+            }
+          ],
+          "display_name": "Webex Teams - Notify ",
+          "method": "POST",
+          "relative_url": "messages",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_1D4xAzou3DugrWeHCi8BCcLquRk"
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_1Cu0RFe3P3gbhDtGMa1y0ctMw8z": {
+      "unique_name": "definition_target_1Cu0RFe3P3gbhDtGMa1y0ctMw8z",
+      "name": "DNA-Devnet",
+      "title": "DNA-Devnet",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "DNA-Devnet",
+        "host": "sandboxdnac.cisco.com",
+        "ignore_certificate_errors": true,
+        "no_runtime_user": true,
+        "path": "/api",
+        "protocol": "https"
+      }
+    },
+    "definition_target_1D4xAzou3DugrWeHCi8BCcLquRk": {
+      "unique_name": "definition_target_1D4xAzou3DugrWeHCi8BCcLquRk",
+      "name": "Webex Teams Demo Endpoint",
+      "title": "Webex Teams Demo Endpoint",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "Webex Teams Demo Endpoint",
+        "host": "api.ciscospark.com",
+        "no_runtime_user": true,
+        "path": "v1",
+        "protocol": "https"
+      }
+    }
+  }
+}
