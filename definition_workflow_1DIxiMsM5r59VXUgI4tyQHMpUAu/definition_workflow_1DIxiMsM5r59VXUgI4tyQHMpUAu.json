@@ -7,72 +7,17 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "token",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01KuCFlzreX6NamvIey0Y8AHDzxK6JXcO",
-        "object_type": ""
-      },
-      {
-        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
-        "properties": {
-          "value": "",
-          "scope": "output",
-          "name": "WF_ID",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01KuCFlzro76TXq3Svylbqo3c2Hm6um7q",
-        "object_type": ""
-      },
-      {
-        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "RESOURCE_TYPE",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01KuCFlzqf7Ef7qEEiCS2w8hWpL4ZSD1l",
-        "object_type": ""
-      },
-      {
-        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "APPLICATION_PROFILE",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01KuCFlzr3abLv6UlNYCBxgS6OC53hrqI",
-        "object_type": ""
-      },
-      {
-        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
-        "properties": {
-          "value": "aoadmin@cisco.com",
-          "scope": "local",
-          "name": "username",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01KuCFlzrDSNbYBizI0QCGHJldduPV1s7",
-        "object_type": ""
-      },
-      {
-        "schema_id": "1CtpjF0wGZxmvKSEBCmsD9qnB8n",
+        "schema_id": "01fqaHbUuwUxFsqtQ1xVeVmxKfHlxvVF2",
         "properties": {
           "scope": "local",
           "name": "password",
           "type": "datatype.secure_string"
         },
         "unique_name": "variable_workflow_01KuCFlzrMY4xR0Qw6zc12TeBfGWFrsyK",
-        "object_type": ""
+        "object_type": "variable_workflow"
       },
       {
-        "schema_id": "1CtpjFMqR68ZzciQOz1rQobzLj7",
+        "schema_id": "01fqaHc2GROKw26bW2QI4hGmmBNnO5Kix",
         "properties": {
           "value": "cisco",
           "scope": "local",
@@ -80,7 +25,62 @@
           "type": "datatype.string"
         },
         "unique_name": "variable_workflow_01KuCFlzrVTozVV737k6nE9DSnE2GP0So",
-        "object_type": ""
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "01fqaHc2GROKw26bW2QI4hGmmBNnO5Kix",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "WF_ID",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KuCFlzro76TXq3Svylbqo3c2Hm6um7q",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "01fqaHc2GROKw26bW2QI4hGmmBNnO5Kix",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "APPLICATION_PROFILE",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KuCFlzr3abLv6UlNYCBxgS6OC53hrqI",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "01fqaHc2GROKw26bW2QI4hGmmBNnO5Kix",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "RESOURCE_TYPE",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KuCFlzqf7Ef7qEEiCS2w8hWpL4ZSD1l",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "01fqaHc2GROKw26bW2QI4hGmmBNnO5Kix",
+        "properties": {
+          "value": "aoadmin@cisco.com",
+          "scope": "local",
+          "name": "username",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KuCFlzrDSNbYBizI0QCGHJldduPV1s7",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "01fqaHc2GROKw26bW2QI4hGmmBNnO5Kix",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "token",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01KuCFlzreX6NamvIey0Y8AHDzxK6JXcO",
+        "object_type": "variable_workflow"
       }
     ],
     "properties": {
@@ -189,6 +189,7 @@
           "allow_auto_redirect": true,
           "content_type": "application/json",
           "continue_on_error_status_code": false,
+          "continue_on_failure": false,
           "custom_headers": [
             {
               "name": "Authorization",
@@ -199,9 +200,11 @@
           "method": "GET",
           "relative_url": "be-console/api/v1/schemas/generic.workflow?schema_type=view",
           "runtime_user": {
+            "override_target_runtime_user": false,
             "target_default": true
           },
           "target": {
+            "override_workflow_target": false,
             "use_workflow_target": true
           }
         },
@@ -214,11 +217,13 @@
         "type": "corejava.jsonpathquery",
         "base_type": "activity",
         "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
           "display_name": "Parse WF Schema",
           "input_json": "$activity.definition_activity_1DJ9lsmcckfOrn5fZCCs1lyNiRS.output.response_body$",
           "jsonpath_queries": [
             {
-              "jsonpath_query": "$.schema_id",
+              "jsonpath_query": "$.data_schema.schema_id",
               "jsonpath_query_name": "schema_id",
               "jsonpath_query_type": "string"
             }
@@ -262,11 +267,13 @@
         "type": "corejava.jsonpathquery",
         "base_type": "activity",
         "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
           "display_name": "Parse String Schema ID",
           "input_json": "$activity.definition_activity_1DJHuPy7dZAhZfJRo6yxYr92w8O.output.response_body$",
           "jsonpath_queries": [
             {
-              "jsonpath_query": "$.schema_id",
+              "jsonpath_query": "$.data_schema.schema_id",
               "jsonpath_query_name": "schema_id",
               "jsonpath_query_type": "string"
             }
@@ -358,9 +365,8 @@
       "properties": {
         "disable_certificate_validation": true,
         "display_name": "SUITE",
-        "host": "172.21.46.110",
+        "host": "35.193.146.0",
         "no_runtime_user": true,
-        "port": 50261,
         "protocol": "https"
       }
     }
