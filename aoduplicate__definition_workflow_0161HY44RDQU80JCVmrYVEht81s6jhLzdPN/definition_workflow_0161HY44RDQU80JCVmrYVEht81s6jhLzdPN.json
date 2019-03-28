@@ -1,0 +1,168 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_0161HY44RDQU80JCVmrYVEht81s6jhLzdPN",
+    "name": "AO-Duplicate Workflow",
+    "title": "AO-Duplicate Workflow",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Dest WF Name",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0161HYUM24RX418gfOXcIippleGtziIE6O7",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "_",
+          "scope": "input",
+          "name": "Source WF_ID",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0161HYNH4FAYN2ANNuK43iQEYDfVXY2EveD",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "AO-Duplicate Workflow",
+      "favorite": false,
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false,
+        "target_type": "015DS736DQ2336tO8DqLWlmv7EKgrm4muRP"
+      },
+      "timeout": 3600
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_0161L07RHR9BK4wwpBi3bjvOXB7pF7LSp11",
+        "name": "Replace String",
+        "title": "Replace String",
+        "type": "core.replacestring",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Replace String",
+          "input_string": "$workflow.definition_workflow_0161HY44RDQU80JCVmrYVEht81s6jhLzdPN.input.variable_workflow_0161HYNH4FAYN2ANNuK43iQEYDfVXY2EveD$",
+          "replace_list": [
+            {
+              "replaced_string": "_",
+              "replacement_string": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0161L0GO5C8WQ7IoAr8D6ZX5gKvLHVcNLLm",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_0161HY44RDQU80JCVmrYVEht81s6jhLzdPN.input.variable_workflow_0161HYNH4FAYN2ANNuK43iQEYDfVXY2EveD$",
+              "variable_value_new": "$activity.definition_activity_0161L07RHR9BK4wwpBi3bjvOXB7pF7LSp11.output.result_string$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0161HZ16IMKWY7D8r8PrmxhWuraMJWjwO70",
+        "name": "Generic CCS API Request",
+        "title": "AO WF EXPORT",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_call_method": "GET",
+          "continue_on_failure": false,
+          "display_name": "AO WF EXPORT",
+          "relative_url": "/be-importexport/api/v1/workflows/export?workflow_id=$workflow.definition_workflow_0161HY44RDQU80JCVmrYVEht81s6jhLzdPN.input.variable_workflow_0161HYNH4FAYN2ANNuK43iQEYDfVXY2EveD$",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0161M5XF4LMF01lt6P3NlXokDChb8wTr1Wg",
+        "name": "Execute Python Script",
+        "title": "Execute Python Script",
+        "type": "python3.script",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Execute Python Script",
+          "script": "import json\nimport sys\nimport uuid\nud = uuid.uuid4().hex\nj = json.loads(sys.argv[1])\nj['workflow']['name'] = '$workflow.definition_workflow_0161HY44RDQU80JCVmrYVEht81s6jhLzdPN.input.variable_workflow_0161HYUM24RX418gfOXcIippleGtziIE6O7$'\nj['workflow']['title'] = '$workflow.definition_workflow_0161HY44RDQU80JCVmrYVEht81s6jhLzdPN.input.variable_workflow_0161HYUM24RX418gfOXcIippleGtziIE6O7$'\nj['workflow']['properties']['display_name'] = '$workflow.definition_workflow_0161HY44RDQU80JCVmrYVEht81s6jhLzdPN.input.variable_workflow_0161HYUM24RX418gfOXcIippleGtziIE6O7$'\nun = j['workflow']['unique_name']\nnj = json.dumps(j)",
+          "script_arguments": [
+            "$activity.definition_activity_0161HZ16IMKWY7D8r8PrmxhWuraMJWjwO70.output.response_body$"
+          ],
+          "script_queries": [
+            {
+              "script_query": "nj",
+              "script_query_name": "json",
+              "script_query_type": "string"
+            },
+            {
+              "script_query": "un",
+              "script_query_name": "unique_name",
+              "script_query_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0161M2AV2GNH910e3APBEcT5AK98toALnRl",
+        "name": "Generic CCS API Request",
+        "title": "AO WF IMPORT",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_body": "$activity.definition_activity_0161M5XF4LMF01lt6P3NlXokDChb8wTr1Wg.output.script_queries.json$",
+          "api_call_method": "POST",
+          "continue_on_failure": false,
+          "display_name": "AO WF IMPORT",
+          "relative_url": "/be-importexport/api/v1/workflows/import?create_new=true\u0026workflow_unique_name=$activity.definition_activity_0161M5XF4LMF01lt6P3NlXokDChb8wTr1Wg.output.script_queries.unique_name$",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
