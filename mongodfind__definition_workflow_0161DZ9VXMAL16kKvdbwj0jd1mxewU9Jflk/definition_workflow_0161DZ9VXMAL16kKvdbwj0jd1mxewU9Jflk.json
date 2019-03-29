@@ -10,11 +10,101 @@
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
+          "scope": "output",
+          "name": "query_results",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0161F7N8Q8TLS1B56ROT2pdhGTUk3uwbcWe",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
           "scope": "input",
           "name": "collection",
           "type": "datatype.string"
         },
         "unique_name": "variable_workflow_0161FLAXL7N5661drpoc5l5epQxi4YUXQ63",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "projection",
+          "type": "datatype.string",
+          "description": "Optional. Specifies the fields to return in the documents that match the query filter. To return all fields in the matching documents, omit this parameter."
+        },
+        "unique_name": "variable_workflow_0161F2VSC0BAP47E2uSRhUxK7GMJiHbATNI",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "query",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0161EJBTNRW355vlAhu4M1m33LuZDgUcFQi",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "connection string",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0161EJZYEV7WU5PvBRgyv5fPCjCDvROnBQM",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "db",
+          "type": "datatype.string",
+          "description": "DB to connect to for activity"
+        },
+        "unique_name": "variable_workflow_0161EHAYOB2484mf7Ui6fKut0h3Msh4BsVQ",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "scope": "input",
+          "name": "password",
+          "type": "datatype.secure_string"
+        },
+        "unique_name": "variable_workflow_0161EE4K7OOTK28Yorz0WyCNOOR1NyHzNEL",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "null",
+          "scope": "input",
+          "name": "authenticationDatabase",
+          "type": "datatype.string",
+          "description": "Optional value, if there is a specific authentication database aside from the DB specified to connect to enter it here."
+        },
+        "unique_name": "variable_workflow_0161EFEUI8K7Z1dPUxYRr60VRtlfQlGSGf6",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "null",
+          "scope": "local",
+          "name": "nullstring",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01627Y1PTI1K433qxihToIrzNeaiLMvOdEg",
         "object_type": "variable_workflow"
       },
       {
@@ -34,100 +124,10 @@
         "properties": {
           "value": "null",
           "scope": "input",
-          "name": "projection",
-          "type": "datatype.string",
-          "description": "Optional. Specifies the fields to return in the documents that match the query filter. To return all fields in the matching documents, omit this parameter."
-        },
-        "unique_name": "variable_workflow_0161F2VSC0BAP47E2uSRhUxK7GMJiHbATNI",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.secure_string",
-        "properties": {
-          "scope": "input",
-          "name": "password",
-          "type": "datatype.secure_string"
-        },
-        "unique_name": "variable_workflow_0161EE4K7OOTK28Yorz0WyCNOOR1NyHzNEL",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "null",
-          "scope": "local",
-          "name": "WORKAROUNDNULL",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01627Y1PTI1K433qxihToIrzNeaiLMvOdEg",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "db",
-          "type": "datatype.string",
-          "description": "DB to connect to for activity"
-        },
-        "unique_name": "variable_workflow_0161EHAYOB2484mf7Ui6fKut0h3Msh4BsVQ",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "null",
-          "scope": "input",
           "name": "username",
           "type": "datatype.string"
         },
         "unique_name": "variable_workflow_0161EDRFD1TM45pePr3gqj55RsKaYluiJUO",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "null",
-          "scope": "input",
-          "name": "authenticationDatabase",
-          "type": "datatype.string",
-          "description": "Optional value, if there is a specific authentication database aside from the DB specified to connect to enter it here."
-        },
-        "unique_name": "variable_workflow_0161EFEUI8K7Z1dPUxYRr60VRtlfQlGSGf6",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "query",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_0161EJBTNRW355vlAhu4M1m33LuZDgUcFQi",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "output",
-          "name": "query_results",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_0161F7N8Q8TLS1B56ROT2pdhGTUk3uwbcWe",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "connection string",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_0161EJZYEV7WU5PvBRgyv5fPCjCDvROnBQM",
         "object_type": "variable_workflow"
       }
     ],
@@ -250,7 +250,21 @@
                 "object_type": "definition_activity"
               }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_0162D3YS1R01W3mjZwwubPUjD9DQd6Ruqey",
+        "name": "Condition Block",
+        "title": "Condition Block",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Condition Block"
+        },
+        "object_type": "definition_activity",
+        "blocks": [
           {
             "unique_name": "definition_activity_0161EKEFM9QC00Dwxi5i4SEDSovwHFC03tA",
             "name": "Condition Branch",
@@ -287,7 +301,21 @@
                 "object_type": "definition_activity"
               }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_0162D459GADJC6ixE4TOFmdf7jKoBnnax5X",
+        "name": "Condition Block",
+        "title": "Condition Block",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Condition Block"
+        },
+        "object_type": "definition_activity",
+        "blocks": [
           {
             "unique_name": "definition_activity_0161FANMBHEF35kuYWCHEk1pYFvIilIpzt0",
             "name": "Condition Branch",
@@ -363,13 +391,37 @@
             "override_target_runtime_user": false,
             "target_default": true
           },
-          "script": "mongo $workflow.definition_workflow_0161DZ9VXMAL16kKvdbwj0jd1mxewU9Jflk.local.variable_workflow_0161EJZYEV7WU5PvBRgyv5fPCjCDvROnBQM$ --eval('db.$workflow.definition_workflow_0161DZ9VXMAL16kKvdbwj0jd1mxewU9Jflk.input.variable_workflow_0161FLAXL7N5661drpoc5l5epQxi4YUXQ63$.find($workflow.definition_workflow_0161DZ9VXMAL16kKvdbwj0jd1mxewU9Jflk.input.variable_workflow_0161EJBTNRW355vlAhu4M1m33LuZDgUcFQi$).forEach(printjson)')",
+          "script": "mongo $workflow.definition_workflow_0161DZ9VXMAL16kKvdbwj0jd1mxewU9Jflk.local.variable_workflow_0161EJZYEV7WU5PvBRgyv5fPCjCDvROnBQM$ --eval 'printjson(db.$workflow.definition_workflow_0161DZ9VXMAL16kKvdbwj0jd1mxewU9Jflk.input.variable_workflow_0161FLAXL7N5661drpoc5l5epQxi4YUXQ63$.find($workflow.definition_workflow_0161DZ9VXMAL16kKvdbwj0jd1mxewU9Jflk.input.variable_workflow_0161EJBTNRW355vlAhu4M1m33LuZDgUcFQi$).toArray())' --quiet",
           "target": {
             "override_workflow_target": false,
             "override_workflow_target_group_criteria": false,
             "use_workflow_target": true,
             "use_workflow_target_group": false
           }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0162C14J6W0EP6ioXwpdDuFO2GRUAUDJX7x",
+        "name": "Execute Python Script",
+        "title": "Turn output to JSON",
+        "type": "python3.script",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Turn output to JSON",
+          "script": "import re\nimport sys\nt = re.sub(r'\\sObjectId\\(\\\"(\\w+)\\\"\\)', r'\"ObjectId(\\\"\\g\u003c1\u003e\\\")\"',sys.argv[1])\noutp = re.sub(r\"\\s+\",\"\",t)",
+          "script_arguments": [
+            "$activity.definition_activity_0161ECKYXIIE95KRbdeiUfiPwRrU9jqMXla.output.response_body$"
+          ],
+          "script_queries": [
+            {
+              "script_query": "outp",
+              "script_query_name": "output",
+              "script_query_type": "string"
+            }
+          ]
         },
         "object_type": "definition_activity"
       },
@@ -385,7 +437,7 @@
           "variables_to_update": [
             {
               "variable_to_update": "$workflow.definition_workflow_0161DZ9VXMAL16kKvdbwj0jd1mxewU9Jflk.output.variable_workflow_0161F7N8Q8TLS1B56ROT2pdhGTUk3uwbcWe$",
-              "variable_value_new": "$activity.definition_activity_0161ECKYXIIE95KRbdeiUfiPwRrU9jqMXla.output.response_body$"
+              "variable_value_new": "$activity.definition_activity_0162C14J6W0EP6ioXwpdDuFO2GRUAUDJX7x.output.script_queries.output$"
             }
           ]
         },
