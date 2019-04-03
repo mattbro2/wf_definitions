@@ -1,0 +1,754 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A",
+    "name": "NetApp Approval Flow",
+    "title": "NetApp Approval Flow",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "output",
+          "name": "Approval",
+          "type": "datatype.boolean"
+        },
+        "unique_name": "variable_workflow_0167H331988K05xFlrv0lr8cHQLj93JZmyz",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "input",
+          "name": "AutomatedRequest",
+          "type": "datatype.boolean"
+        },
+        "unique_name": "variable_workflow_0167GZ6Q1OO2B2R93vZ4y0XzVELQ762IqQ4",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "input",
+          "name": "PublicCloud",
+          "type": "datatype.boolean"
+        },
+        "unique_name": "variable_workflow_0167H02DMCZZL2mUa1gLAi2MWPPP5do2CjP",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.number",
+        "properties": {
+          "value": 0,
+          "scope": "input",
+          "name": "MonthlyCost",
+          "type": "datatype.number"
+        },
+        "unique_name": "variable_workflow_0167H0FC2BEIR356koqC4vgKOCcD06L61ts",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "input",
+          "name": "CoreCount",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_0167H0QQ34LEC2U4aMI5EfSWyYf57PVGqXW",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "input",
+          "name": "RAM_GB",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_0167H124B9EIP5bXPjaFRNoge10xDPREhl0",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "input",
+          "name": "NodeCount",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_0167H1B8SI1UI44n69GE9WsLE43cJoeQ4GE",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "input",
+          "name": "Duration_Days",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_0167H1JGVW6YS0Z5w09fJAiHmPUuKomc3i3",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "NetApp Approval Flow",
+      "favorite": false,
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_0167GZQXUXE643MjXncZyibLF7Mdgw5p1NT",
+        "name": "Condition Block",
+        "title": "Is This An Automated Request?",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Is This An Automated Request?"
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_0167GZQZNC2QC4KugWYCPHw2u9dETMHaPWQ",
+            "name": "Condition Branch",
+            "title": "true",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.input.variable_workflow_0167GZ6Q1OO2B2R93vZ4y0XzVELQ762IqQ4$",
+                "operator": "eq",
+                "right_operand": true
+              },
+              "continue_on_failure": false,
+              "display_name": "true"
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_0167H37F46Z2204X5ogzsXUAp84NDithN9C",
+                "name": "Set Variables",
+                "title": "Approve Request",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Approve Request",
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.output.variable_workflow_0167H331988K05xFlrv0lr8cHQLj93JZmyz$",
+                      "variable_value_new": true
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_0167H763IZREG6gfQNP2hiWfGJ07TdTMWRm",
+                "name": "Completed",
+                "title": "Completed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "succeeded",
+                  "display_name": "Completed"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_0167GZR0HEE0U2Dyc3UDrZrfVG1tyWZ8z0X",
+            "name": "Condition Branch",
+            "title": "false",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.input.variable_workflow_0167GZ6Q1OO2B2R93vZ4y0XzVELQ762IqQ4$",
+                "operator": "eq",
+                "right_operand": false
+              },
+              "continue_on_failure": false,
+              "display_name": "false"
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_0167H3KLBRNVJ6gvZLxUPWITu2fvIrVOu3v",
+                "name": "Condition Block",
+                "title": "Public Cloud?",
+                "type": "logic.if_else",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Public Cloud?"
+                },
+                "object_type": "definition_activity",
+                "blocks": [
+                  {
+                    "unique_name": "definition_activity_0167H3KN4EKJE39BUHAS7Mw02w4MggmUC26",
+                    "name": "Condition Branch",
+                    "title": "true",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.input.variable_workflow_0167H02DMCZZL2mUa1gLAi2MWPPP5do2CjP$",
+                        "operator": "eq",
+                        "right_operand": true
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "true"
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_0167H415YENGV5UiC1YyQ7YYvsEm7tSKBBL",
+                        "name": "Condition Block",
+                        "title": "Monthly Cost",
+                        "type": "logic.if_else",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Monthly Cost"
+                        },
+                        "object_type": "definition_activity",
+                        "blocks": [
+                          {
+                            "unique_name": "definition_activity_0167H417Y6VQ60UegL8iDVt8iPBYPD1MyUZ",
+                            "name": "Condition Branch",
+                            "title": "\u003e $100",
+                            "type": "logic.condition_block",
+                            "base_type": "activity",
+                            "properties": {
+                              "condition": {
+                                "left_operand": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.input.variable_workflow_0167H0FC2BEIR356koqC4vgKOCcD06L61ts$",
+                                "operator": "gt",
+                                "right_operand": 100
+                              },
+                              "continue_on_failure": false,
+                              "display_name": "\u003e $100"
+                            },
+                            "object_type": "definition_activity",
+                            "actions": [
+                              {
+                                "unique_name": "definition_activity_0167ILDFTYTZD7d6CAZI7lI944BtMzw1LVy",
+                                "name": "Create Approval Task",
+                                "title": "Create Approval Task",
+                                "type": "activity.approvals",
+                                "base_type": "activity",
+                                "properties": {
+                                  "action_timeout": 180,
+                                  "continue_on_failure": false,
+                                  "display_name": "Create Approval Task",
+                                  "task_owner": "mattbro2"
+                                },
+                                "object_type": "definition_activity"
+                              },
+                              {
+                                "unique_name": "definition_activity_0167IK544TSLL713PmgfKitaTaisr1uKfB8",
+                                "name": "Wait For Event",
+                                "title": "Wait For Event",
+                                "type": "activity.wait_for_event",
+                                "base_type": "activity",
+                                "properties": {
+                                  "action_timeout": 180,
+                                  "continue_on_failure": false,
+                                  "display_name": "Wait For Event",
+                                  "event_name_id": "$activity.definition_activity_0167ILDFTYTZD7d6CAZI7lI944BtMzw1LVy.output.event_id$",
+                                  "event_type": "Task Event"
+                                },
+                                "object_type": "definition_activity"
+                              },
+                              {
+                                "unique_name": "definition_activity_0167IU669HNYS4TfxFnETDZuyVT7IQyh70Y",
+                                "name": "Query Object",
+                                "title": "Query Object",
+                                "type": "activity.query_object",
+                                "base_type": "activity",
+                                "properties": {
+                                  "action_timeout": 180,
+                                  "continue_on_failure": false,
+                                  "display_name": "Query Object",
+                                  "event_name_id": "$activity.definition_activity_0167ILDFTYTZD7d6CAZI7lI944BtMzw1LVy.output.event_id$",
+                                  "event_type": "Task Event"
+                                },
+                                "object_type": "definition_activity"
+                              },
+                              {
+                                "unique_name": "definition_activity_0167IXO56YUFG7fAzrnaN1djaGZkuDkjSDg",
+                                "name": "Condition Block",
+                                "title": "Approved?",
+                                "type": "logic.if_else",
+                                "base_type": "activity",
+                                "properties": {
+                                  "continue_on_failure": false,
+                                  "display_name": "Approved?"
+                                },
+                                "object_type": "definition_activity",
+                                "blocks": [
+                                  {
+                                    "unique_name": "definition_activity_0167IXO75WCDB17CCYeRxNKYGGU07eyPf9F",
+                                    "name": "Condition Branch",
+                                    "title": "Approved",
+                                    "type": "logic.condition_block",
+                                    "base_type": "activity",
+                                    "properties": {
+                                      "condition": {
+                                        "left_operand": "$activity.definition_activity_0167IU669HNYS4TfxFnETDZuyVT7IQyh70Y.output.query_output$",
+                                        "operator": "eq",
+                                        "right_operand": "Approved"
+                                      },
+                                      "continue_on_failure": false,
+                                      "display_name": "Approved"
+                                    },
+                                    "object_type": "definition_activity",
+                                    "actions": [
+                                      {
+                                        "unique_name": "definition_activity_0167JKHR36ICN2BsINQIJAHRvoaKkANVrbC",
+                                        "name": "Condition Block",
+                                        "title": "Monthly Cost",
+                                        "type": "logic.if_else",
+                                        "base_type": "activity",
+                                        "properties": {
+                                          "continue_on_failure": false,
+                                          "display_name": "Monthly Cost"
+                                        },
+                                        "object_type": "definition_activity",
+                                        "blocks": [
+                                          {
+                                            "unique_name": "definition_activity_0167JKHTEVZ8N6W2nkdeA1hvGbK9pppslj4",
+                                            "name": "Condition Branch",
+                                            "title": "\u003e $1000",
+                                            "type": "logic.condition_block",
+                                            "base_type": "activity",
+                                            "properties": {
+                                              "condition": {
+                                                "left_operand": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.input.variable_workflow_0167H0FC2BEIR356koqC4vgKOCcD06L61ts$",
+                                                "operator": "gt",
+                                                "right_operand": 1000
+                                              },
+                                              "continue_on_failure": false,
+                                              "display_name": "\u003e $1000"
+                                            },
+                                            "object_type": "definition_activity",
+                                            "actions": [
+                                              {
+                                                "unique_name": "definition_activity_0167JLMZFZAA52fomfzQkqdYTr1OiW7apF1",
+                                                "name": "Create Approval Task",
+                                                "title": "Create Approval Task",
+                                                "type": "activity.approvals",
+                                                "base_type": "activity",
+                                                "properties": {
+                                                  "action_timeout": 180,
+                                                  "continue_on_failure": false,
+                                                  "display_name": "Create Approval Task",
+                                                  "task_owner": "mattbro2"
+                                                },
+                                                "object_type": "definition_activity"
+                                              },
+                                              {
+                                                "unique_name": "definition_activity_0167JLOHN2CAK1iHPwzgD1OvtbPNIOumRqT",
+                                                "name": "Wait For Event",
+                                                "title": "Wait For Event",
+                                                "type": "activity.wait_for_event",
+                                                "base_type": "activity",
+                                                "properties": {
+                                                  "action_timeout": 180,
+                                                  "continue_on_failure": false,
+                                                  "display_name": "Wait For Event",
+                                                  "event_name_id": "$activity.definition_activity_0167JLMZFZAA52fomfzQkqdYTr1OiW7apF1.output.event_id$",
+                                                  "event_type": "Task Event"
+                                                },
+                                                "object_type": "definition_activity"
+                                              },
+                                              {
+                                                "unique_name": "definition_activity_0167JLPPTESOQ2ffxJGTSQ9g2lUzPCnBOJR",
+                                                "name": "Query Object",
+                                                "title": "Query Object",
+                                                "type": "activity.query_object",
+                                                "base_type": "activity",
+                                                "properties": {
+                                                  "action_timeout": 180,
+                                                  "continue_on_failure": false,
+                                                  "display_name": "Query Object",
+                                                  "event_name_id": "$activity.definition_activity_0167JLMZFZAA52fomfzQkqdYTr1OiW7apF1.output.event_id$",
+                                                  "event_type": "Task Event"
+                                                },
+                                                "object_type": "definition_activity"
+                                              },
+                                              {
+                                                "unique_name": "definition_activity_0167JO5FF0GJQ5dcfDKE4X85KkD7LRQUaL5",
+                                                "name": "Condition Block",
+                                                "title": "Approved?",
+                                                "type": "logic.if_else",
+                                                "base_type": "activity",
+                                                "properties": {
+                                                  "continue_on_failure": false,
+                                                  "display_name": "Approved?"
+                                                },
+                                                "object_type": "definition_activity",
+                                                "blocks": [
+                                                  {
+                                                    "unique_name": "definition_activity_0167JO5H5OH031qO3mVDjPYbQiLBgRN5Wnq",
+                                                    "name": "Condition Branch",
+                                                    "title": "Approved",
+                                                    "type": "logic.condition_block",
+                                                    "base_type": "activity",
+                                                    "properties": {
+                                                      "condition": {
+                                                        "left_operand": "$activity.definition_activity_0167JLPPTESOQ2ffxJGTSQ9g2lUzPCnBOJR.output.query_output$",
+                                                        "operator": "eq",
+                                                        "right_operand": "Approved"
+                                                      },
+                                                      "continue_on_failure": false,
+                                                      "display_name": "Approved"
+                                                    },
+                                                    "object_type": "definition_activity",
+                                                    "actions": [
+                                                      {
+                                                        "unique_name": "definition_activity_0167JQ81SENUT0jcBaDElVFAWxzDTg7keA8",
+                                                        "name": "Set Variables",
+                                                        "title": "Approve Request",
+                                                        "type": "core.set_multiple_variables",
+                                                        "base_type": "activity",
+                                                        "properties": {
+                                                          "continue_on_failure": false,
+                                                          "display_name": "Approve Request",
+                                                          "variables_to_update": [
+                                                            {
+                                                              "variable_to_update": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.output.variable_workflow_0167H331988K05xFlrv0lr8cHQLj93JZmyz$",
+                                                              "variable_value_new": true
+                                                            }
+                                                          ]
+                                                        },
+                                                        "object_type": "definition_activity"
+                                                      },
+                                                      {
+                                                        "unique_name": "definition_activity_0167JQI16PUNR41AWELHgWIdQE7qEEIyoeb",
+                                                        "name": "Completed",
+                                                        "title": "Completed",
+                                                        "type": "logic.completed",
+                                                        "base_type": "activity",
+                                                        "properties": {
+                                                          "completion_type": "succeeded",
+                                                          "display_name": "Completed"
+                                                        },
+                                                        "object_type": "definition_activity"
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "unique_name": "definition_activity_0167JO5HY55SD4riYe7q2qfghGwcAAfUH9J",
+                                                    "name": "Condition Branch",
+                                                    "title": "Not Approved",
+                                                    "type": "logic.condition_block",
+                                                    "base_type": "activity",
+                                                    "properties": {
+                                                      "condition": {
+                                                        "left_operand": "$activity.definition_activity_0167JLPPTESOQ2ffxJGTSQ9g2lUzPCnBOJR.output.query_output$",
+                                                        "operator": "ne",
+                                                        "right_operand": "Approved"
+                                                      },
+                                                      "continue_on_failure": false,
+                                                      "display_name": "Not Approved"
+                                                    },
+                                                    "object_type": "definition_activity",
+                                                    "actions": [
+                                                      {
+                                                        "unique_name": "definition_activity_0167JQOMZ9FLU0qWOrIQKbJL0zKQXwjjPjh",
+                                                        "name": "Set Variables",
+                                                        "title": "Reject Request",
+                                                        "type": "core.set_multiple_variables",
+                                                        "base_type": "activity",
+                                                        "properties": {
+                                                          "continue_on_failure": false,
+                                                          "display_name": "Reject Request",
+                                                          "variables_to_update": [
+                                                            {
+                                                              "variable_to_update": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.output.variable_workflow_0167H331988K05xFlrv0lr8cHQLj93JZmyz$",
+                                                              "variable_value_new": false
+                                                            }
+                                                          ]
+                                                        },
+                                                        "object_type": "definition_activity"
+                                                      },
+                                                      {
+                                                        "unique_name": "definition_activity_0167JQXSYXJY14XsfRkA2oKsMmVDSddYFHX",
+                                                        "name": "Completed",
+                                                        "title": "Completed",
+                                                        "type": "logic.completed",
+                                                        "base_type": "activity",
+                                                        "properties": {
+                                                          "completion_type": "succeeded",
+                                                          "display_name": "Completed"
+                                                        },
+                                                        "object_type": "definition_activity"
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "unique_name": "definition_activity_0167JKHUHWR6C18AHeuZ9VNpa5t1nCs9yCn",
+                                            "name": "Condition Branch",
+                                            "title": "\u003c $1000",
+                                            "type": "logic.condition_block",
+                                            "base_type": "activity",
+                                            "properties": {
+                                              "condition": {
+                                                "left_operand": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.input.variable_workflow_0167H0FC2BEIR356koqC4vgKOCcD06L61ts$",
+                                                "operator": "lte",
+                                                "right_operand": 1000
+                                              },
+                                              "continue_on_failure": false,
+                                              "display_name": "\u003c $1000"
+                                            },
+                                            "object_type": "definition_activity",
+                                            "actions": [
+                                              {
+                                                "unique_name": "definition_activity_0167JN0N0VGY76MOxrcmh0zk68fzSGigVkF",
+                                                "name": "Set Variables",
+                                                "title": "Approve Request",
+                                                "type": "core.set_multiple_variables",
+                                                "base_type": "activity",
+                                                "properties": {
+                                                  "continue_on_failure": false,
+                                                  "display_name": "Approve Request",
+                                                  "variables_to_update": [
+                                                    {
+                                                      "variable_to_update": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.output.variable_workflow_0167H331988K05xFlrv0lr8cHQLj93JZmyz$",
+                                                      "variable_value_new": true
+                                                    }
+                                                  ]
+                                                },
+                                                "object_type": "definition_activity"
+                                              },
+                                              {
+                                                "unique_name": "definition_activity_0167JNBH4XIMZ5hOBixEdz6wvUwOtVO2xnf",
+                                                "name": "Completed",
+                                                "title": "Completed",
+                                                "type": "logic.completed",
+                                                "base_type": "activity",
+                                                "properties": {
+                                                  "completion_type": "succeeded",
+                                                  "display_name": "Completed"
+                                                },
+                                                "object_type": "definition_activity"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "unique_name": "definition_activity_0167IXO84FXYY0pCi897cgl8oIydp1tLuUn",
+                                    "name": "Condition Branch",
+                                    "title": "Not Approved",
+                                    "type": "logic.condition_block",
+                                    "base_type": "activity",
+                                    "properties": {
+                                      "condition": {
+                                        "left_operand": "$activity.definition_activity_0167IU669HNYS4TfxFnETDZuyVT7IQyh70Y.output.query_output$",
+                                        "operator": "ne",
+                                        "right_operand": "Approved"
+                                      },
+                                      "continue_on_failure": false,
+                                      "display_name": "Not Approved"
+                                    },
+                                    "object_type": "definition_activity",
+                                    "actions": [
+                                      {
+                                        "unique_name": "definition_activity_0167JDYXO2FF146WVy2GTprEutZQnupqlwM",
+                                        "name": "Set Variables",
+                                        "title": "Reject Request",
+                                        "type": "core.set_multiple_variables",
+                                        "base_type": "activity",
+                                        "properties": {
+                                          "continue_on_failure": false,
+                                          "display_name": "Reject Request",
+                                          "variables_to_update": [
+                                            {
+                                              "variable_to_update": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.output.variable_workflow_0167H331988K05xFlrv0lr8cHQLj93JZmyz$",
+                                              "variable_value_new": false
+                                            }
+                                          ]
+                                        },
+                                        "object_type": "definition_activity"
+                                      },
+                                      {
+                                        "unique_name": "definition_activity_0167JEAIDR2ZD0UjFgPO0OlIQ6FB1ze7RVz",
+                                        "name": "Completed",
+                                        "title": "Completed",
+                                        "type": "logic.completed",
+                                        "base_type": "activity",
+                                        "properties": {
+                                          "completion_type": "succeeded",
+                                          "display_name": "Completed"
+                                        },
+                                        "object_type": "definition_activity"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "unique_name": "definition_activity_0167H418SMN7A7TqjB6iREIf1a9ZkUadP9O",
+                            "name": "Condition Branch",
+                            "title": "\u003c $100",
+                            "type": "logic.condition_block",
+                            "base_type": "activity",
+                            "properties": {
+                              "condition": {
+                                "left_operand": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.input.variable_workflow_0167H0FC2BEIR356koqC4vgKOCcD06L61ts$",
+                                "operator": "lte",
+                                "right_operand": 100
+                              },
+                              "continue_on_failure": false,
+                              "display_name": "\u003c $100"
+                            },
+                            "object_type": "definition_activity",
+                            "actions": [
+                              {
+                                "unique_name": "definition_activity_0167H50AN5ADE76GguKkOQWprhRT1DXW74A",
+                                "name": "Set Variables",
+                                "title": "Approve Request",
+                                "type": "core.set_multiple_variables",
+                                "base_type": "activity",
+                                "properties": {
+                                  "continue_on_failure": false,
+                                  "display_name": "Approve Request",
+                                  "variables_to_update": [
+                                    {
+                                      "variable_to_update": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.output.variable_workflow_0167H331988K05xFlrv0lr8cHQLj93JZmyz$",
+                                      "variable_value_new": true
+                                    }
+                                  ]
+                                },
+                                "object_type": "definition_activity"
+                              },
+                              {
+                                "unique_name": "definition_activity_0167H5K3YXZXP0q7ecPSNS18xDWn09eb6nW",
+                                "name": "Completed",
+                                "title": "Completed",
+                                "type": "logic.completed",
+                                "base_type": "activity",
+                                "properties": {
+                                  "completion_type": "succeeded",
+                                  "display_name": "Completed"
+                                },
+                                "object_type": "definition_activity"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "unique_name": "definition_activity_0167H3KNW89T30Hf1IHVUf8av5ubMlLHtHG",
+                    "name": "Condition Branch",
+                    "title": "false",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.input.variable_workflow_0167H02DMCZZL2mUa1gLAi2MWPPP5do2CjP$",
+                        "operator": "eq",
+                        "right_operand": false
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "false"
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_0167K8CXLKPQK5YxNkvQOuToLw1vYx84n6k",
+                        "name": "Condition Block",
+                        "title": "Resource Limits",
+                        "type": "logic.if_else",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Resource Limits"
+                        },
+                        "object_type": "definition_activity",
+                        "blocks": [
+                          {
+                            "unique_name": "definition_activity_0167K8CZIROYD0Eh0yrzewCXyQKaBm5VRkZ",
+                            "name": "Condition Branch",
+                            "title": "All Resource Limits Trigger Approvals",
+                            "type": "logic.condition_block",
+                            "base_type": "activity",
+                            "properties": {
+                              "condition": {
+                                "left_operand": {
+                                  "left_operand": {
+                                    "left_operand": {
+                                      "left_operand": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.input.variable_workflow_0167H0QQ34LEC2U4aMI5EfSWyYf57PVGqXW$",
+                                      "operator": "gt",
+                                      "right_operand": 60
+                                    },
+                                    "operator": "and",
+                                    "right_operand": {
+                                      "left_operand": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.input.variable_workflow_0167H124B9EIP5bXPjaFRNoge10xDPREhl0$",
+                                      "operator": "gt",
+                                      "right_operand": 60
+                                    }
+                                  },
+                                  "operator": "and",
+                                  "right_operand": {
+                                    "left_operand": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.input.variable_workflow_0167H1B8SI1UI44n69GE9WsLE43cJoeQ4GE$",
+                                    "operator": "gt",
+                                    "right_operand": 30
+                                  }
+                                },
+                                "operator": "and",
+                                "right_operand": {
+                                  "left_operand": "$workflow.definition_workflow_0167GY7B9P3KE7fDbrMZECyZbhAfCmChb8A.input.variable_workflow_0167H1JGVW6YS0Z5w09fJAiHmPUuKomc3i3$",
+                                  "operator": "gt",
+                                  "right_operand": 30
+                                }
+                              },
+                              "continue_on_failure": false,
+                              "display_name": "All Resource Limits Trigger Approvals"
+                            },
+                            "object_type": "definition_activity"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
