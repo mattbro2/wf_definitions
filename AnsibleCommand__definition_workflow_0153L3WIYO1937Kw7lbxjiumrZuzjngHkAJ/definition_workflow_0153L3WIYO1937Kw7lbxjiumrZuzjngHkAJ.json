@@ -1,0 +1,81 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_0153L3WIYO1937Kw7lbxjiumrZuzjngHkAJ",
+    "name": "Ansible command",
+    "title": "Ansible command",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "ansible command args",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0153LFA6P1O3J4TbXE5toqmPcYfOHi8uQ2L",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "atomic_group": "ansible",
+        "is_atomic": true
+      },
+      "delete_workflow_instance": false,
+      "description": "This activity requires a host with ansible running and configured.\n\nFor the ansible command args input, it's everything that comes after \"ansible \" command. \n\nIf your command takes longer than 1200 seconds, you will need to adjust the timeout value in the \"Execute Linux/Unix SSH Command\" activity.",
+      "display_name": "Ansible command",
+      "favorite": false,
+      "target": {
+        "target_type": "terminal.unix_linux_endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_0153LH1U5RO312kDzK1JTdd78IWzfm4mYJh",
+        "name": "Execute Linux/Unix SSH Command",
+        "title": "Execute Linux/Unix SSH Command",
+        "type": "terminal.ssh_command",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 300,
+          "command": "sudo ansible $workflow.definition_workflow_0153L3WIYO1937Kw7lbxjiumrZuzjngHkAJ.input.variable_workflow_0153LFA6P1O3J4TbXE5toqmPcYfOHi8uQ2L$",
+          "command_timeout": 300,
+          "continue_on_failure": false,
+          "display_name": "Execute Linux/Unix SSH Command",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0156SSNJJEVTI5vSq1DfAL4Z3789xtzyl9u",
+        "name": "Execute Python Script",
+        "title": "Execute Python Script",
+        "type": "python3.script",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Execute Python Script",
+          "script": "import sys"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
