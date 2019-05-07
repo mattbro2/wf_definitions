@@ -1,0 +1,97 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_0170EFC205KCA7G8LiBoPPodlLM2kurcBVI",
+    "name": "yaml parse example",
+    "title": "yaml parse example",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "output value",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_0170EN1L1GO6Y15u5jYgJVdFveTI9BVvZRT",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "myobject:\n    mykey: myvalue",
+          "scope": "local",
+          "name": "input yaml",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_0170EGVT7M8BK5OItZ7p58qoomfsswRjKV1",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "yaml parse example",
+      "favorite": false,
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_0170EH03YUS4L2MpRVskodO7rVOtrSatUlL",
+        "name": "Execute Python Script",
+        "title": "Execute Python Script",
+        "type": "python3.script",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Execute Python Script",
+          "script": "import sys\nimport yaml\n\nmyobj = yaml.load(sys.argv[1])\nmyval = myobj['myobject']['mykey']",
+          "script_arguments": [
+            "$workflow.definition_workflow_0170EFC205KCA7G8LiBoPPodlLM2kurcBVI.local.variable_workflow_0170EGVT7M8BK5OItZ7p58qoomfsswRjKV1$"
+          ],
+          "script_queries": [
+            {
+              "script_query": "myval",
+              "script_query_name": "myval",
+              "script_query_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0170EMUTALIBX5vcEA5o514KFxCx9G9DSAc",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_0170EFC205KCA7G8LiBoPPodlLM2kurcBVI.output.variable_workflow_0170EN1L1GO6Y15u5jYgJVdFveTI9BVvZRT$",
+              "variable_value_new": "$activity.definition_activity_0170EH03YUS4L2MpRVskodO7rVOtrSatUlL.output.script_queries.myval$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
