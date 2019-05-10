@@ -1,0 +1,131 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_016K85SMQK49A57YdKtDZ8VJVoU7hMkVo9E",
+    "name": "Splunk Auth/Login",
+    "title": "Splunk Auth/Login",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "SessionKey",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_016ZEPIOZ8GB24J7IyIrLs9bgASIzSf2QC7",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "username",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_016X1N1F9X51Z4dOkQh6Fo5UpA8Y8ofdFid",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "value": "*****",
+          "scope": "input",
+          "name": "password",
+          "type": "datatype.secure_string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_016X1NBARZ9IA6SJusYIGj4EpScVqLD6A86",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "atomic_group": "Splunk",
+        "is_atomic": true
+      },
+      "delete_workflow_instance": true,
+      "display_name": "Splunk Auth/Login",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_016K87XL6PDKX0kMZHsU7h4lmNG7Yc6KCMK",
+        "name": "HTTP Request",
+        "title": "HTTP Request",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "username=$workflow.definition_workflow_016K85SMQK49A57YdKtDZ8VJVoU7hMkVo9E.input.variable_workflow_016X1N1F9X51Z4dOkQh6Fo5UpA8Y8ofdFid$\u0026password=$workflow.definition_workflow_016K85SMQK49A57YdKtDZ8VJVoU7hMkVo9E.input.variable_workflow_016X1NBARZ9IA6SJusYIGj4EpScVqLD6A86$",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "display_name": "HTTP Request",
+          "method": "POST",
+          "relative_url": "/services/auth/login",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_016ZEP6575IWK2gNFCobfJaUsK9a7ImfYJK",
+        "name": "XPath Query",
+        "title": "XPath Query",
+        "type": "core.xpathquery",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "XPath Query",
+          "input_xml": "$activity.definition_activity_016K87XL6PDKX0kMZHsU7h4lmNG7Yc6KCMK.output.response_body$",
+          "xpath_queries": [
+            {
+              "xpath_query": "/response/sessionKey",
+              "xpath_query_name": "sessionKey",
+              "xpath_query_type": "string",
+              "xpath_query_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_016ZEQZ15TKEN13xpA15NWQZ4eweL775JSB",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_016K85SMQK49A57YdKtDZ8VJVoU7hMkVo9E.output.variable_workflow_016ZEPIOZ8GB24J7IyIrLs9bgASIzSf2QC7$",
+              "variable_value_new": "$activity.definition_activity_016ZEP6575IWK2gNFCobfJaUsK9a7ImfYJK.output.xpath_queries.sessionKey$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
