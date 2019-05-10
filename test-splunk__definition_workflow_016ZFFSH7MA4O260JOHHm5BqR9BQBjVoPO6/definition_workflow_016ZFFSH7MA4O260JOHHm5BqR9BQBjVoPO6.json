@@ -7,6 +7,18 @@
     "base_type": "workflow",
     "variables": [
       {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "value": "*****",
+          "scope": "local",
+          "name": "password",
+          "type": "datatype.secure_string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_016ZFGKBW3L117LrwxRZNWI2ErRffytrEpT",
+        "object_type": "variable_workflow"
+      },
+      {
         "schema_id": "datatype.string",
         "properties": {
           "value": "search index=sinkhole earliest=-5m",
@@ -45,25 +57,13 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "mattbro2",
+          "value": "",
           "scope": "local",
           "name": "username",
           "type": "datatype.string",
           "is_required": false
         },
         "unique_name": "variable_workflow_016ZFGAY5S43F71ncioO71IBdFRSU10zL1d",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.secure_string",
-        "properties": {
-          "value": "*****",
-          "scope": "local",
-          "name": "password",
-          "type": "datatype.secure_string",
-          "is_required": false
-        },
-        "unique_name": "variable_workflow_016ZFGKBW3L117LrwxRZNWI2ErRffytrEpT",
         "object_type": "variable_workflow"
       }
     ],
@@ -424,7 +424,7 @@
   },
   "atomic_workflows": [
     "definition_workflow_016ZF5TJT9UF922I7u9EAtR5ip6axjop00G",
-    "definition_workflow_016K85SMQK49A57YdKtDZ8VJVoU7hMkVo9E",
-    "definition_workflow_016ZKVWT2NA0G54PNR2owcCqCqybXBrkUde"
+    "definition_workflow_016ZKVWT2NA0G54PNR2owcCqCqybXBrkUde",
+    "definition_workflow_016K85SMQK49A57YdKtDZ8VJVoU7hMkVo9E"
   ]
 }
