@@ -1,0 +1,163 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_016ZF5TJT9UF922I7u9EAtR5ip6axjop00G",
+    "name": "Splunk Ad Hoc Search",
+    "title": "Splunk Ad Hoc Search",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "SessionKey",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_016ZF7GGLWPSE25Ek5dOFgIifLQb1u56JG0",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Search ID",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_016ZF7Q32EAZA5eWEeAxe8NMpFsRrVPkVDl",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Search String",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_016ZG0GP45FG5621gmycfLII83jdLAyf2M4",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "atomic_group": "Splunk",
+        "is_atomic": true
+      },
+      "delete_workflow_instance": true,
+      "display_name": "Splunk Ad Hoc Search",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_016ZG8AICMECU2PkWbUX6NIlI0o1CN4X7yF",
+        "name": "Execute Python Script",
+        "title": "Execute Python Script",
+        "type": "python3.script",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Execute Python Script",
+          "script": "import urllib.parse\nimport sys\nsrch = urllib.parse.quote(sys.argv[1])",
+          "script_arguments": [
+            "$workflow.definition_workflow_016ZF5TJT9UF922I7u9EAtR5ip6axjop00G.input.variable_workflow_016ZG0GP45FG5621gmycfLII83jdLAyf2M4$"
+          ],
+          "script_queries": [
+            {
+              "script_query": "srch",
+              "script_query_name": "SearchStringURLENC",
+              "script_query_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_016ZF830DT0115m0N5XYZ4u7VYFf89slw9a",
+        "name": "HTTP Request",
+        "title": "HTTP Request",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "search=$activity.definition_activity_016ZG8AICMECU2PkWbUX6NIlI0o1CN4X7yF.output.script_queries.SearchStringURLENC$",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Splunk $workflow.definition_workflow_016ZF5TJT9UF922I7u9EAtR5ip6axjop00G.input.variable_workflow_016ZF7GGLWPSE25Ek5dOFgIifLQb1u56JG0$"
+            }
+          ],
+          "display_name": "HTTP Request",
+          "method": "POST",
+          "relative_url": "/services/search/jobs",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_016ZG2T1PYGB82NAnpaVuFPBcIQepG9QaHS",
+        "name": "XPath Query",
+        "title": "XPath Query",
+        "type": "core.xpathquery",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "XPath Query",
+          "input_xml": "$activity.definition_activity_016ZF830DT0115m0N5XYZ4u7VYFf89slw9a.output.response_body$",
+          "xpath_queries": [
+            {
+              "xpath_query": "/response/sid",
+              "xpath_query_name": "searchID",
+              "xpath_query_type": "string",
+              "xpath_query_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_016ZG3GN5STD81nRZhFCvjxJ7cjsWhiAVG5",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_016ZF5TJT9UF922I7u9EAtR5ip6axjop00G.output.variable_workflow_016ZF7Q32EAZA5eWEeAxe8NMpFsRrVPkVDl$",
+              "variable_value_new": "$activity.definition_activity_016ZG2T1PYGB82NAnpaVuFPBcIQepG9QaHS.output.xpath_queries.searchID$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
