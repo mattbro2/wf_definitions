@@ -1,0 +1,430 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_016ZFFSH7MA4O260JOHHm5BqR9BQBjVoPO6",
+    "name": "Test Splunk",
+    "title": "Test Splunk",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "search index=sinkhole earliest=-5m",
+          "scope": "input",
+          "name": "Search String",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_016ZG5JZ8O4NX1EsyxMRBcco6BUyqcek7Jb",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "local",
+          "name": "isDone",
+          "type": "datatype.boolean",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_016ZM70UXW4BP4nVQZCRqkSxEFEd200uYlu",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "full_output_xml",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_016ZMFA6VB8MV5YlAmQe8x3OFdsuPSlOgxq",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "mattbro2",
+          "scope": "local",
+          "name": "username",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_016ZFGAY5S43F71ncioO71IBdFRSU10zL1d",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "value": "*****",
+          "scope": "local",
+          "name": "password",
+          "type": "datatype.secure_string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_016ZFGKBW3L117LrwxRZNWI2ErRffytrEpT",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "description": "A wrapper for the Splunk activities to run a custom job and wait for it to complete and then pull the data out and track success or failure.\n\nNote the default Search String is:  search index=sinkhole earliest=-5m\n\nThis is the Splunk search language string.\n\nYou will need to provide credentials, or change this WF to make those creds passed as input params along with the Search String",
+      "display_name": "Test Splunk",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_016K8D4KQW2ZO5xyS7OucsZIBFgPw2LaeKq",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_016ZFGPX1PU8V30xWsxMvIuEVvTCAaqAFkh",
+        "name": "Splunk Auth/Login",
+        "title": "Splunk Auth/Login",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "atomic": {
+            "atomic_group": "Splunk",
+            "is_atomic": true
+          },
+          "continue_on_failure": false,
+          "delete_workflow_instance": true,
+          "display_name": "Splunk Auth/Login",
+          "favorite": false,
+          "input": {
+            "variable_workflow_016X1N1F9X51Z4dOkQh6Fo5UpA8Y8ofdFid": "$workflow.definition_workflow_016ZFFSH7MA4O260JOHHm5BqR9BQBjVoPO6.local.variable_workflow_016ZFGAY5S43F71ncioO71IBdFRSU10zL1d$",
+            "variable_workflow_016X1NBARZ9IA6SJusYIGj4EpScVqLD6A86": "$workflow.definition_workflow_016ZFFSH7MA4O260JOHHm5BqR9BQBjVoPO6.local.variable_workflow_016ZFGKBW3L117LrwxRZNWI2ErRffytrEpT$"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "target_type": "015DS78JB8KKT7kilXcMfzSGbrNsctD9CUf",
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_016K85SMQK49A57YdKtDZ8VJVoU7hMkVo9E"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_016ZFGZAVE8HT7hhi9xVWti4a66cOA057qU",
+        "name": "Ad Hoc Search",
+        "title": "Ad Hoc Search",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "atomic": {
+            "atomic_group": "Splunk",
+            "is_atomic": true
+          },
+          "continue_on_failure": false,
+          "delete_workflow_instance": true,
+          "display_name": "Ad Hoc Search",
+          "favorite": false,
+          "input": {
+            "variable_workflow_016ZF7GGLWPSE25Ek5dOFgIifLQb1u56JG0": "$activity.definition_activity_016ZFGPX1PU8V30xWsxMvIuEVvTCAaqAFkh.output.variable_workflow_016ZEPIOZ8GB24J7IyIrLs9bgASIzSf2QC7$",
+            "variable_workflow_016ZG0GP45FG5621gmycfLII83jdLAyf2M4": "$workflow.definition_workflow_016ZFFSH7MA4O260JOHHm5BqR9BQBjVoPO6.input.variable_workflow_016ZG5JZ8O4NX1EsyxMRBcco6BUyqcek7Jb$"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "target_type": "015DS78JB8KKT7kilXcMfzSGbrNsctD9CUf",
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_016ZF5TJT9UF922I7u9EAtR5ip6axjop00G"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_016ZM7P85U8GL10M2mpWMcbkYtJ40HnVHhV",
+        "name": "While Loop",
+        "title": "While Loop",
+        "type": "logic.while",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "While Loop"
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_016ZM7PBEZJDH6we2aRJXzcgf8s6Kx5yW4S",
+            "name": "Condition Branch",
+            "title": "Not Done",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$workflow.definition_workflow_016ZFFSH7MA4O260JOHHm5BqR9BQBjVoPO6.local.variable_workflow_016ZM70UXW4BP4nVQZCRqkSxEFEd200uYlu$",
+                "operator": "eq",
+                "right_operand": false
+              },
+              "continue_on_failure": false,
+              "display_name": "Not Done"
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_016ZKZC8SAIIZ5cQumIJBYrTaD82Nmwk4md",
+                "name": "Search Jobs",
+                "title": "Search Jobs",
+                "type": "workflow.atomic_workflow",
+                "base_type": "subworkflow",
+                "properties": {
+                  "atomic": {
+                    "atomic_group": "Splunk",
+                    "is_atomic": true
+                  },
+                  "continue_on_failure": false,
+                  "delete_workflow_instance": true,
+                  "display_name": "Search Jobs",
+                  "favorite": false,
+                  "input": {
+                    "variable_workflow_016ZKWMF9HSAT615FU2Wm1quDf8kVK5T8dl": "$activity.definition_activity_016ZFGZAVE8HT7hhi9xVWti4a66cOA057qU.output.variable_workflow_016ZF7Q32EAZA5eWEeAxe8NMpFsRrVPkVDl$",
+                    "variable_workflow_016ZKYK0U7NOT2gbY5fjQ8Ur6rvOLpmtDID": "$activity.definition_activity_016ZFGPX1PU8V30xWsxMvIuEVvTCAaqAFkh.output.variable_workflow_016ZEPIOZ8GB24J7IyIrLs9bgASIzSf2QC7$"
+                  },
+                  "target": {
+                    "execute_on_this_target": false,
+                    "no_target": false,
+                    "override_workflow_target": false,
+                    "target_type": "015DS78JB8KKT7kilXcMfzSGbrNsctD9CUf",
+                    "use_workflow_target": true
+                  },
+                  "workflow_id": "definition_workflow_016ZKVWT2NA0G54PNR2owcCqCqybXBrkUde"
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_0172VVK80X3QB309yb148Z5ByMwLeMcCOfA",
+                "name": "Convert Xml to Json",
+                "title": "Convert Xml to Json",
+                "type": "core.xml2json",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Convert Xml to Json",
+                  "input_xml": "$activity.definition_activity_016ZKZC8SAIIZ5cQumIJBYrTaD82Nmwk4md.output.variable_workflow_016ZKWU2HSG625E46T1eAucShm7Od3z5H8e$"
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_0172W9WQVZYNC64LbTdQ6eufdbbLxVGu2RQ",
+                "name": "JSONPath Query",
+                "title": "JSONPath Query",
+                "type": "corejava.jsonpathquery",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": false,
+                  "display_name": "JSONPath Query",
+                  "input_json": "$activity.definition_activity_0172VVK80X3QB309yb148Z5ByMwLeMcCOfA.output.output_json$",
+                  "jsonpath_queries": [
+                    {
+                      "jsonpath_query": "$.entry.content.dict.key[?(@.-name=='isDone')].#text",
+                      "jsonpath_query_name": "isDone",
+                      "jsonpath_query_type": "string",
+                      "zdate_type_format": ""
+                    },
+                    {
+                      "jsonpath_query": "$.entry.content.dict.key[?(@.-name=='isFailed')].#text",
+                      "jsonpath_query_name": "isFailed",
+                      "jsonpath_query_type": "string",
+                      "zdate_type_format": ""
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_016ZMA9Y65IV41FOPvplCvwv8QqoYEYkrxQ",
+                "name": "XPath Query",
+                "title": "XPath Query",
+                "type": "core.xpathquery",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "XPath Query",
+                  "input_xml": "$activity.definition_activity_016ZKZC8SAIIZ5cQumIJBYrTaD82Nmwk4md.output.variable_workflow_016ZKWU2HSG625E46T1eAucShm7Od3z5H8e$",
+                  "xpath_queries": [
+                    {
+                      "xpath_query": "/entry",
+                      "xpath_query_name": "full_xml",
+                      "xpath_query_type": "string",
+                      "xpath_query_type_format": ""
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_016ZM83G620GR2WFpdawG29bkrplLdJoPY5",
+                "name": "Condition Block",
+                "title": "Condition Block",
+                "type": "logic.if_else",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Condition Block"
+                },
+                "object_type": "definition_activity",
+                "blocks": [
+                  {
+                    "unique_name": "definition_activity_016ZM83J3S1PC69vGoo8Oeq4OkoCUFOqFmP",
+                    "name": "Condition Branch",
+                    "title": "Condition Branch - Done",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$activity.definition_activity_0172W9WQVZYNC64LbTdQ6eufdbbLxVGu2RQ.output.jsonpath_queries.isDone$",
+                        "operator": "eq",
+                        "right_operand": "1"
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "Condition Branch - Done"
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_016ZMC6WLL7LU2riw15NQFp5EOzKfEp8usb",
+                        "name": "Set Variables",
+                        "title": "Set Variables",
+                        "type": "core.set_multiple_variables",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Set Variables",
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_016ZFFSH7MA4O260JOHHm5BqR9BQBjVoPO6.output.variable_workflow_016ZMFA6VB8MV5YlAmQe8x3OFdsuPSlOgxq$",
+                              "variable_value_new": "$activity.definition_activity_016ZMA9Y65IV41FOPvplCvwv8QqoYEYkrxQ.output.xpath_queries.full_xml$"
+                            },
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_016ZFFSH7MA4O260JOHHm5BqR9BQBjVoPO6.local.variable_workflow_016ZM70UXW4BP4nVQZCRqkSxEFEd200uYlu$",
+                              "variable_value_new": true
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_0172UMM141WVC4LZY82UAOkWS63hiOMVaMX",
+                        "name": "Condition Block",
+                        "title": "Condition Block",
+                        "type": "logic.if_else",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Condition Block"
+                        },
+                        "object_type": "definition_activity",
+                        "blocks": [
+                          {
+                            "unique_name": "definition_activity_0172V5O6USNW93U86bsfmzIJ9ek4K4ChNed",
+                            "name": "Condition Branch",
+                            "title": "Not Failed",
+                            "type": "logic.condition_block",
+                            "base_type": "activity",
+                            "properties": {
+                              "condition": {
+                                "left_operand": "$activity.definition_activity_0172W9WQVZYNC64LbTdQ6eufdbbLxVGu2RQ.output.jsonpath_queries.isFailed$",
+                                "operator": "eq",
+                                "right_operand": "0"
+                              },
+                              "continue_on_failure": false,
+                              "display_name": "Not Failed"
+                            },
+                            "object_type": "definition_activity",
+                            "actions": [
+                              {
+                                "unique_name": "definition_activity_0172V6L2KZSUT1X3mz4Mw2C7DvWz2dWTC4w",
+                                "name": "Completed",
+                                "title": "Completed",
+                                "type": "logic.completed",
+                                "base_type": "activity",
+                                "properties": {
+                                  "completion_type": "succeeded",
+                                  "display_name": "Completed"
+                                },
+                                "object_type": "definition_activity"
+                              }
+                            ]
+                          },
+                          {
+                            "unique_name": "definition_activity_0172V5PM5ZA326Wu84AVOSu9Ri2LJYcVTs6",
+                            "name": "Condition Branch",
+                            "title": "Failed",
+                            "type": "logic.condition_block",
+                            "base_type": "activity",
+                            "properties": {
+                              "condition": {
+                                "left_operand": "$activity.definition_activity_0172W9WQVZYNC64LbTdQ6eufdbbLxVGu2RQ.output.jsonpath_queries.isFailed$",
+                                "operator": "eq",
+                                "right_operand": "1"
+                              },
+                              "continue_on_failure": false,
+                              "display_name": "Failed"
+                            },
+                            "object_type": "definition_activity",
+                            "actions": [
+                              {
+                                "unique_name": "definition_activity_0172V6MEE9DRK6qBcONkFCIn3QGjp2YnvSO",
+                                "name": "Failed",
+                                "title": "Completed",
+                                "type": "logic.completed",
+                                "base_type": "activity",
+                                "properties": {
+                                  "completion_type": "failed-completed",
+                                  "display_name": "Failed"
+                                },
+                                "object_type": "definition_activity"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_016K8D4KQW2ZO5xyS7OucsZIBFgPw2LaeKq": {
+      "unique_name": "definition_target_016K8D4KQW2ZO5xyS7OucsZIBFgPw2LaeKq",
+      "name": "Splunk CSIRT",
+      "title": "Splunk CSIRT",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "Splunk CSIRT",
+        "host": "csirt-splunk-dev.cisco.com",
+        "no_runtime_user": true,
+        "port": 8089,
+        "protocol": "https"
+      }
+    }
+  },
+  "atomic_workflows": [
+    "definition_workflow_016ZF5TJT9UF922I7u9EAtR5ip6axjop00G",
+    "definition_workflow_016K85SMQK49A57YdKtDZ8VJVoU7hMkVo9E",
+    "definition_workflow_016ZKVWT2NA0G54PNR2owcCqCqybXBrkUde"
+  ]
+}
