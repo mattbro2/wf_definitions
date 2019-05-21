@@ -1,0 +1,135 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01779LB6MV0P02kvka9TGV5cEam84NrCTy4",
+    "name": "CTR Generate Token",
+    "title": "CTR Generate Token",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "access_token",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0177E3JCXJE3I3J8MO5cAc2KD7tkrxmgPD0",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "atomic_group": "Cisco Threat Response",
+        "is_atomic": true
+      },
+      "delete_workflow_instance": false,
+      "description": "asdf",
+      "display_name": "CTR Generate Token",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01779LT1UMW8C3VMIAjbTPAIwdRfSoq3mgK",
+        "name": "HTTP Request",
+        "title": "HTTP Request",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "grant_type=client_credentials",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "display_name": "HTTP Request",
+          "method": "POST",
+          "relative_url": "oauth2/token",
+          "runtime_user": {
+            "override_target_runtime_user": true,
+            "runtime_user_id": "definition_runtime_user_01779TVWOBXQ71PAppSvmyBmnIUyoOru5lX"
+          },
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0177E1888XEYT1EdtgWwun5NUEOdOMpKj9n",
+        "name": "JSONPath Query",
+        "title": "JSONPath Query",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "JSONPath Query",
+          "input_json": "$activity.definition_activity_01779LT1UMW8C3VMIAjbTPAIwdRfSoq3mgK.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.access_token",
+              "jsonpath_query_name": "access_token",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0177E3MHH91271rFsrbHyQ36w9y4dAsjCMc",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01779LB6MV0P02kvka9TGV5cEam84NrCTy4.output.variable_workflow_0177E3JCXJE3I3J8MO5cAc2KD7tkrxmgPD0$",
+              "variable_value_new": "$activity.definition_activity_0177E1888XEYT1EdtgWwun5NUEOdOMpKj9n.output.jsonpath_queries.access_token$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "runtime_users": {
+    "definition_runtime_user_01779TVWOBXQ71PAppSvmyBmnIUyoOru5lX": {
+      "unique_name": "definition_runtime_user_01779TVWOBXQ71PAppSvmyBmnIUyoOru5lX",
+      "name": "CTR_CREDS",
+      "title": "CTR_CREDS",
+      "type": "runtime_user.web-service_basic_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "basic_password": "*****",
+        "basic_username": "*****",
+        "display_name": "CTR_CREDS"
+      }
+    }
+  }
+}
