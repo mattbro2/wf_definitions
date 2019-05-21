@@ -1,0 +1,133 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_017BFN4VTPO4U4cp0iUtC7fGPXXNCD4iCzZ",
+    "name": "CTR Test",
+    "title": "CTR Test",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "630325cac09ac3fab908f903e3b00d0dadd5fdaa0875ed8496fcbb97a558d0da",
+          "scope": "input",
+          "name": "observable",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_017C8H8R5MCAJ3cBoTjw7Y7zuCtVvse8qkQ",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "CTR Test",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_01779MOE87W8S2YjxAPrPBd0gVLUzwlgfil",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_017BFNCXG04NP7gE1wa7TwZ3FkMpsZ6hYw0",
+        "name": "CTR Generate Token",
+        "title": "CTR Generate Token",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "CTR Generate Token",
+          "input": {},
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "target_type": "015DW1ZJC6Y3M1iaIpJjfWlA2wffZ9ttQ6C",
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01779LB6MV0P02kvka9TGV5cEam84NrCTy4"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017BFOFSBLAX147A9JN7UnRxZZPFw6KWFtm",
+        "name": "CTR Inspect",
+        "title": "CTR Inspect",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "CTR Inspect",
+          "input": {
+            "variable_workflow_0177E90V3SCXM7O1JWh8m7gAz0O7uOuqZjC": "$workflow.definition_workflow_017BFN4VTPO4U4cp0iUtC7fGPXXNCD4iCzZ.input.variable_workflow_017C8H8R5MCAJ3cBoTjw7Y7zuCtVvse8qkQ$",
+            "variable_workflow_0177EAOLP7TFL0J0UqmTnVEhnzoBMdju3dB": "$activity.definition_activity_017BFNCXG04NP7gE1wa7TwZ3FkMpsZ6hYw0.output.variable_workflow_0177E3JCXJE3I3J8MO5cAc2KD7tkrxmgPD0$"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "target_type": "015DW1ZJC6Y3M1iaIpJjfWlA2wffZ9ttQ6C",
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_0177E50PJLT6G4VGaqdyaf4gvQDiZYG2BJ8"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017BJDKQBAHR3031kI706yt7NJPFjm8eS3k",
+        "name": "CTR Enrich",
+        "title": "CTR Enrich",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "CTR Enrich",
+          "input": {
+            "variable_workflow_017BJ9BZ3NDMD31hwCRznv3tkwd4G7bir9Z": "$activity.definition_activity_017BFNCXG04NP7gE1wa7TwZ3FkMpsZ6hYw0.output.variable_workflow_0177E3JCXJE3I3J8MO5cAc2KD7tkrxmgPD0$",
+            "variable_workflow_017BJB8XHXG5A1nAcJ26F5NFKNYv6iM2rxm": "$activity.definition_activity_017BFOFSBLAX147A9JN7UnRxZZPFw6KWFtm.output.variable_workflow_017BHDWTNKA6P1EkLJlRkZiFBdD5JZEbRSS$"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "target_type": "015DW1ZJC6Y3M1iaIpJjfWlA2wffZ9ttQ6C",
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_017BJ90UZ3UWO4TTlRPjqfAoaHHo2UGKOoX"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_01779MOE87W8S2YjxAPrPBd0gVLUzwlgfil": {
+      "unique_name": "definition_target_01779MOE87W8S2YjxAPrPBd0gVLUzwlgfil",
+      "name": "AMP",
+      "title": "AMP",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "AMP",
+        "host": "visibility.amp.cisco.com",
+        "no_runtime_user": true,
+        "path": "iroh",
+        "protocol": "https"
+      }
+    }
+  },
+  "atomic_workflows": [
+    "definition_workflow_01779LB6MV0P02kvka9TGV5cEam84NrCTy4",
+    "definition_workflow_0177E50PJLT6G4VGaqdyaf4gvQDiZYG2BJ8",
+    "definition_workflow_017BJ90UZ3UWO4TTlRPjqfAoaHHo2UGKOoX"
+  ]
+}
