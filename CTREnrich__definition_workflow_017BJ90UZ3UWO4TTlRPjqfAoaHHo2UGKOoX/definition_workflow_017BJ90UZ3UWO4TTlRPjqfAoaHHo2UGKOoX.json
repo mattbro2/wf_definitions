@@ -1,0 +1,116 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_017BJ90UZ3UWO4TTlRPjqfAoaHHo2UGKOoX",
+    "name": "CTR Enrich",
+    "title": "CTR Enrich",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "inspect_response",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_017BJB8XHXG5A1nAcJ26F5NFKNYv6iM2rxm",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "response",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_017BJFUT8NPKV1k6MZFku5o6usOE4LeMnJa",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "access_token",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_017BJ9BZ3NDMD31hwCRznv3tkwd4G7bir9Z",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "atomic_group": "Cisco Threat Response",
+        "is_atomic": true
+      },
+      "delete_workflow_instance": false,
+      "display_name": "CTR Enrich",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_017BJ9SL1FCW34TpQXKloSPh2VoUnEU0VZI",
+        "name": "HTTP Request",
+        "title": "HTTP Request",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "$workflow.definition_workflow_017BJ90UZ3UWO4TTlRPjqfAoaHHo2UGKOoX.input.variable_workflow_017BJB8XHXG5A1nAcJ26F5NFKNYv6iM2rxm$",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $workflow.definition_workflow_017BJ90UZ3UWO4TTlRPjqfAoaHHo2UGKOoX.input.variable_workflow_017BJ9BZ3NDMD31hwCRznv3tkwd4G7bir9Z$"
+            }
+          ],
+          "display_name": "HTTP Request",
+          "method": "POST",
+          "relative_url": "/iroh-enrich/deliberate/observables",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017BJFXNZJ2DB167X9x2G44By1G66gS4j5b",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_017BJ90UZ3UWO4TTlRPjqfAoaHHo2UGKOoX.output.variable_workflow_017BJFUT8NPKV1k6MZFku5o6usOE4LeMnJa$",
+              "variable_value_new": "$activity.definition_activity_017BJ9SL1FCW34TpQXKloSPh2VoUnEU0VZI.output.response_body$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
