@@ -1,0 +1,631 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w",
+    "name": "jenkins coverage report",
+    "title": "jenkins coverage report",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "output",
+          "name": "Lines Uncovered",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_017J2H9VJIVW86IBzdZetxkagj6BiUbwRxP",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "/cisco-dash/job/longhorn",
+          "scope": "local",
+          "name": "query_path",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0176GRUH6U4KK3QImTBkGCqrj7uDHLKJBa2",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "output",
+          "name": "Total Lines",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_0175G0ITT3MU67ZBsAAB9OC69EJc5rM4ONg",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": ".*(helm|schemas).*",
+          "scope": "local",
+          "name": "exclude regex",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0175GM9U7HVAV06K1yXVptHKfXgGCHeK2Xb",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "5.0.2",
+          "scope": "input",
+          "name": "release",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0175G09F0Q3NW64d0LahNq0EQ0q6xo9uWs4",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": true,
+          "scope": "local",
+          "name": "true",
+          "type": "datatype.boolean"
+        },
+        "unique_name": "variable_workflow_0175H4HT3SQ4O360YalVzwotUFXeDkMctRC",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "output",
+          "name": "Lines Covered",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_0175G0OCL8XNU4XPagxEiRMghGY6NwfpzkL",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.number",
+        "properties": {
+          "value": 0,
+          "scope": "output",
+          "name": "Coverage Percentage",
+          "type": "datatype.number"
+        },
+        "unique_name": "variable_workflow_017J2HMS123S76dXqmsML2r4PIWiIVQrUQx",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "tabletype_0175JYV4SOQ0R5hdI5e9f8mExajClbsa9ho",
+        "properties": {
+          "scope": "local",
+          "name": "TestingData",
+          "type": "datatype.table"
+        },
+        "unique_name": "variable_workflow_0175JZ29F9O4K5JpcjT71l2ScpniueLGOHz",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "jenkins coverage report",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_0175FS9ZSBK853n69jPWcThLsCYVhKobkpW",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_0176GR64VZO2N0MJart5MUBis0SfKCzkIJt",
+        "name": "Condition Block",
+        "title": "Condition Block Is Dev or Prod Builds?",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Condition Block Is Dev or Prod Builds?"
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_0176GR69TML7S3Pf9pO6Q2K3IwIOmIOQqZy",
+            "name": "Condition Branch",
+            "title": "Condition Is Dev",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.input.variable_workflow_0175G09F0Q3NW64d0LahNq0EQ0q6xo9uWs4$",
+                "operator": "eq",
+                "right_operand": "dev"
+              },
+              "continue_on_failure": false,
+              "display_name": "Condition Is Dev"
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_0176GRY840IC72OUW2OGGuwj5pU1JS8WieX",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Variables",
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.local.variable_workflow_0176GRUH6U4KK3QImTBkGCqrj7uDHLKJBa2$",
+                      "variable_value_new": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.local.variable_workflow_0176GRUH6U4KK3QImTBkGCqrj7uDHLKJBa2$/job/pipelines/job/dev"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_0176GR6B6Q76Q4vb2ar71XTDJgxayo7GStp",
+            "name": "Condition Branch",
+            "title": "Condition is prod",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.input.variable_workflow_0175G09F0Q3NW64d0LahNq0EQ0q6xo9uWs4$",
+                "operator": "ne",
+                "right_operand": "dev"
+              },
+              "continue_on_failure": false,
+              "display_name": "Condition is prod"
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_0176GS3XXC2EO1NEZjlkq9CyuOVTrNAIj3y",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Variables",
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.local.variable_workflow_0176GRUH6U4KK3QImTBkGCqrj7uDHLKJBa2$",
+                      "variable_value_new": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.local.variable_workflow_0176GRUH6U4KK3QImTBkGCqrj7uDHLKJBa2$/job/pipelines/job/release/job/$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.input.variable_workflow_0175G09F0Q3NW64d0LahNq0EQ0q6xo9uWs4$"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_0175FQBZ7WPSA1gm2Zuscs7DWbwIKwo4u1U",
+        "name": "HTTP Request",
+        "title": "Get All Jenkins Repos",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "display_name": "Get All Jenkins Repos",
+          "method": "GET",
+          "relative_url": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.local.variable_workflow_0176GRUH6U4KK3QImTBkGCqrj7uDHLKJBa2$/api/json",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0175G25ATGKHH1IO2RTzEHWxNm61Qdwhscq",
+        "name": "Read Table from JSON",
+        "title": "Read Table from JSON",
+        "type": "corejava.read_table_from_json",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Read Table from JSON",
+          "input_json": "$activity.definition_activity_0175FQBZ7WPSA1gm2Zuscs7DWbwIKwo4u1U.output.response_body$",
+          "jsonpath_query": "$.jobs",
+          "persist_output": false,
+          "populate_columns": false,
+          "table_columns": [
+            {
+              "column_name": "name",
+              "column_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0175GMCV8P1OW3aL06ZLwb4vZMWcOUVretV",
+        "name": "For Each",
+        "title": "For Each",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "For Each",
+          "source_array": "$activity.definition_activity_0175G25ATGKHH1IO2RTzEHWxNm61Qdwhscq.output.read_table_from_json$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_0175GMNUTO1ND6E7Z6mrFGKBzrvd9GTmvmX",
+            "name": "Condition Block",
+            "title": "Condition Block is repo ignored?",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Condition Block is repo ignored?"
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_0175GMNYIXEAD1zDvjdYSysen5oiF6aUnwK",
+                "name": "Condition Branch",
+                "title": "Condition Ignored",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_0175GMCV8P1OW3aL06ZLwb4vZMWcOUVretV.input.source_array[@].name$",
+                    "operator": "mregex",
+                    "right_operand": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.local.variable_workflow_0175GM9U7HVAV06K1yXVptHKfXgGCHeK2Xb$"
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Condition Ignored"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_0175GV9RLTTDF5THXtUSIzcfk5DqC70afKr",
+                    "name": "To Lower",
+                    "title": "SKIPPING",
+                    "type": "core.string2lower",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "SKIPPING",
+                      "source": "$activity.definition_activity_0175GMCV8P1OW3aL06ZLwb4vZMWcOUVretV.input.source_array[@].name$"
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_0175H21Z2UJ731EPBvABPvLyGI32LduO9kD",
+                "name": "Condition Branch",
+                "title": "Condition Is not ignored",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.local.variable_workflow_0175H4HT3SQ4O360YalVzwotUFXeDkMctRC$",
+                    "operator": "eq",
+                    "right_operand": true
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Condition Is not ignored"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_0175H6OFKOOBY1k2f3tqUxIoTrkZXXFhjtJ",
+                    "name": "HTTP Request",
+                    "title": "Get Jenkins Cobertura Report",
+                    "type": "web-service.http_request",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "allow_auto_redirect": true,
+                      "content_type": "application/json",
+                      "continue_on_error_status_code": true,
+                      "continue_on_failure": false,
+                      "display_name": "Get Jenkins Cobertura Report",
+                      "method": "GET",
+                      "relative_url": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.local.variable_workflow_0176GRUH6U4KK3QImTBkGCqrj7uDHLKJBa2$/job/$activity.definition_activity_0175GMCV8P1OW3aL06ZLwb4vZMWcOUVretV.input.source_array[@].name$/lastCompletedBuild/cobertura/api/json?depth=2",
+                      "runtime_user": {
+                        "override_target_runtime_user": false,
+                        "target_default": true
+                      },
+                      "target": {
+                        "override_workflow_target": false,
+                        "override_workflow_target_group_criteria": false,
+                        "use_workflow_target": true,
+                        "use_workflow_target_group": false
+                      }
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_0175HM8OUJU245WCovEEaf2bQODGijoBgMx",
+                    "name": "Condition Block",
+                    "title": "Condition Report Exists?",
+                    "type": "logic.if_else",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Condition Report Exists?"
+                    },
+                    "object_type": "definition_activity",
+                    "blocks": [
+                      {
+                        "unique_name": "definition_activity_0175HM8TKASPW6EyM2N0PmF7SvzxvIBpN6W",
+                        "name": "Condition Branch",
+                        "title": "Condition Exists",
+                        "type": "logic.condition_block",
+                        "base_type": "activity",
+                        "properties": {
+                          "condition": {
+                            "left_operand": "$activity.definition_activity_0175H6OFKOOBY1k2f3tqUxIoTrkZXXFhjtJ.output.status_code$",
+                            "operator": "ne",
+                            "right_operand": 404
+                          },
+                          "continue_on_failure": false,
+                          "display_name": "Condition Exists"
+                        },
+                        "object_type": "definition_activity",
+                        "actions": [
+                          {
+                            "unique_name": "definition_activity_0175HD9GJL18C5ORGOBR1ucIgIhYekMMIM5",
+                            "name": "JSONPath Query",
+                            "title": "JSONPath Query",
+                            "type": "corejava.jsonpathquery",
+                            "base_type": "activity",
+                            "properties": {
+                              "action_timeout": 180,
+                              "continue_on_failure": false,
+                              "display_name": "JSONPath Query",
+                              "input_json": "$activity.definition_activity_0175H6OFKOOBY1k2f3tqUxIoTrkZXXFhjtJ.output.response_body$",
+                              "jsonpath_queries": [
+                                {
+                                  "jsonpath_query": "$.results.elements[?(@.name == 'Lines')].denominator",
+                                  "jsonpath_query_name": "lines",
+                                  "jsonpath_query_type": "string",
+                                  "zdate_type_format": ""
+                                },
+                                {
+                                  "jsonpath_query": "$.results.elements[?(@.name == 'Lines')].numerator",
+                                  "jsonpath_query_name": "covered",
+                                  "jsonpath_query_type": "string",
+                                  "zdate_type_format": ""
+                                }
+                              ]
+                            },
+                            "object_type": "definition_activity"
+                          },
+                          {
+                            "unique_name": "definition_activity_0175HKQBYTNDV5ih9lk7IKeAHnkCspo7UNO",
+                            "name": "Execute Python Script",
+                            "title": "Execute Python Script",
+                            "type": "python3.script",
+                            "base_type": "activity",
+                            "properties": {
+                              "action_timeout": 180,
+                              "continue_on_failure": false,
+                              "display_name": "Execute Python Script",
+                              "script": "import sys\ncovered = int(sys.argv[1])\nlines = int(sys.argv[2])\npercentage = int((covered * 100) / lines)",
+                              "script_arguments": [
+                                "$activity.definition_activity_0175HD9GJL18C5ORGOBR1ucIgIhYekMMIM5.output.jsonpath_queries.covered$",
+                                "$activity.definition_activity_0175HD9GJL18C5ORGOBR1ucIgIhYekMMIM5.output.jsonpath_queries.lines$"
+                              ],
+                              "script_queries": [
+                                {
+                                  "script_query": "covered",
+                                  "script_query_name": "covered",
+                                  "script_query_type": "integer"
+                                },
+                                {
+                                  "script_query": "lines",
+                                  "script_query_name": "lines",
+                                  "script_query_type": "integer"
+                                },
+                                {
+                                  "script_query": "percentage",
+                                  "script_query_name": "percentage",
+                                  "script_query_type": "integer"
+                                }
+                              ]
+                            },
+                            "object_type": "definition_activity"
+                          },
+                          {
+                            "unique_name": "definition_activity_0175HFEOIONS54MhTRiAUEGAJYrBtXIJxFO",
+                            "name": "Set Variables",
+                            "title": "Set Variables",
+                            "type": "core.set_multiple_variables",
+                            "base_type": "activity",
+                            "properties": {
+                              "continue_on_failure": false,
+                              "display_name": "Set Variables",
+                              "variables_to_update": [
+                                {
+                                  "variable_to_update": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.output.variable_workflow_0175G0ITT3MU67ZBsAAB9OC69EJc5rM4ONg$",
+                                  "variable_value_new": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.output.variable_workflow_0175G0ITT3MU67ZBsAAB9OC69EJc5rM4ONg$ + $activity.definition_activity_0175HKQBYTNDV5ih9lk7IKeAHnkCspo7UNO.output.script_queries.lines$"
+                                },
+                                {
+                                  "variable_to_update": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.output.variable_workflow_0175G0OCL8XNU4XPagxEiRMghGY6NwfpzkL$",
+                                  "variable_value_new": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.output.variable_workflow_0175G0OCL8XNU4XPagxEiRMghGY6NwfpzkL$ + $activity.definition_activity_0175HKQBYTNDV5ih9lk7IKeAHnkCspo7UNO.output.script_queries.covered$"
+                                }
+                              ]
+                            },
+                            "object_type": "definition_activity"
+                          },
+                          {
+                            "unique_name": "definition_activity_0175JZFRDC1YR3QQD9zQEGeJIt3BynRLKxO",
+                            "name": "Add Row to Table",
+                            "title": "Add Row to Table",
+                            "type": "core.addrowtotable",
+                            "base_type": "activity",
+                            "properties": {
+                              "action_timeout": 180,
+                              "continue_on_failure": false,
+                              "display_name": "Add Row to Table",
+                              "input_table": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.local.variable_workflow_0175JZ29F9O4K5JpcjT71l2ScpniueLGOHz$",
+                              "row": [
+                                {
+                                  "key": "ServiceName",
+                                  "type": "string",
+                                  "value": "$activity.definition_activity_0175GMCV8P1OW3aL06ZLwb4vZMWcOUVretV.input.source_array[@].name$"
+                                },
+                                {
+                                  "key": "LinesTotal",
+                                  "type": "integer",
+                                  "value": "$activity.definition_activity_0175HKQBYTNDV5ih9lk7IKeAHnkCspo7UNO.output.script_queries.lines$"
+                                },
+                                {
+                                  "key": "LinesCovered",
+                                  "type": "integer",
+                                  "value": "$activity.definition_activity_0175HKQBYTNDV5ih9lk7IKeAHnkCspo7UNO.output.script_queries.covered$"
+                                },
+                                {
+                                  "key": "CoveragePercent",
+                                  "type": "integer",
+                                  "value": "$activity.definition_activity_0175HKQBYTNDV5ih9lk7IKeAHnkCspo7UNO.output.script_queries.percentage$"
+                                },
+                                {
+                                  "key": "LinesUncovered",
+                                  "type": "integer",
+                                  "value": "$activity.definition_activity_0175HKQBYTNDV5ih9lk7IKeAHnkCspo7UNO.output.script_queries.lines$ - $activity.definition_activity_0175HKQBYTNDV5ih9lk7IKeAHnkCspo7UNO.output.script_queries.covered$"
+                                }
+                              ]
+                            },
+                            "object_type": "definition_activity"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_017J2HX4B3KJZ6AJ7cVMja617yGk41zvgDf",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.output.variable_workflow_017J2H9VJIVW86IBzdZetxkagj6BiUbwRxP$",
+              "variable_value_new": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.output.variable_workflow_0175G0ITT3MU67ZBsAAB9OC69EJc5rM4ONg$ - $workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.output.variable_workflow_0175G0OCL8XNU4XPagxEiRMghGY6NwfpzkL$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.output.variable_workflow_017J2HMS123S76dXqmsML2r4PIWiIVQrUQx$",
+              "variable_value_new": "($workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.output.variable_workflow_0175G0OCL8XNU4XPagxEiRMghGY6NwfpzkL$ * 100) / $workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.output.variable_workflow_0175G0ITT3MU67ZBsAAB9OC69EJc5rM4ONg$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_0175FS9ZSBK853n69jPWcThLsCYVhKobkpW": {
+      "unique_name": "definition_target_0175FS9ZSBK853n69jPWcThLsCYVhKobkpW",
+      "name": "Jenkins Internal",
+      "title": "Jenkins Internal",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_0175FRTS8VPPL1xdM3GOGyB7d1tg7mwHpV8",
+        "disable_certificate_validation": true,
+        "display_name": "Jenkins Internal",
+        "host": "engci-private-sjc.cisco.com",
+        "no_runtime_user": false,
+        "path": "jenkins",
+        "protocol": "https"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_0175FRTS8VPPL1xdM3GOGyB7d1tg7mwHpV8": {
+      "unique_name": "definition_runtime_user_0175FRTS8VPPL1xdM3GOGyB7d1tg7mwHpV8",
+      "name": "lh_jira_admin",
+      "title": "lh_jira_admin",
+      "type": "runtime_user.web-service_basic_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "basic_password": "*****",
+        "basic_username": "*****",
+        "display_name": "lh_jira_admin"
+      }
+    }
+  },
+  "table_types": {
+    "tabletype_0175JYV4SOQ0R5hdI5e9f8mExajClbsa9ho": {
+      "unique_name": "tabletype_0175JYV4SOQ0R5hdI5e9f8mExajClbsa9ho",
+      "data_type": "datatype.tabletype",
+      "display_name": "Testing Data",
+      "max_rows": 256,
+      "max_columns": 256,
+      "max_column_size": 1024,
+      "max_table_size": 26000,
+      "columns": [
+        {
+          "name": "LinesTotal",
+          "title": "LinesTotal",
+          "type": "integer"
+        },
+        {
+          "name": "LinesUncovered",
+          "title": "LinesUncovered",
+          "type": "integer"
+        },
+        {
+          "name": "ServiceName",
+          "title": "ServiceName",
+          "type": "string"
+        },
+        {
+          "name": "CoveragePercent",
+          "title": "CoveragePercent",
+          "type": "integer"
+        },
+        {
+          "name": "LinesCovered",
+          "title": "LinesCovered",
+          "type": "integer"
+        }
+      ],
+      "base_type": "datatype",
+      "object_type": "tabletype"
+    }
+  }
+}
