@@ -1,0 +1,447 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_017JTDU02L6FI3jmG0wWDVox0JQQDFjgNmY",
+    "name": "Export All WFs",
+    "title": "Export All WFs",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "local",
+          "name": "test",
+          "type": "datatype.boolean"
+        },
+        "unique_name": "variable_workflow_017K14QAOJQ3N5mVNquwZ5lFiJV1Gu2YQ9h",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "MB_TEST_EXPORT",
+          "scope": "input",
+          "name": "git repo name",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_017JTJT3X5AN90uO9kvRNLqtBzCb1X63Y9Z",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "category",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_017JTVEADKPU04BeDBA54snzoFOW36Eqycr",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "input",
+          "name": "force",
+          "type": "datatype.boolean"
+        },
+        "unique_name": "variable_workflow_017JWZOE8YMQ35gqfnpmLHZ9y8wIoXWlqkO",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "tabletype_017JX29D4ZL0S6YST82eN45lU1NFSVbsQsN",
+        "properties": {
+          "scope": "local",
+          "name": "WF_Table",
+          "type": "datatype.table"
+        },
+        "unique_name": "variable_workflow_017JX2GSF8VOV0Ts7U3DCdl1lMYn1SKrOio",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "My Commit Message",
+          "scope": "input",
+          "name": "commit message",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_017K132ZYV8KH2ApUYJxfktzGVBVgj3b2Wg",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Export All WFs",
+      "favorite": false,
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_017JTFWBU5CPF4xAjRkqHAdz4xbJxF3fZMT",
+        "name": "Generic CCS API Request",
+        "title": "Generic CCS API Request",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_call_method": "GET",
+          "continue_on_failure": false,
+          "display_name": "Generic CCS API Request",
+          "relative_url": "be-console/api/v1/targets?is_internal=true",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017JTJEH7H3P16EPhylHnKxOArNeBBTEG1i",
+        "name": "JSONPath Query",
+        "title": "JSONPath Query",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": true,
+          "display_name": "JSONPath Query",
+          "input_json": "$activity.definition_activity_017JTFWBU5CPF4xAjRkqHAdz4xbJxF3fZMT.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.[?(@.type == \"git.repository\" \u0026\u0026 @.name == \"$workflow.definition_workflow_017JTDU02L6FI3jmG0wWDVox0JQQDFjgNmY.input.variable_workflow_017JTJT3X5AN90uO9kvRNLqtBzCb1X63Y9Z$\")].id",
+              "jsonpath_query_name": "git_repo_id",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017JTRXZJ9N8Q5g4LaMsYMDzlMFyuQWRuta",
+        "name": "Generic CCS API Request",
+        "title": "Get All Atomics",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_call_method": "GET",
+          "continue_on_failure": false,
+          "display_name": "Get All Atomics",
+          "relative_url": "be-console/api/v1/workflows?is_atomic=true$workflow.definition_workflow_017JTDU02L6FI3jmG0wWDVox0JQQDFjgNmY.local.variable_workflow_017JTVEADKPU04BeDBA54snzoFOW36Eqycr$",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017JX2OOPGXR52CFtgx6QPlIv0HzFqgcd0B",
+        "name": "Read Table from JSON",
+        "title": "Read Table from JSON",
+        "type": "corejava.read_table_from_json",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Read Table from JSON",
+          "input_json": "$activity.definition_activity_017JTRXZJ9N8Q5g4LaMsYMDzlMFyuQWRuta.output.response_body$",
+          "jsonpath_query": "$.[*]",
+          "persist_output": false,
+          "populate_columns": false,
+          "table_columns": [
+            {
+              "column_name": "id",
+              "column_type": "string",
+              "zdate_type_format": ""
+            },
+            {
+              "column_name": "name",
+              "column_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017JX5I5M2ON840QMfIkHyCAfsmuPEXk2UK",
+        "name": "For Each",
+        "title": "For Each",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "For Each",
+          "source_array": "$activity.definition_activity_017JX2OOPGXR52CFtgx6QPlIv0HzFqgcd0B.output.read_table_from_json$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_017JX5Q0E5V7D7dlf23EJw9ei2IiQbhnzGM",
+            "name": "Add Row to Table",
+            "title": "Add Row to Table",
+            "type": "core.addrowtotable",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Add Row to Table",
+              "input_table": "$workflow.definition_workflow_017JTDU02L6FI3jmG0wWDVox0JQQDFjgNmY.local.variable_workflow_017JX2GSF8VOV0Ts7U3DCdl1lMYn1SKrOio$",
+              "row": [
+                {
+                  "key": "WF_ID",
+                  "type": "string",
+                  "value": "$activity.definition_activity_017JX5I5M2ON840QMfIkHyCAfsmuPEXk2UK.input.source_array[@].id$"
+                },
+                {
+                  "key": "WF_NAME",
+                  "type": "string",
+                  "value": "$activity.definition_activity_017JX5I5M2ON840QMfIkHyCAfsmuPEXk2UK.input.source_array[@].name$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_017JU8MXIVMBV2aG3iSSF5ljFOxN1Xn7pBW",
+        "name": "Generic CCS API Request",
+        "title": "Get All Non Atomics",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_call_method": "GET",
+          "continue_on_failure": false,
+          "display_name": "Get All Non Atomics",
+          "relative_url": "be-console/api/v1/workflows?is_atomic=false$workflow.definition_workflow_017JTDU02L6FI3jmG0wWDVox0JQQDFjgNmY.local.variable_workflow_017JTVEADKPU04BeDBA54snzoFOW36Eqycr$",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017JX4F90HCFC5uTyumAMnwsS8HGa47Str7",
+        "name": "Read Table from JSON",
+        "title": "Read Table from JSON",
+        "type": "corejava.read_table_from_json",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Read Table from JSON",
+          "input_json": "$activity.definition_activity_017JU8MXIVMBV2aG3iSSF5ljFOxN1Xn7pBW.output.response_body$",
+          "jsonpath_query": "$.[*]",
+          "persist_output": false,
+          "populate_columns": false,
+          "table_columns": [
+            {
+              "column_name": "id",
+              "column_type": "string",
+              "zdate_type_format": ""
+            },
+            {
+              "column_name": "name",
+              "column_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017JX6BAS38C53iuWRTif9ePdpCv10iuQxB",
+        "name": "For Each",
+        "title": "For Each",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "For Each",
+          "source_array": "$activity.definition_activity_017JX4F90HCFC5uTyumAMnwsS8HGa47Str7.output.read_table_from_json$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_017JX6ERBJ65N0En39EXs3Pdf92u4C7oyTo",
+            "name": "Add Row to Table",
+            "title": "Add Row to Table",
+            "type": "core.addrowtotable",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Add Row to Table",
+              "input_table": "$workflow.definition_workflow_017JTDU02L6FI3jmG0wWDVox0JQQDFjgNmY.local.variable_workflow_017JX2GSF8VOV0Ts7U3DCdl1lMYn1SKrOio$",
+              "row": [
+                {
+                  "key": "WF_ID",
+                  "type": "string",
+                  "value": "$activity.definition_activity_017JX6BAS38C53iuWRTif9ePdpCv10iuQxB.input.source_array[@].id$"
+                },
+                {
+                  "key": "WF_NAME",
+                  "type": "string",
+                  "value": "$activity.definition_activity_017JX6BAS38C53iuWRTif9ePdpCv10iuQxB.input.source_array[@].name$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_017K0UF4P23FQ69ZOKjVWnNrCyzTNxbZexG",
+        "name": "For Each",
+        "title": "For Each",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "For Each",
+          "source_array": "$workflow.definition_workflow_017JTDU02L6FI3jmG0wWDVox0JQQDFjgNmY.local.variable_workflow_017JX2GSF8VOV0Ts7U3DCdl1lMYn1SKrOio$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_017K13AJO3T8M0lumORj5ApJXdzgZszXoSC",
+            "name": "Replace String",
+            "title": "Replace String",
+            "type": "core.replacestring",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Replace String",
+              "input_string": "$activity.definition_activity_017K0UF4P23FQ69ZOKjVWnNrCyzTNxbZexG.input.source_array[@].WF_NAME$",
+              "replace_list": [
+                {
+                  "replaced_string": " ",
+                  "replacement_string": ""
+                },
+                {
+                  "replaced_string": "_",
+                  "replacement_string": ""
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_017K14UC6O5874pi9tt8GjLvTvRhXOpWg32",
+            "name": "Condition Block",
+            "title": "Condition Block",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Condition Block"
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_017K14UIEQXY90KMHedBLmwqVXvWnkNwLmS",
+                "name": "Condition Branch",
+                "title": "Condition Branch",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$workflow.definition_workflow_017JTDU02L6FI3jmG0wWDVox0JQQDFjgNmY.local.variable_workflow_017K14QAOJQ3N5mVNquwZ5lFiJV1Gu2YQ9h$",
+                    "operator": "eq",
+                    "right_operand": false
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Condition Branch"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_017K0VP2744HR4pt2787spoRIDOev5bSYRv",
+                    "name": "Generic CCS API Request",
+                    "title": "Generic CCS API Request",
+                    "type": "ccs.api_request",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "api_body": "{\n  \"commit_message\": \"$workflow.definition_workflow_017JTDU02L6FI3jmG0wWDVox0JQQDFjgNmY.input.variable_workflow_017K132ZYV8KH2ApUYJxfktzGVBVgj3b2Wg$\",\n  \"file_name\": \"$activity.definition_activity_017K13AJO3T8M0lumORj5ApJXdzgZszXoSC.output.result_string$\",\n  \"force\": false,\n  \"target_id\": \"$activity.definition_activity_017JTJEH7H3P16EPhylHnKxOArNeBBTEG1i.output.jsonpath_queries.git_repo_id$\"\n}",
+                      "api_call_method": "POST",
+                      "continue_on_failure": false,
+                      "display_name": "Generic CCS API Request",
+                      "relative_url": "be-importexport/api/v1/workflows/export?workflow_id=$activity.definition_activity_017K0UF4P23FQ69ZOKjVWnNrCyzTNxbZexG.input.source_array[@].WF_ID$\u0026to=git",
+                      "runtime_user": {
+                        "override_target_runtime_user": false,
+                        "target_default": true
+                      },
+                      "target": {
+                        "override_workflow_target": true,
+                        "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+                      }
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "table_types": {
+    "tabletype_017JX29D4ZL0S6YST82eN45lU1NFSVbsQsN": {
+      "unique_name": "tabletype_017JX29D4ZL0S6YST82eN45lU1NFSVbsQsN",
+      "data_type": "datatype.tabletype",
+      "display_name": "WF_Instances",
+      "max_rows": 256,
+      "max_columns": 256,
+      "max_column_size": 1024,
+      "max_table_size": 26000,
+      "columns": [
+        {
+          "name": "WF_ID",
+          "title": "WorkflowID",
+          "type": "string"
+        },
+        {
+          "name": "WF_NAME",
+          "title": "WorkflowName",
+          "type": "string"
+        }
+      ],
+      "base_type": "datatype",
+      "object_type": "tabletype"
+    }
+  }
+}
