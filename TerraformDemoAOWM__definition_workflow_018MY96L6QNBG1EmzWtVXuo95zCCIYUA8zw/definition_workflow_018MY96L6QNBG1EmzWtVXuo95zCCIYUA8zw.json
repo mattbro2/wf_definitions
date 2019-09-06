@@ -1,0 +1,1094 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_018MY96L6QNBG1EmzWtVXuo95zCCIYUA8zw",
+    "name": "Terraform Demo with AO and WM",
+    "title": "Terraform Demo with AO and WM",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "CentOS",
+          "scope": "input",
+          "name": "Application Profile Name",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_018NMYJ81P0K54I2hxEBXnILVDBY2j0gidD",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "172.16.0.0/20",
+          "scope": "input",
+          "name": "Subnet CIDR Block",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_018PF8SVZRHAH6kqRun94KCRu8iOSVQtJxH",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "Amazon-us-east-1",
+          "scope": "input",
+          "name": "Region Name",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_018NMIVRWEX8F3BzVHhohxNvZnB0zKJVI3C",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "Environment for terraform, AO and WM integration",
+          "scope": "input",
+          "name": "Deployment Environment Description",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_018NH8ZF7XWUB4T6LP8jO2OJNZt8Q436j9l",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "VPC ID",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_018N0FY1O74GB6EMTKsXzhWO8di26ehNSJH",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "terraform-demo-subnet",
+          "scope": "input",
+          "name": "Subnet Name",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_018PF8HLLIXOZ40kIjRFrLjPe5uQMavq9mP",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "terraform demo env",
+          "scope": "input",
+          "name": "WM Deployment Environment Name",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_018NH8J0YBFQH4UtojqT96CUKwI6EiRiJW4",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "172.16.0.0/16",
+          "scope": "input",
+          "name": "CIDR Block Range",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_018PF663SOWG02yTa3Z1ETbxoRhfOapso0y",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "terraform-demo-vpc",
+          "scope": "input",
+          "name": "VPC Name",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_018PF5WWOTG864U20qApx6rwEDQdVhaBgga",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "petstore-web-app",
+          "scope": "input",
+          "name": "Application Name",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_018NLP6404HZ743x8EZV3CfMRv1962lvha9",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "Terraform AWS",
+          "scope": "input",
+          "name": "Cloud Name",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_018NMEWUJRF0M16GFVfk6toMzuBeS0NL8sD",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Subnet ID",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_018N0G381U6Z86l2IdtHtUaB8E930mhinl9",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Terraform Demo with AO and WM",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "terraform.endpoint",
+        "target_id": "definition_target_018MP2BZ9FS116iE0yDeqc43ABQk5oSYhCv",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_018N32TC46KQ31UK7v1NFh0G5QmOytibKHt",
+        "name": "Group",
+        "title": "Terraform - Provision VPC in AWS",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Terraform - Provision VPC in AWS",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_019U6WOBAC9H03Ur2Ot78hYZiy4XcxO5BiO",
+            "name": "Execute Template",
+            "title": "Create VPC",
+            "type": "terraform.execute_template",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 360,
+              "continue_on_failure": false,
+              "display_name": "Create VPC",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              },
+              "template_name": "create_vpc",
+              "template_parameters": "{\n  \"params\": [\n    {\n      \"parameter_name\": \"aws_region\",\n      \"parameter_type\": \"string\",\n      \"parameter_value\": \"us-east-1\"\n    },\n    {\n      \"parameter_name\": \"access_key\",\n      \"parameter_type\": \"string\",\n      \"parameter_value\": \"$global.variable_019V8H1QZ84Z70FxunDvoVHXwc2K2Pki2fy.global.variable_019V8H1QZ84Z70FxunDvoVHXwc2K2Pki2fy$\"\n    },\n    {\n      \"parameter_name\": \"secret_key\",\n      \"parameter_type\": \"string\",\n      \"parameter_value\": \"$global.variable_019V8HCATBVP364hjZKIRrkoSk7qUZ3EvZw.global.variable_019V8HCATBVP364hjZKIRrkoSk7qUZ3EvZw$\"\n    },\n    {\n      \"parameter_name\": \"vpc_name\",\n      \"parameter_type\": \"string\",\n      \"parameter_value\": \"$workflow.definition_workflow_018MY96L6QNBG1EmzWtVXuo95zCCIYUA8zw.input.variable_workflow_018PF5WWOTG864U20qApx6rwEDQdVhaBgga$\"\n    },\n    {\n      \"parameter_name\": \"cidr_block\",\n      \"parameter_type\": \"string\",\n      \"parameter_value\": \"$workflow.definition_workflow_018MY96L6QNBG1EmzWtVXuo95zCCIYUA8zw.input.variable_workflow_018PF663SOWG02yTa3Z1ETbxoRhfOapso0y$\"\n    }\n  ]\n}",
+              "templates_path": "/home/cisco/TerraformTemplates/"
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_018MZZD73JYON7LqAhzZHNESYiFYpFABRBj",
+            "name": "Match Regular Expression",
+            "title": "Fetch VPC ID",
+            "type": "core.matchregex",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Fetch VPC ID",
+              "input_regex": "vpc_id =(.*?)$",
+              "input_string": "$activity.definition_activity_019U6WOBAC9H03Ur2Ot78hYZiy4XcxO5BiO.output.response_body$",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_018Q9OPR8R7146kEfbmpNasmjEBKIGrP2Xz",
+            "name": "Replace String",
+            "title": "Replace String",
+            "type": "core.replacestring",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Replace String",
+              "input_string": "$activity.definition_activity_018MZZD73JYON7LqAhzZHNESYiFYpFABRBj.output.matching_strings[0]$",
+              "replace_list": [
+                {
+                  "replaced_string": "vpc_id =",
+                  "replacement_string": ""
+                },
+                {
+                  "replaced_string": "\u001b[0m",
+                  "replacement_string": ""
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_018MZZKQ7FJMO5tRDlNi04gNbEddN397LM7",
+            "name": "Trim String",
+            "title": "Trim Unnecessary Characters",
+            "type": "core.trim_string",
+            "base_type": "activity",
+            "properties": {
+              "characters_to_trim": " ",
+              "continue_on_failure": false,
+              "display_name": "Trim Unnecessary Characters",
+              "skip_execution": false,
+              "source": "$activity.definition_activity_018Q9OPR8R7146kEfbmpNasmjEBKIGrP2Xz.output.result_string$",
+              "trim_leading": true,
+              "trim_trailing": true
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_019V714C5Y3EG2dWuoZ197qqkWVPRFxJN87",
+            "name": "Set Variables",
+            "title": "Set Globals",
+            "type": "core.set_multiple_variables",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Set Globals",
+              "skip_execution": false,
+              "variables_to_update": [
+                {
+                  "variable_to_update": "$global.variable_019V6Z6X8IRB16PdJqHkQbKg3I6IMN67fL4.global.variable_019V6Z6X8IRB16PdJqHkQbKg3I6IMN67fL4$",
+                  "variable_value_new": "$activity.definition_activity_018MZZKQ7FJMO5tRDlNi04gNbEddN397LM7.output.trimmed$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_018N33HZH9QEF2iDSbtKsihpJapNU9UcHgS",
+        "name": "Group",
+        "title": "Terraform - Create Subnet for VPC",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Terraform - Create Subnet for VPC",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_019U6PJR2P7XA67J98wXGrDhZFr0PqRX7nO",
+            "name": "Execute Template",
+            "title": "Create Subnet For VPC",
+            "type": "terraform.execute_template",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 360,
+              "continue_on_failure": false,
+              "display_name": "Create Subnet For VPC",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              },
+              "template_name": "create_subnet",
+              "template_parameters": "{\n  \"params\": [\n    {\n      \"parameter_name\": \"aws_region\",\n      \"parameter_type\": \"string\",\n      \"parameter_value\": \"us-east-1\"\n    },\n    {\n      \"parameter_name\": \"access_key\",\n      \"parameter_type\": \"string\",\n      \"parameter_value\": \"$global.variable_019V8H1QZ84Z70FxunDvoVHXwc2K2Pki2fy.global.variable_019V8H1QZ84Z70FxunDvoVHXwc2K2Pki2fy$\"\n    },\n    {\n      \"parameter_name\": \"secret_key\",\n      \"parameter_type\": \"string\",\n      \"parameter_value\": \"$global.variable_019V8HCATBVP364hjZKIRrkoSk7qUZ3EvZw.global.variable_019V8HCATBVP364hjZKIRrkoSk7qUZ3EvZw$\"\n    },\n    {\n      \"parameter_name\": \"vpc_id\",\n      \"parameter_type\": \"string\",\n      \"parameter_value\": \"$activity.019UE3I0LP4PP7jH6sX4Ro6GI2WXKmQwCdM.output.trimmed$\"\n    },\n    {\n      \"parameter_name\": \"subnet_name\",\n      \"parameter_type\": \"string\",\n      \"parameter_value\": \"$workflow.definition_workflow_018MY96L6QNBG1EmzWtVXuo95zCCIYUA8zw.input.variable_workflow_018PF8HLLIXOZ40kIjRFrLjPe5uQMavq9mP$\"\n    },\n    {\n      \"parameter_name\": \"subnet_cidr_block\",\n      \"parameter_type\": \"string\",\n      \"parameter_value\": \"$workflow.definition_workflow_018MY96L6QNBG1EmzWtVXuo95zCCIYUA8zw.input.variable_workflow_018PF8SVZRHAH6kqRun94KCRu8iOSVQtJxH$\"\n    }\n  ]\n}",
+              "templates_path": "/home/cisco/TerraformTemplates"
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_018N0BD1YH0WQ7RZwpz1ybondGIRnJH39N8",
+            "name": "Match Regular Expression",
+            "title": "Fetch Subnet ID",
+            "type": "core.matchregex",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Fetch Subnet ID",
+              "input_regex": "Creation complete after(.*?)]",
+              "input_string": "$activity.definition_activity_019U6PJR2P7XA67J98wXGrDhZFr0PqRX7nO.output.response_body$",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_018N0CSNZC3AJ6O2adNIEFyIqLffPnNE29r",
+            "name": "Split String",
+            "title": "Split Subnet ID Response",
+            "type": "core.splitstring",
+            "base_type": "activity",
+            "properties": {
+              "boundaries": [
+                {
+                  "boundary": "id="
+                }
+              ],
+              "continue_on_failure": false,
+              "display_name": "Split Subnet ID Response",
+              "input_string": "$activity.definition_activity_018N0BD1YH0WQ7RZwpz1ybondGIRnJH39N8.output.matching_strings[-1]$",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_018N0DYQPYD7Y5UefNEWSiUJIBqMxq5jEoG",
+            "name": "Trim String",
+            "title": "Trim Unnecessary Characters ",
+            "type": "core.trim_string",
+            "base_type": "activity",
+            "properties": {
+              "characters_to_trim": "]",
+              "continue_on_failure": false,
+              "display_name": "Trim Unnecessary Characters ",
+              "skip_execution": false,
+              "source": "$activity.definition_activity_018N0CSNZC3AJ6O2adNIEFyIqLffPnNE29r.output.parts[-1]$",
+              "trim_leading": false,
+              "trim_trailing": true
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_019V71K4NMDFT49zfrwAMU4zFz9qLR8Ev6R",
+            "name": "Set Variables",
+            "title": "Set Variables",
+            "type": "core.set_multiple_variables",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Set Variables",
+              "skip_execution": false,
+              "variables_to_update": [
+                {
+                  "variable_to_update": "$global.variable_019V6ZK2Q8GXP16ZjE9NTDLf83N7RmpiUa4.global.variable_019V6ZK2Q8GXP16ZjE9NTDLf83N7RmpiUa4$",
+                  "variable_value_new": "$activity.definition_activity_018N0DYQPYD7Y5UefNEWSiUJIBqMxq5jEoG.output.trimmed$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_018QB1JQ4PL4E19SwQwuKyomHKg164YX91P",
+        "name": "Condition Block",
+        "title": "Condition Block",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Condition Block",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_018QB1K1VVE8L4xr647mr5ATa3xZMsL9J46",
+            "name": "Condition Branch",
+            "title": "VPCID \u003c\u003e null and subnetid \u003c\u003e null",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": {
+                  "left_operand": "$activity.019UE3I0LP4PP7jH6sX4Ro6GI2WXKmQwCdM.output.trimmed$",
+                  "operator": "ne",
+                  "right_operand": ""
+                },
+                "operator": "and",
+                "right_operand": {
+                  "left_operand": "$activity.019UE3JS064CP19G13nbyOqVYZESvQy03z8.output.trimmed$",
+                  "operator": "ne",
+                  "right_operand": ""
+                }
+              },
+              "continue_on_failure": false,
+              "display_name": "VPCID \u003c\u003e null and subnetid \u003c\u003e null",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_018N0G5DDFFNJ5uz0YSl0LotXO1PIAOiXen",
+                "name": "Set Variables",
+                "title": "Set VPC ID And Subnet ID",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set VPC ID And Subnet ID",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_018MY96L6QNBG1EmzWtVXuo95zCCIYUA8zw.output.variable_workflow_018N0FY1O74GB6EMTKsXzhWO8di26ehNSJH$",
+                      "variable_value_new": "$activity.019UE3I0LP4PP7jH6sX4Ro6GI2WXKmQwCdM.output.trimmed$"
+                    },
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_018MY96L6QNBG1EmzWtVXuo95zCCIYUA8zw.output.variable_workflow_018N0G381U6Z86l2IdtHtUaB8E930mhinl9$",
+                      "variable_value_new": "$activity.019UE3JS064CP19G13nbyOqVYZESvQy03z8.output.trimmed$"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_018QB1K6Y4Y9309IPbn4G2g7u4WpNvV6pIa",
+            "name": "Condition Branch",
+            "title": "vpcid == null or subnetid == null",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": {
+                  "left_operand": "$activity.019UE3JS064CP19G13nbyOqVYZESvQy03z8.output.trimmed$",
+                  "operator": "eq",
+                  "right_operand": ""
+                },
+                "operator": "or",
+                "right_operand": {
+                  "left_operand": "$activity.019UE3I0LP4PP7jH6sX4Ro6GI2WXKmQwCdM.output.trimmed$",
+                  "operator": "eq",
+                  "right_operand": ""
+                }
+              },
+              "continue_on_failure": false,
+              "display_name": "vpcid == null or subnetid == null",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_018QB4YN4JBMB0CmO739F9m2W27bduqMUqF",
+                "name": "Succeeded",
+                "title": "Completed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "succeeded",
+                  "display_name": "Succeeded",
+                  "result_message": "Failed to get VPC Id or Subnet Id from AWS"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_018Q2IMLIY6366oMALjtNF1XTlSkwUFwcs5",
+        "name": "Get Cloud and Region Id by Name",
+        "title": "Get Cloud and Region Id by Name",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Cloud and Region Id by Name",
+          "input": {
+            "variable_workflow_018Q25XFMZP6T6U5fqVl5lwDakw4Yh6yJPD": "$workflow.definition_workflow_018MY96L6QNBG1EmzWtVXuo95zCCIYUA8zw.input.variable_workflow_018NMEWUJRF0M16GFVfk6toMzuBeS0NL8sD$",
+            "variable_workflow_018Q265ZFEYIM7G9A0TtqJZgNCLbZa0HM7i": "$workflow.definition_workflow_018MY96L6QNBG1EmzWtVXuo95zCCIYUA8zw.input.variable_workflow_018NMIVRWEX8F3BzVHhohxNvZnB0zKJVI3C$"
+          },
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "execute_on_this_target": true,
+            "target_id": "definition_target_019UJ2CYDSCRG6uNBzMec1TWmtN8TIQW3zq",
+            "target_type": "ccsuite.endpoint"
+          },
+          "workflow_id": "definition_workflow_018Q23CLRGS7B1RfQE40pVYHJvFcdPVwmfy"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_018Q2PTQKQPLP494bu0Tgr4gTB5PDNgqCvw",
+        "name": "Condition Block",
+        "title": "Check for Cloud Account Id and Region Id",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Check for Cloud Account Id and Region Id",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_018Q2PTZSDAKO5ay54vFQLDmyiBtLKEaakT",
+            "name": "Condition Branch",
+            "title": "CloudAccountId == null or RegionId == null",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": {
+                  "left_operand": "$activity.definition_activity_018Q2IMLIY6366oMALjtNF1XTlSkwUFwcs5.output.variable_workflow_018Q2BSIDO3E02OVbA8E2AzQS0ULbLk6Bja$",
+                  "operator": "eq",
+                  "right_operand": "null"
+                },
+                "operator": "or",
+                "right_operand": {
+                  "left_operand": "$activity.definition_activity_018Q2IMLIY6366oMALjtNF1XTlSkwUFwcs5.output.variable_workflow_018Q2C0V0BAMH4OjgrjyjfZxBjLK3t8ThfW$",
+                  "operator": "eq",
+                  "right_operand": "null"
+                }
+              },
+              "continue_on_failure": false,
+              "display_name": "CloudAccountId == null or RegionId == null",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_018Q2R3VHEK1Q72h45vMdbUHinfsNevyHjO",
+                "name": "Failed",
+                "title": "Completed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "failed-completed",
+                  "display_name": "Failed",
+                  "result_message": "Unable to continue as Cloud Account Id and Region Id are required. Check the names provided for Cloud Account Name and Region Name in Workload Manager"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_018NMOPCYRUZN08kmrjYVfuXBPFoGfn4DYW",
+        "name": "Group",
+        "title": "Add Deployment Environment in WM",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Add Deployment Environment in WM",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_018NH5FD9Z9SN2eSOqAkJTx0o8Sct1uMzfh",
+            "name": "Generic CCS API Request",
+            "title": "Create Deployment Environment in WM",
+            "type": "ccs.api_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "api_body": "{\n  \"name\": \"$workflow.definition_workflow_018MY96L6QNBG1EmzWtVXuo95zCCIYUA8zw.input.variable_workflow_018NH8J0YBFQH4UtojqT96CUKwI6EiRiJW4$\",\n  \"systemTags\": [],\n  \"description\": \"$workflow.definition_workflow_018MY96L6QNBG1EmzWtVXuo95zCCIYUA8zw.input.variable_workflow_018NH8ZF7XWUB4T6LP8jO2OJNZt8Q436j9l$\",\n  \"requiresApproval\": false,\n  \"extensionId\": null,\n  \"defaultRegionId\": \"$activity.definition_activity_018Q2IMLIY6366oMALjtNF1XTlSkwUFwcs5.output.variable_workflow_018Q2C0V0BAMH4OjgrjyjfZxBjLK3t8ThfW$\",\n  \"networkTypeEnabled\": false,\n  \"networkTypes\": [],\n  \"associatedClouds\": [\n    {\n      \"regionId\": \"$activity.definition_activity_018Q2IMLIY6366oMALjtNF1XTlSkwUFwcs5.output.variable_workflow_018Q2C0V0BAMH4OjgrjyjfZxBjLK3t8ThfW$\",\n      \"cloudAccountId\": \"$activity.definition_activity_018Q2IMLIY6366oMALjtNF1XTlSkwUFwcs5.output.variable_workflow_018Q2BSIDO3E02OVbA8E2AzQS0ULbLk6Bja$\",\n      \"default\": true,\n      \"preference\": \"VISIBLE_UNLOCKED\",\n      \"networkSettings\": [\n        {\n          \"nics\": [\n            {\n              \"nicProperties\": [\n                {\n                  \"name\": \"order\",\n                  \"value\": 1\n                },\n                {\n                  \"name\": \"networkId\",\n                  \"value\": \"$activity.definition_activity_018N0DYQPYD7Y5UefNEWSiUJIBqMxq5jEoG.output.trimmed$\"\n                },\n                {\n                  \"name\": \"publicIpAllocate\",\n                  \"value\": \"true\"\n                },\n                {\n                  \"name\": \"assignIpv6Address\",\n                  \"value\": \"\"\n                },\n                {\n                  \"name\": \"showIPV6Toggle\",\n                  \"value\": \"\"\n                },\n                {\n                  \"name\": \"ipForwardingEnabled\",\n                  \"value\": \"\"\n                }\n              ]\n            }\n          ],\n          \"networkProperties\": [\n            {\n              \"name\": \"vpcId\",\n              \"value\": \"$activity.definition_activity_018MZZKQ7FJMO5tRDlNi04gNbEddN397LM7.output.trimmed$\"\n            }\n          ],\n          \"default\": true\n        }\n      ],\n      \"basicSettings\": [],\n      \"defaultSshKey\": {\n        \"preference\": \"VISIBLE_UNLOCKED\"\n      },\n      \"defaultInstance\": {\n        \"instanceTypeSelection\": \"INSTANCE_RANGE\",\n        \"showPrice\": true,\n        \"showHardwareSpec\": true,\n        \"cloudInstances\": [\n          \"5d6ff989b8eaf2a9083983d9\"\n        ],\n        \"minMemory\": 0,\n        \"maxMemory\": 3997696,\n        \"minCPU\": 0,\n        \"maxCPU\": 128,\n        \"minStorage\": 0,\n        \"maxStorage\": 60000,\n        \"minPrice\": 0.0047,\n        \"maxPrice\": 31.212\n      },\n      \"enableResourcePlacement\": false,\n      \"enableResourceValidation\": false,\n      \"resourcePlacementScript\": \"\",\n      \"resourceValidationScript\": \"\",\n      \"calloutPackage\": \"\"\n    }\n  ],\n  \"policySettings\": {\n    \"agingPolicySettings\": {\n      \"mandatory\": false,\n      \"allPolicies\": false,\n      \"policies\": [],\n      \"visibleState\": \"VISIBLE_DISABLED\"\n    },\n    \"suspensionPolicySettings\": {\n      \"mandatory\": false,\n      \"allPolicies\": false,\n      \"policies\": [],\n      \"visibleState\": \"VISIBLE_DISABLED\"\n    },\n    \"securityPolicySettings\": {\n      \"allPolicies\": false,\n      \"policies\": [],\n      \"visibleState\": \"VISIBLE_DISABLED\"\n    },\n    \"allowTerminateProtection\": false\n  }\n}",
+              "api_call_method": "POST",
+              "continue_on_failure": false,
+              "description": "Deployment Env Creation",
+              "display_name": "Create Deployment Environment in WM",
+              "relative_url": "/cloudcenter-ccm-backend//api/v1/environments/",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_019UJ2CYDSCRG6uNBzMec1TWmtN8TIQW3zq"
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_018NMNXJ3J01O2yh7b74i1FReOeHpnIGfa5",
+            "name": "JSONPath Query",
+            "title": "Get Deployment Environment Id",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Get Deployment Environment Id",
+              "input_json": "$activity.definition_activity_018NH5FD9Z9SN2eSOqAkJTx0o8Sct1uMzfh.output.response_body$",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$.id",
+                  "jsonpath_query_name": "Id",
+                  "jsonpath_query_type": "string",
+                  "zdate_type_format": ""
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_019V724C47JNM28RAeC24CcyBbspE0acEMJ",
+            "name": "Set Variables",
+            "title": "Set Variables",
+            "type": "core.set_multiple_variables",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Set Variables",
+              "skip_execution": false,
+              "variables_to_update": [
+                {
+                  "variable_to_update": "$global.variable_019V6ZX0GABBV0ZqgJzBQlS6pZXRXrauLPx.global.variable_019V6ZX0GABBV0ZqgJzBQlS6pZXRXrauLPx$",
+                  "variable_value_new": "$activity.definition_activity_018NMNXJ3J01O2yh7b74i1FReOeHpnIGfa5.output.jsonpath_queries.Id$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_018NN24NJYT3O7Kz9do0VP9GweYZgpYZbkq",
+        "name": "Group",
+        "title": "Get Application Profile",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Application Profile"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_018NMTQL49O7H0qSycZMrA2eSjg9zu0yTbn",
+            "name": "Generic CCS API Request",
+            "title": "Get Application Profiles",
+            "type": "ccs.api_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "api_call_method": "GET",
+              "continue_on_failure": false,
+              "display_name": "Get Application Profiles",
+              "relative_url": "/cloudcenter-ccm-backend//api/app/service/get_my_apps",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_019UJ2CYDSCRG6uNBzMec1TWmtN8TIQW3zq"
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_018NMW9JCLXBJ6VuPtx9fNR0CfBJT9CL5oU",
+            "name": "Read Table from JSON",
+            "title": "Read Application Profiles",
+            "type": "corejava.read_table_from_json",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Read Application Profiles",
+              "input_json": "$activity.definition_activity_018NMTQL49O7H0qSycZMrA2eSjg9zu0yTbn.output.response_body$",
+              "jsonpath_query": "$.appList[*]",
+              "persist_output": true,
+              "populate_columns": false,
+              "skip_execution": false,
+              "table_columns": [
+                {
+                  "column_name": "appId",
+                  "column_type": "integer",
+                  "zdate_type_format": ""
+                },
+                {
+                  "column_name": "name",
+                  "column_type": "string",
+                  "zdate_type_format": ""
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_018NMXBU44RRJ3cvwhqmIaeylK9zVUME6k0",
+            "name": "Select from Table",
+            "title": "Select Application Profile",
+            "type": "core.selectfromtable",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "columns": [
+                {
+                  "column_name": "appId",
+                  "column_type": "integer"
+                }
+              ],
+              "continue_on_failure": false,
+              "display_name": "Select Application Profile",
+              "input_table": "$activity.definition_activity_018NMW9JCLXBJ6VuPtx9fNR0CfBJT9CL5oU.output.read_table_from_json$",
+              "number_of_rows": {
+                "all_rows": true,
+                "at_most": false
+              },
+              "persist_output": true,
+              "skip_execution": false,
+              "sorting": {
+                "no_sort": true,
+                "sort_by": false
+              },
+              "where_clause": "name == '$workflow.definition_workflow_018MY96L6QNBG1EmzWtVXuo95zCCIYUA8zw.input.variable_workflow_018NMYJ81P0K54I2hxEBXnILVDBY2j0gidD$'"
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_018Q31APW6F2P2xHwGDGFqxkphUoeV9r5iT",
+        "name": "Get Application Profile Id by Name",
+        "title": "Get Application Profile Id by Name",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Application Profile Id by Name",
+          "input": {
+            "variable_workflow_018Q2WLGXBR8M5b5H7LHPnp0R1eDvhf1hQ5": "$workflow.definition_workflow_018MY96L6QNBG1EmzWtVXuo95zCCIYUA8zw.input.variable_workflow_018NMYJ81P0K54I2hxEBXnILVDBY2j0gidD$"
+          },
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "execute_on_this_target": true,
+            "target_id": "definition_target_019UJ2CYDSCRG6uNBzMec1TWmtN8TIQW3zq",
+            "target_type": "ccsuite.endpoint"
+          },
+          "workflow_id": "definition_workflow_018Q2SRZBQ0XR6cTo28iC6m5ywegTX0IiK6"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_018Q355YROT4E6KJEf5hmPcraz4h4RrDQH3",
+        "name": "Condition Block",
+        "title": "Check Application Profile Id",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Check Application Profile Id",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_018Q3567HK2TZ6Ywh9tp22DjVmkCt6DR4IR",
+            "name": "Condition Branch",
+            "title": "appProfileId == 0",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_018Q31APW6F2P2xHwGDGFqxkphUoeV9r5iT.output.variable_workflow_018Q2Y6WHLC812woxjlhy9Vu7m9VYc5UK5M$",
+                "operator": "eq",
+                "right_operand": 0
+              },
+              "continue_on_failure": false,
+              "display_name": "appProfileId == 0",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_018Q35M5Y9Q957BIpMnOhyLlWoSALHsMEFz",
+                "name": "Failed",
+                "title": "Completed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "failed-completed",
+                  "display_name": "Failed",
+                  "result_message": "Unable to retrieve application profile id from workfload manager. It is required to deploy the application. Check the name of the profile in workload manager."
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_018Q59RDKU3AW0qovXvzT5dlijAMde4GoPb",
+        "name": "Group",
+        "title": "Deploy Application Profile to AWS",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Deploy Application Profile to AWS",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_018NLK0VESJBQ5KxUnvFTo9Pn2agqdvKMxC",
+            "name": "Generic CCS API Request",
+            "title": "Deploy Application",
+            "type": "ccs.api_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "api_body": "{\n  \"appId\": $activity.definition_activity_018Q31APW6F2P2xHwGDGFqxkphUoeV9r5iT.output.variable_workflow_018Q2Y6WHLC812woxjlhy9Vu7m9VYc5UK5M$,\n  \"appVersion\": \"1\",\n  \"name\": \"$workflow.definition_workflow_018MY96L6QNBG1EmzWtVXuo95zCCIYUA8zw.input.variable_workflow_018NLP6404HZ743x8EZV3CfMRv1962lvha9$\",\n  \"metadata\": [\n    {\n      \"id\": 7,\n      \"namespace\": \"\",\n      \"tagName\": \"Name\",\n      \"tagCollectionId\": 7,\n      \"value\": \"CCS5-%JOB_NAME%\",\n      \"required\": true,\n      \"editable\": false,\n      \"name\": \"Name\"\n    }\n  ],\n  \"environmentId\": \"$activity.definition_activity_018NMNXJ3J01O2yh7b74i1FReOeHpnIGfa5.output.jsonpath_queries.Id$\",\n  \"tagIds\": [\n    \"1\"\n  ],\n  \"securityProfileIds\": null,\n  \"agingPolicyId\": null,\n  \"suspensionPolicyId\": null,\n  \"policyIds\": null,\n  \"preventTermination\": false,\n  \"parameters\": {\n    \"appParams\": [],\n    \"cloudParams\": {\n      \"cloudRegionId\": \"$activity.definition_activity_018Q2IMLIY6366oMALjtNF1XTlSkwUFwcs5.output.variable_workflow_018Q2C0V0BAMH4OjgrjyjfZxBjLK3t8ThfW$\",\n      \"accountId\": \"$activity.definition_activity_018Q2IMLIY6366oMALjtNF1XTlSkwUFwcs5.output.variable_workflow_018Q2BSIDO3E02OVbA8E2AzQS0ULbLk6Bja$\"\n    }\n  },\n  \"jobs\": [\n    {\n      \"tierId\": \"30\",\n      \"policyIds\": null,\n      \"tagIds\": [],\n      \"securityProfileIds\": null,\n      \"parameters\": {\n        \"appParams\": [\n          {\n            \"name\": \"referredJob\",\n            \"value\": \"\"\n          },\n          {\n            \"name\": \"SSHPreference\",\n            \"value\": \"NO_PREFERENCE\"\n          }\n        ],\n        \"envParams\": [],\n        \"cloudParams\": {\n          \"cloudRegionId\": \"$activity.definition_activity_018Q2IMLIY6366oMALjtNF1XTlSkwUFwcs5.output.variable_workflow_018Q2C0V0BAMH4OjgrjyjfZxBjLK3t8ThfW$\",\n          \"accountId\": \"$activity.definition_activity_018Q2IMLIY6366oMALjtNF1XTlSkwUFwcs5.output.variable_workflow_018Q2BSIDO3E02OVbA8E2AzQS0ULbLk6Bja$\",\n          \"volumes\": [\n            {\n              \"name\": \"RootVolume\",\n              \"bootable\": true,\n              \"size\": null,\n              \"type\": \"gp2\",\n              \"iops\": null\n            }\n          ],\n          \"rootVolumeSize\": \"0\",\n          \"cloudProperties\": [\n            {\n              \"name\": \"vpcId\",\n              \"value\": \"$activity.definition_activity_018MZZKQ7FJMO5tRDlNi04gNbEddN397LM7.output.trimmed$\"\n            }\n          ],\n          \"nics\": [\n            {\n              \"order\": 1,\n              \"id\": \"$activity.definition_activity_018N0DYQPYD7Y5UefNEWSiUJIBqMxq5jEoG.output.trimmed$\",\n              \"allocatePublicIp\": \"true\",\n              \"assignIpv6Address\": null,\n              \"showIPV6Toggle\": null,\n              \"ipForwardingEnabled\": null\n            }\n          ],\n          \"instance\": \"t2.small\"\n        }\n      },\n      \"appServices\": [],\n      \"numNodesToLaunch\": 1\n    }\n  ],\n  \"timeZone\": \"GMT+05:30\",\n  \"responseJobJaxbNotRequired\": true\n}",
+              "api_call_method": "POST",
+              "continue_on_failure": false,
+              "display_name": "Deploy Application",
+              "relative_url": "/cloudcenter-ccm-backend//api/v2/jobs",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_019UJ2CYDSCRG6uNBzMec1TWmtN8TIQW3zq"
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_018Q58YPGWG0L1sIUaz6trLJ52GgLztuNlJ",
+            "name": "JSONPath Query",
+            "title": "Get Application Deployment Id ",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Get Application Deployment Id ",
+              "input_json": "$activity.definition_activity_018NLK0VESJBQ5KxUnvFTo9Pn2agqdvKMxC.output.response_body$",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$.id",
+                  "jsonpath_query_name": "Id",
+                  "jsonpath_query_type": "string",
+                  "zdate_type_format": ""
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_019V72NQUDHHJ4EDbXZxUVjE7svMkwdiFnz",
+            "name": "Set Variables",
+            "title": "Set Variables",
+            "type": "core.set_multiple_variables",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Set Variables",
+              "skip_execution": false,
+              "variables_to_update": [
+                {
+                  "variable_to_update": "$global.variable_019V6ZT2BSER842Rq50ijQ4SkS8nwYjl0Bj.global.variable_019V6ZT2BSER842Rq50ijQ4SkS8nwYjl0Bj$",
+                  "variable_value_new": "$activity.definition_activity_018Q58YPGWG0L1sIUaz6trLJ52GgLztuNlJ.output.jsonpath_queries.Id$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_018Q585X9PDNM6DJP6XsHKycwI1g4Bq4bZL",
+        "name": "Check Application Deployment Status",
+        "title": "Check Application Deployment Status",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Check Application Deployment Status",
+          "input": {
+            "variable_workflow_018Q3U1VO2ZLU1s50i9qgD0SO6rlPBKxpo4": "$activity.019UE3RBY5GHO4Ho6myquvkWm2qnGTUEnjs.output.jsonpath_queries.Id$",
+            "variable_workflow_018Q4WJZTIAFX5v2l9tvCr1i9vDWst1VtF5": 60,
+            "variable_workflow_018Q4X2IMVL1P7Nee7pnfSc0EG0BKsFVpgP": 5
+          },
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "execute_on_this_target": true,
+            "target_id": "definition_target_019UJ2CYDSCRG6uNBzMec1TWmtN8TIQW3zq",
+            "target_type": "ccsuite.endpoint"
+          },
+          "workflow_id": "definition_workflow_018Q3T8FQV1FU3fnqWQzdUZ5lbzW1kKQpLY"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_018MP2BZ9FS116iE0yDeqc43ABQk5oSYhCv": {
+      "unique_name": "definition_target_018MP2BZ9FS116iE0yDeqc43ABQk5oSYhCv",
+      "name": "Terraform dev Target",
+      "title": "Terraform dev Target",
+      "type": "terraform.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "bash_shell": "/usr/bin",
+        "default_runtime_user_id": "definition_runtime_user_018CPF33LWYQB59IU3drCT3WRb0UhrwEQa9",
+        "display_name": "Terraform dev Target",
+        "host": "10.88.38.94",
+        "port": 22
+      }
+    },
+    "definition_target_019UJ2CYDSCRG6uNBzMec1TWmtN8TIQW3zq": {
+      "unique_name": "definition_target_019UJ2CYDSCRG6uNBzMec1TWmtN8TIQW3zq",
+      "name": "ccs5-demo",
+      "title": "ccs5-demo",
+      "type": "ccsuite.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_019UJ20FMEG092P5t1hrW5xxF1EHw6x7oqz",
+        "display_name": "ccs5-demo",
+        "host": "ccs5-demo.cisco.com",
+        "protocol": "https"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_018CPF33LWYQB59IU3drCT3WRb0UhrwEQa9": {
+      "unique_name": "definition_runtime_user_018CPF33LWYQB59IU3drCT3WRb0UhrwEQa9",
+      "name": "terraformuser-10.88.38.94",
+      "title": "terraformuser-10.88.38.94",
+      "type": "runtime_user.terminal_password_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "admin_password": "*****",
+        "display_name": "terraformuser-10.88.38.94",
+        "password": "*****",
+        "user": "*****"
+      }
+    },
+    "definition_runtime_user_019UJ20FMEG092P5t1hrW5xxF1EHw6x7oqz": {
+      "unique_name": "definition_runtime_user_019UJ20FMEG092P5t1hrW5xxF1EHw6x7oqz",
+      "name": "ccs5-demo user",
+      "title": "ccs5-demo user",
+      "type": "runtime_user.ccs_explicit_user",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "ccs5-demo user",
+        "password": "*****",
+        "tenant_id": "*****",
+        "username": "*****"
+      }
+    }
+  },
+  "variables": {
+    "variable_019V6Z6X8IRB16PdJqHkQbKg3I6IMN67fL4": {
+      "unique_name": "variable_019V6Z6X8IRB16PdJqHkQbKg3I6IMN67fL4",
+      "properties": {
+        "value": "vpc-04809bea444fe533f",
+        "scope": "global",
+        "name": "TF_VPCID",
+        "type": "datatype.string",
+        "is_required": false
+      },
+      "object_type": "variable"
+    },
+    "variable_019V6ZK2Q8GXP16ZjE9NTDLf83N7RmpiUa4": {
+      "unique_name": "variable_019V6ZK2Q8GXP16ZjE9NTDLf83N7RmpiUa4",
+      "properties": {
+        "value": "subnet-0b4f954f9d693ffb4",
+        "scope": "global",
+        "name": "TF_SUBNETID",
+        "type": "datatype.string",
+        "is_required": false
+      },
+      "object_type": "variable"
+    },
+    "variable_019V6ZT2BSER842Rq50ijQ4SkS8nwYjl0Bj": {
+      "unique_name": "variable_019V6ZT2BSER842Rq50ijQ4SkS8nwYjl0Bj",
+      "properties": {
+        "value": "729",
+        "scope": "global",
+        "name": "TF_APPID",
+        "type": "datatype.string",
+        "is_required": false
+      },
+      "object_type": "variable"
+    },
+    "variable_019V6ZX0GABBV0ZqgJzBQlS6pZXRXrauLPx": {
+      "unique_name": "variable_019V6ZX0GABBV0ZqgJzBQlS6pZXRXrauLPx",
+      "properties": {
+        "value": "29",
+        "scope": "global",
+        "name": "TF_ENVID",
+        "type": "datatype.string",
+        "is_required": false
+      },
+      "object_type": "variable"
+    },
+    "variable_019V8H1QZ84Z70FxunDvoVHXwc2K2Pki2fy": {
+      "unique_name": "variable_019V8H1QZ84Z70FxunDvoVHXwc2K2Pki2fy",
+      "properties": {
+        "value": "AKIAUHNEOVYEYFHWZHUB",
+        "scope": "global",
+        "name": "TF_DEMO_Crds_1",
+        "type": "datatype.string",
+        "is_required": false
+      },
+      "object_type": "variable"
+    },
+    "variable_019V8HCATBVP364hjZKIRrkoSk7qUZ3EvZw": {
+      "unique_name": "variable_019V8HCATBVP364hjZKIRrkoSk7qUZ3EvZw",
+      "properties": {
+        "value": "cpgU9Kt27vGjhXwfUUeOsKvHPMSCJ2Rd11nNEW9y",
+        "scope": "global",
+        "name": "TF_Demo_Creds2",
+        "type": "datatype.string",
+        "is_required": false
+      },
+      "object_type": "variable"
+    }
+  },
+  "atomic_workflows": [
+    "definition_workflow_018Q23CLRGS7B1RfQE40pVYHJvFcdPVwmfy",
+    "definition_workflow_018Q2SRZBQ0XR6cTo28iC6m5ywegTX0IiK6",
+    "definition_workflow_018Q3T8FQV1FU3fnqWQzdUZ5lbzW1kKQpLY"
+  ]
+}
