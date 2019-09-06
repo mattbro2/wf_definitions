@@ -7,23 +7,13 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "value": 0,
-          "scope": "output",
-          "name": "Lines Uncovered",
-          "type": "datatype.integer"
-        },
-        "unique_name": "variable_workflow_017J2H9VJIVW86IBzdZetxkagj6BiUbwRxP",
-        "object_type": "variable_workflow"
-      },
-      {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "/cisco-dash/job/longhorn",
+          "value": "/cisco-dash/job/longhorn/",
           "scope": "local",
           "name": "query_path",
-          "type": "datatype.string"
+          "type": "datatype.string",
+          "is_required": false
         },
         "unique_name": "variable_workflow_0176GRUH6U4KK3QImTBkGCqrj7uDHLKJBa2",
         "object_type": "variable_workflow"
@@ -33,10 +23,23 @@
         "properties": {
           "value": 0,
           "scope": "output",
-          "name": "Total Lines",
-          "type": "datatype.integer"
+          "name": "Lines Covered",
+          "type": "datatype.integer",
+          "is_required": false
         },
-        "unique_name": "variable_workflow_0175G0ITT3MU67ZBsAAB9OC69EJc5rM4ONg",
+        "unique_name": "variable_workflow_0175G0OCL8XNU4XPagxEiRMghGY6NwfpzkL",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "output",
+          "name": "Lines Uncovered",
+          "type": "datatype.integer",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_017J2H9VJIVW86IBzdZetxkagj6BiUbwRxP",
         "object_type": "variable_workflow"
       },
       {
@@ -45,42 +48,10 @@
           "value": ".*(helm|schemas).*",
           "scope": "local",
           "name": "exclude regex",
-          "type": "datatype.string"
+          "type": "datatype.string",
+          "is_required": false
         },
         "unique_name": "variable_workflow_0175GM9U7HVAV06K1yXVptHKfXgGCHeK2Xb",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "5.0.2",
-          "scope": "input",
-          "name": "release",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_0175G09F0Q3NW64d0LahNq0EQ0q6xo9uWs4",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.boolean",
-        "properties": {
-          "value": true,
-          "scope": "local",
-          "name": "true",
-          "type": "datatype.boolean"
-        },
-        "unique_name": "variable_workflow_0175H4HT3SQ4O360YalVzwotUFXeDkMctRC",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "value": 0,
-          "scope": "output",
-          "name": "Lines Covered",
-          "type": "datatype.integer"
-        },
-        "unique_name": "variable_workflow_0175G0OCL8XNU4XPagxEiRMghGY6NwfpzkL",
         "object_type": "variable_workflow"
       },
       {
@@ -89,9 +60,34 @@
           "value": 0,
           "scope": "output",
           "name": "Coverage Percentage",
-          "type": "datatype.number"
+          "type": "datatype.number",
+          "is_required": false
         },
         "unique_name": "variable_workflow_017J2HMS123S76dXqmsML2r4PIWiIVQrUQx",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": true,
+          "scope": "local",
+          "name": "true",
+          "type": "datatype.boolean",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_0175H4HT3SQ4O360YalVzwotUFXeDkMctRC",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "5.0.2",
+          "scope": "input",
+          "name": "release",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_0175G09F0Q3NW64d0LahNq0EQ0q6xo9uWs4",
         "object_type": "variable_workflow"
       },
       {
@@ -99,9 +95,22 @@
         "properties": {
           "scope": "local",
           "name": "TestingData",
-          "type": "datatype.table"
+          "type": "datatype.table",
+          "is_required": false
         },
         "unique_name": "variable_workflow_0175JZ29F9O4K5JpcjT71l2ScpniueLGOHz",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "output",
+          "name": "Total Lines",
+          "type": "datatype.integer",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_0175G0ITT3MU67ZBsAAB9OC69EJc5rM4ONg",
         "object_type": "variable_workflow"
       }
     ],
@@ -112,6 +121,11 @@
       "delete_workflow_instance": false,
       "display_name": "jenkins coverage report",
       "favorite": false,
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
       "target": {
         "target_type": "web-service.endpoint",
         "target_id": "definition_target_0175FS9ZSBK853n69jPWcThLsCYVhKobkpW",
@@ -141,11 +155,12 @@
             "properties": {
               "condition": {
                 "left_operand": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.input.variable_workflow_0175G09F0Q3NW64d0LahNq0EQ0q6xo9uWs4$",
-                "operator": "eq",
-                "right_operand": "dev"
+                "operator": "mw",
+                "right_operand": "*"
               },
               "continue_on_failure": false,
-              "display_name": "Condition Is Dev"
+              "display_name": "Condition Is Dev",
+              "skip_execution": false
             },
             "object_type": "definition_activity",
             "actions": [
@@ -227,6 +242,7 @@
             "override_target_runtime_user": false,
             "target_default": true
           },
+          "skip_execution": false,
           "target": {
             "override_workflow_target": false,
             "override_workflow_target_group_criteria": false,
@@ -348,11 +364,12 @@
                       "continue_on_failure": false,
                       "display_name": "Get Jenkins Cobertura Report",
                       "method": "GET",
-                      "relative_url": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.local.variable_workflow_0176GRUH6U4KK3QImTBkGCqrj7uDHLKJBa2$/job/$activity.definition_activity_0175GMCV8P1OW3aL06ZLwb4vZMWcOUVretV.input.source_array[@].name$/lastCompletedBuild/cobertura/api/json?depth=2",
+                      "relative_url": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.local.variable_workflow_0176GRUH6U4KK3QImTBkGCqrj7uDHLKJBa2$/job/$activity.definition_activity_0175GMCV8P1OW3aL06ZLwb4vZMWcOUVretV.input.source_array[@].name$/lastSuccessfulBuild/cobertura/api/json?depth=3",
                       "runtime_user": {
                         "override_target_runtime_user": false,
                         "target_default": true
                       },
+                      "skip_execution": false,
                       "target": {
                         "override_workflow_target": false,
                         "override_workflow_target_group_criteria": false,
@@ -536,6 +553,7 @@
         "properties": {
           "continue_on_failure": false,
           "display_name": "Set Variables",
+          "skip_execution": false,
           "variables_to_update": [
             {
               "variable_to_update": "$workflow.definition_workflow_0175FPZ4841L565rb5tE4BO5hlmsCvyCg4w.output.variable_workflow_017J2H9VJIVW86IBzdZetxkagj6BiUbwRxP$",
@@ -593,11 +611,17 @@
       "unique_name": "tabletype_0175JYV4SOQ0R5hdI5e9f8mExajClbsa9ho",
       "data_type": "datatype.tabletype",
       "display_name": "Testing Data",
-      "max_rows": 256,
-      "max_columns": 256,
-      "max_column_size": 1024,
-      "max_table_size": 26000,
       "columns": [
+        {
+          "name": "CoveragePercent",
+          "title": "CoveragePercent",
+          "type": "integer"
+        },
+        {
+          "name": "LinesCovered",
+          "title": "LinesCovered",
+          "type": "integer"
+        },
         {
           "name": "LinesTotal",
           "title": "LinesTotal",
@@ -612,16 +636,6 @@
           "name": "ServiceName",
           "title": "ServiceName",
           "type": "string"
-        },
-        {
-          "name": "CoveragePercent",
-          "title": "CoveragePercent",
-          "type": "integer"
-        },
-        {
-          "name": "LinesCovered",
-          "title": "LinesCovered",
-          "type": "integer"
         }
       ],
       "base_type": "datatype",
